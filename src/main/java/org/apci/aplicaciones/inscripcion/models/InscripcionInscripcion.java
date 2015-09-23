@@ -1,0 +1,158 @@
+package org.apci.aplicaciones.inscripcion.models;
+
+import java.sql.Date;
+
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
+public class InscripcionInscripcion {
+	private int InscripcionId;
+	private String NombreInstitucion;
+	private int DepartamentoId;
+	private String DireccionInstitucion;
+	private int NumeroRegistroAPCI;
+	private String TelefonoInstitucion;
+	private String EmailInstitucion;
+	private String DirectivoNombre;
+	private String DirectivoCargo;
+	private String DirectivoDNI;
+	private String DirectivoTelefono;
+	private String DirectivoCelular;
+	private String DirectivoEmail;
+	private String ContactoNombre;
+	private String ContactoCargo;
+	private String ContactoDNI;
+	private String ContactoTelefono;
+	private String ContactoCelular;
+	private String ContactoEmail;
+	private Date FechaInscripcion;
+	private String Hash;
+	public int getInscripcionId() {
+		return InscripcionId;
+	}
+	public void setInscripcionId(int inscripcionId) {
+		InscripcionId = inscripcionId;
+	}
+	public String getNombreInstitucion() {
+		return NombreInstitucion;
+	}
+	public void setNombreInstitucion(String nombreInstitucion) {
+		NombreInstitucion = nombreInstitucion;
+	}
+	public int getDepartamentoId() {
+		return DepartamentoId;
+	}
+	public void setDepartamentoId(int departamentoId) {
+		DepartamentoId = departamentoId;
+	}
+	public String getDireccionInstitucion() {
+		return DireccionInstitucion;
+	}
+	public void setDireccionInstitucion(String direccionInstitucion) {
+		DireccionInstitucion = direccionInstitucion;
+	}
+	public int getNumeroRegistroAPCI() {
+		return NumeroRegistroAPCI;
+	}
+	public void setNumeroRegistroAPCI(int numeroRegistroAPCI) {
+		NumeroRegistroAPCI = numeroRegistroAPCI;
+	}
+	public String getTelefonoInstitucion() {
+		return TelefonoInstitucion;
+	}
+	public void setTelefonoInstitucion(String telefonoInstitucion) {
+		TelefonoInstitucion = telefonoInstitucion;
+	}
+	public String getEmailInstitucion() {
+		return EmailInstitucion;
+	}
+	public void setEmailInstitucion(String emailInstitucion) {
+		EmailInstitucion = emailInstitucion;
+	}
+	public String getDirectivoNombre() {
+		return DirectivoNombre;
+	}
+	public void setDirectivoNombre(String directivoNombre) {
+		DirectivoNombre = directivoNombre;
+	}
+	public String getDirectivoCargo() {
+		return DirectivoCargo;
+	}
+	public void setDirectivoCargo(String directivoCargo) {
+		DirectivoCargo = directivoCargo;
+	}
+	public String getDirectivoDNI() {
+		return DirectivoDNI;
+	}
+	public void setDirectivoDNI(String directivoDNI) {
+		DirectivoDNI = directivoDNI;
+	}
+	public String getDirectivoTelefono() {
+		return DirectivoTelefono;
+	}
+	public void setDirectivoTelefono(String directivoTelefono) {
+		DirectivoTelefono = directivoTelefono;
+	}
+	public String getDirectivoCelular() {
+		return DirectivoCelular;
+	}
+	public void setDirectivoCelular(String directivoCelular) {
+		DirectivoCelular = directivoCelular;
+	}
+	public String getDirectivoEmail() {
+		return DirectivoEmail;
+	}
+	public void setDirectivoEmail(String directivoEmail) {
+		DirectivoEmail = directivoEmail;
+	}
+	public String getContactoNombre() {
+		return ContactoNombre;
+	}
+	public void setContactoNombre(String contactoNombre) {
+		ContactoNombre = contactoNombre;
+	}
+	public String getContactoCargo() {
+		return ContactoCargo;
+	}
+	public void setContactoCargo(String contactoCargo) {
+		ContactoCargo = contactoCargo;
+	}
+	public String getContactoDNI() {
+		return ContactoDNI;
+	}
+	public void setContactoDNI(String contactoDNI) {
+		ContactoDNI = contactoDNI;
+	}
+	public String getContactoTelefono() {
+		return ContactoTelefono;
+	}
+	public void setContactoTelefono(String contactoTelefono) {
+		ContactoTelefono = contactoTelefono;
+	}
+	public String getContactoCelular() {
+		return ContactoCelular;
+	}
+	public void setContactoCelular(String contactoCelular) {
+		ContactoCelular = contactoCelular;
+	}
+	public String getContactoEmail() {
+		return ContactoEmail;
+	}
+	public void setContactoEmail(String contactoEmail) {
+		ContactoEmail = contactoEmail;
+	}
+	public Date getFechaInscripcion() {
+		return FechaInscripcion;
+	}
+	public void setFechaInscripcion(Date fechaInscripcion) {
+		FechaInscripcion = fechaInscripcion;
+	}
+	public String getHash() {
+		return Hash;
+	}
+	public void setHash(String hash) {
+		Hash = hash;
+	}
+	
+
+}
