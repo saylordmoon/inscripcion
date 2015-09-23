@@ -5,7 +5,7 @@ import java.sql.Date;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class InscripcionInscripcion {
+public class Inscripcion {
 	private int InscripcionId;
 	private String NombreInstitucion;
 	private int DepartamentoId;
