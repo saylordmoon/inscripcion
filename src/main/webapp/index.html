@@ -1,157 +1,351 @@
 <!DOCTYPE html>
-<html lang="es" data-ng-app="main">
+
+<html lang="en-US" data-ng-app="main">
 	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="description" content="">
-		<meta name="author" content="APCI">
-		<title></title>
-		<!-- Bootstrap Core CSS -->
-		<link href="css/bootstrap.min.css" rel="stylesheet">	
-		<!-- ICONOS EXTRA -->
-		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-
-		<!-- CONTROLES -->
-		<!-- FECHAS -->
-		<link rel="stylesheet" type="text/css" href="css/datepicker.min.css">
-			<!-- NOTIFICACIONES -->
-		<link rel="stylesheet" type="text/css" href="css/jquery.notify.css">
-			<!-- SELECT BOX  -->
-		<link href="css/select2.min.css" rel="stylesheet" />
-		<!--/ CONTROLES -->
-		
-		<!-- MENU LATERAL -->
-		<link href="css/simple-sidebar.css" rel="stylesheet">
-		<!--/ MENU LATERAL -->
-		<!-- Custom CSS -->
-		<link href="css/styles.css" rel="stylesheet">
-		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta charset="UTF-8">
+		<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+		<title>Experiencias Exitosas - APCI</title>
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
 		<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<script src="http://themes.oxygenna.com/smartbox/wp-content/themes/smartbox/javascripts/PIE.js"></script>
 		<![endif]-->
-		<!-- FAVICON -->
-		<link rel="shortcut icon" href="favicon.ico?v=1.1"> 
-		<link rel="shortcut icon" href="img/favicon.png">
-	</head>
-	<body>
-		<!-- wrapper -->
-		<div data-ng-controller="MenuController as menuCtrl" id="wrapper">
 
-			<!-- MENU LATERAL -->
-			<div  id="sidebar-wrapper">
-				<!-- Logo -->
-				<div align="center" style="padding-top: 10px;">
-					<img width="80%" src="img/logo.png" />
-					<hr />
-				</div><!--/ Logo -->
-				
-				 <!-- Side Menu Items -->
-				<ul style="padding-top: 50px;" class="sidebar-nav">
-					<li class="sidebar-brand"></li>
-					<li data-ng-repeat = "item in menuCtrl.items">
-						<a href="{{ ::item.url }}"><i class="{{ ::item.icono }}"></i> {{ ::item.nombre }}</a>
-					</li>
-				</ul><!--/ Side Menu Items -->
-			</div><!--/ MENU LATERAL -->
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/styles.css" />
 		
-			<!-- MENU SUPERIOR -->
-			<nav class="navbar navbar-default" style="margin-top:0px;">
-					<div class="container-fluid">
-						<!-- Brand and toggle get grouped for better mobile display -->
-						<div class="navbar-header">
-							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-							<a id="menu-toggle" class="navbar-brand btn btn-sm btn-default" href="">
-								<i class="glyphicon glyphicon-th-list"></i>
-							</a>
-						</div> 
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<link rel="stylesheet" href="css/prettify.css">
+		<link rel="stylesheet" type="text/css" href="css/main.min.css">
+		
+		 <!-- Custom Fonts -->
+    	<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    	  
+	    <!-- NOTIFICACIONES -->
+		<link rel="stylesheet" type="text/css" href="css/jquery.notify.css">
 
-						<!-- Collect the nav links, forms, and other content for toggling -->
-						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-							<!-- Top Menu Items -->
-							<ul class="nav navbar-nav">
-							</ul><!--/ Top Menu Items -->
-							
-							<ul class="nav navbar-nav navbar-right">
-								<li class="dropdown">
-									<!-- <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> -->
-									<a href="" class="dropdown-toggle" data-toggle="dropdown">
-										<i class="glyphicon glyphicon-user"></i> Usuario <span class="caret"></span></a>
-										<ul class="dropdown-menu">
-											<li>
-												<!-- <a href="#/ayuda">
-													<i class="glyphicon glyphicon-gears"></i> 
-													Ayuda
-												</a> -->
-											</li>
-											<li role="separator" class="divider"></li>
-											<li>
-												<a href="index.html">
-													<i class="glyphicon glyphicon-log-out"></i> 
-													Salir
-												</a>
-											</li>
-										</ul>
-									</li>
-								</ul>
-							</div><!-- /.navbar-collapse -->
-					</div><!-- /.container-fluid -->	
-			</nav><!--/ Top Menu -->
-				
-			<!-- page-content-wrapper -->
-			<div id="page-content-wrapper">	
-					<div class="container-fluid">
-						<div class="row">
-							<div class="col-lg-12">
-								<!-- VISTAS ANGULAR -->
-								<div data-ng-view></div>
-								<!--/ VISTAS ANGULAR  -->
+	</head>
+	<body data-ng-controller="InscripcionController as inscripcionCtrl">
+
+		<div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-8">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-md-12">
+                            <h3>Formato Solicitud de Inscripción</h3>
+                        </label>
+                    </div>
+                    <hr/>
+                    <!--PARTE I-->
+                    <div class="form-group">
+                        <label class="col-md-12" ><h4>I. DATOS DE LA ONGD QUE POSTULA</h4></label>
+                        <label class="col-md-3" > 1.1 Nombre:</label>
+                        <div class="col-md-9">
+                          <input type="text" class="form-control" placeholder="Nombre" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3" > 1.2 Departamento:</label>
+                        <div class="col-md-5">
+                        	<select class="form-control">
+                            	<option value="">Seleccione...</option>
+                                <option>Lima</option>
+                                <option>Piura</option>
+                        	</select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3" > 1.3 Dirección:</label>
+                        <div class="col-md-9">
+                          <input type="text" class="form-control" placeholder="Dirección" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3" > 1.4 N° Registro APCI:</label>
+                        <div class="col-md-4">
+                          <input type="text" class="form-control" placeholder="N° Registro APCI" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3" > 1.5 Teléfono:</label>
+                        <div class="col-md-4">
+                          <input type="text" class="form-control" placeholder="Teléfono" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3" > 1.6 Email:</label>
+                        <div class="col-md-7">
+                          <input type="email" class="form-control" placeholder="Email" required/>
+                        </div>
+                    </div>
+                    <!--/PARTE I-->
+                    <hr/>
+                    <!--PARTE II-->
+                    <div class="form-group">
+                        <label class="col-md-12" ><h4>II. DATOS DE LA EXPERIENCIA QUE SE POSTULA</h4></label>
+                    </div>
+                    <div class="col-md-12">
+                   	<div class="panel panel-default">
+						<div id="panel-datosexp" class="panel-heading">
+							<a data-ng-click="inscripcionCtrl.agregarDatosExperiencia()" href="" class="pull-right">
+								<i class="glyphicon glyphicon-plus"></i>
+								Agregar
+							</a>
+							Experiencia
+						</div>								                    	
+                    	<div class="panel-body">
+							<div class="table-responsive">
+								<table class="table table-hover table-condensed table-bordered">
+									<thead>
+										<tr>	
+											<th class="col-sm-1">Número</th>
+											<th class="col-sm-4">Título</th>
+											<th class="col-sm-3">Temática</th>
+											<th class="col-sm-4">Intervención</th>
+											<th></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr data-ng-repeat="exp in inscripcionCtrl.experiencias">
+											<td>{{ $index + 1 }}</td>
+											<td>{{ exp.titulo }}</td>
+											<td>{{ exp.tematicaId }}</td>
+											<td>{{ exp.intervencion }}</td>
+											<td>
+												<button class="btn btn-default pull-right" data-ng-click="inscripcionCtrl.borrarExperiencia(exp)"><i class="glyphicon glyphicon-trash"></i></button>
+												<button class="btn btn-default pull-right" data-ng-click="inscripcionCtrl.editarExperiencia(exp)"><i class="glyphicon glyphicon-pencil"></i></button>
+											</td>
+										</tr>
+									</tbody>
+								</table>
 							</div>
 						</div>
-					</div>
-				</div><!-- /#page-content-wrapper -->
-		</div>
-		<!-- /#wrapper -->
+                   	</div>
+                   </div>								                                     
+                   <!--/PARTE II-->                 
+                    <!--/PARTE II-->
+                    <hr/>
+                    <!--PARTE III-->
+                    <div class="form-group">
+                        <label class="col-md-12" ><h4>III. DATOS DEL DIRECTIVO/A DE LA ONGD QUE POSTULA LA EXPERIENCIA</h4></label>
+                        <label class="col-md-3" > 3.1 Apellidos y Nombre:</label>
+                        <div class="col-md-9">
+                          <input type="text" class="form-control" placeholder="Apellidos y Nombre" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3" > 3.2 Cargo:</label>
+                        <div class="col-md-7">
+                          <input type="text" class="form-control" placeholder="Cargo" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3" > 3.3 DNI:</label>
+                        <div class="col-md-4">
+                          <input type="text" class="form-control" placeholder="DNI" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3" > 3.4 Teléfono:</label>
+                        <div class="col-md-4">
+                          <input type="text" class="form-control" placeholder="Teléfono" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3" > 3.5 Celular:</label>
+                        <div class="col-md-4">
+                          <input type="text" class="form-control" placeholder="Celular" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3" > 3.6 Correo electrónico (e-mail)</label>
+                        <div class="col-md-7">
+                          <input type="email" class="form-control" placeholder="e-mail" required/>
+                        </div>
+                    </div>
+                    <!--/PARTE III-->
+                    <hr/>
+                    <!--PARTE IV-->
+                    <div class="form-group">
+                        <label class="col-md-12" >
+                            <h4>IV. DATOS DE LA PERSONA DE CONTACTO DE LA ONGD A CARGO DE LA EXPERIENCIA</h4>
+                        <p>Persona de la ONGD que proporcione información adicional solicitada.</p>
+                        </label>
+                        <label class="col-md-3" > 4.1 Apellidos y Nombre:</label>
+                        <div class="col-md-9">
+                          <input type="text" class="form-control" placeholder="Apellidos y Nombre" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3" > 4.2 Cargo:</label>
+                        <div class="col-md-7">
+                          <input type="text" class="form-control" placeholder="Cargo" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3" > 4.3 DNI:</label>
+                        <div class="col-md-4">
+                          <input type="text" class="form-control" placeholder="DNI" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3" > 4.4 Teléfono:</label>
+                        <div class="col-md-4">
+                          <input type="text" class="form-control" placeholder="Teléfono" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3" > 4.5 Celular:</label>
+                        <div class="col-md-4">
+                          <input type="text" class="form-control" placeholder="Celular" required/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3" > 4.6 Correo electrónico (e-mail)</label>
+                        <div class="col-md-7">
+                          <input type="email" class="form-control" placeholder="e-mail" required/>
+                        </div>
+                    </div>
+                    <!--/PARTE IV-->
+                    <hr/>
+                    <!--PARTE V-->
+                    <div class="form-group">
+                        <label class="col-md-12" align="rigth">
+                            <h4>V. DECLARACIÓN JURADA DE LA ONGD QUE POSTULA (un aspa en todos los ítems)</h4>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <div class="col-md-offset-1 col-md-11">
+                                <div class="checkbox">
+                                    <label><input type="checkbox"> 1) Las/os directivos de la ONGD conocen y aceptan las Bases del Concurso</label><BR/>
+                                    <label><input type="checkbox"> 2) La información que se ha registrado es veraz</label><BR/>
+                                    <label><input type="checkbox"> 3) Se dará la información adicional solicitada para los fines del concurso</label><BR/>
+                                    <label><input type="checkbox"> 4) Se autoriza la verificación de la información de la experiencia que se postula</label><BR/>
+                                    <label><input type="checkbox"> 5) Se autoriza la difusión de la experiencia</label>
+                                    <br/>
+                                    <br/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="col-md-4">
+                    	<div class="form-group">
+                            <label>Contraseña</label>
+                            <input type="password" class="form-control" data-ng-model="inscripcionCtrl.inscripcion.password" placeholder="Contraseña" />
+                        </div>
+                        <div class="form-group">
+                            <label>Confirmar contraseña</label>
+                            <input type="password" class="form-control" placeholder="Confirme contraseña" />
+                        </div>                    	
+                      	<hr/>
+                        <div class="form-group">
+                            <button class="btn btn-info bmd-info bmd-floating bmd-ripple" data-ng-click="inscripcionCtrl.registrarse()">
+                                <i class="fa fa-save"></i>
+                                Registrarse
+                            </button>
+                        </div>
+					</div>                        
+                </div>
+            </div>
+            <div class="col-md-2">
+            </div>
+        </div>
+        <hr><br/>
 
+	<!-- Modal DATOS DE LA EXPERIENCIA QUE SE POSTULA -->
+		<div class="modal fade modal-datosexperiencia" tabindex="-1" role="dialog" >
+			<div class="modal-dialog modal-md">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title">DATOS DE LA EXPERIENCIA QUE SE POSTULA</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label>Título</label>
+							<textarea id="txt-titulo-experiencia" data-ng-model="inscripcionCtrl.experiencia.titulo" class="form-control" rows="3"></textarea>
+						</div>
+						<div class="form-group">
+							<label>Temática</label>
+							<select id="sel-tematica-experiencia" class="form-control" data-ng-model="inscripcionCtrl.experiencia.tematicaId">
+								<option value="1">1) Asistencia-Ayuda humanitaria</option>								
+								<option value="2">2) Derechos Humanos</option>
+								<option>3) Desarrollo Humano</option>
+								<option>4) Desarrollo Rural</option>
+								<option>5) Desarrollo Territorial</option>
+								<option>6) Desarrollo Urbano-Hábitat</option>
+								<option>7) Educación</option>
+								<option>8) Emprendimientos, Mype, microfinanzas</option>
+								<option>9) Género</option>
+								<option>10) Gobernabilidad/Institucionalidad</option>
+								<option>11) Medio Ambiente</option>
+								<option>12) Prevención de Riesgos y Desastres y adaptación al cambio climático</option>
+								<option>13) Salud</option>
+								<option>14) Trabajo</option>
+								<option>15) Violencia contra Niñas, Niños y Adolescente</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label>Intervención</label>
+							<textarea data-ng-model="inscripcionCtrl.experiencia.intervencion" id="txt-tematica-experiencia" class="form-control" rows="3"></textarea>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-sm btn-apci" data-ng-click="inscripcionCtrl.guardarExperiencia()">
+							<i class="glyphicon glyphicon-save"></i>
+							Guardar
+						</button>
+					</div>
+				</div>
+			</div>
+		</div><!--/ Modal DATOS DE LA EXPERIENCIA QUE SE POSTULA  -->
+		
 		<!-- jQuery -->
 		<script src="js/jquery.min.js"></script>
-		<!-- Bootstrap Core JavaScript -->
-		<script src="js/bootstrap.min.js"></script>
+	    <!-- Angular -->
+	    <script src="js/angular.min.js"></script>
+	    
+	    	    
+	    <!-- Bootstrap Material Design -->
+		<script src="js/jquery.easing.min.js"></script>
+  		<script src="js/prettify.js"></script>
+  		<script src="js/main.min.js"></script>
+  		
+  		<!-- Bootstrap Core JavaScript -->
+  		<script src="js/bootstrap.min.js"></script>
+	    
+	    
+	    <!-- String -->
 		<script src="js/string.min.js"></script>
-		<!-- angular js -->
-		<script src="js/angular.min.js"></script>
-		<script src="js/angular-route.min.js"></script>
-		<!--/ angular js -->
-		<!--  Otras librerias Controles-->
-		<script type="text/javascript" src="js/moment.min.js"></script>
+	    
+	    <!--  Otras librerias Controles-->
 		<script type="text/javascript" src="js/datepicker.min.js"></script>
 		<script type="text/javascript" src="js/select2.min.js"></script>
 		<script type="text/javascript" src="js/taffy-min.js"></script>
 		<script type="text/javascript" src="js/jquery.notify.min.js"></script>
 		<script type="text/javascript" src="js/jquery.inputmask.bundle.min.js"></script>
 		<!--/ Otras librerias Controles-->
-		<!-- App -->
-		<script src="app/app.js"></script>
-		<script src="app/config/config.js"></script>
 		
-		<!-- Controllers -->
-		<script type="text/javascript" src="app/controllers/menu.controller.js"></script>
-		<!--/ Controllers -->
-
-		<!--/ App -->		
-		<!-- Util Services -->
+		<!-- Modulo angular -->
+	    <script src="app/app.js"></script>
+	    
+	    <!-- Controllers -->
+	    <script type="text/javascript" src="app/controllers/inscripcion.controller.js"></script>
+	    
+	    <!-- Util Services -->
 		<script type="text/javascript" src="app/services/utils/notification.service.js"></script>
 		<script type="text/javascript" src="app/services/utils/validation.service.js"></script>
+		<script type="text/javascript" src="app/services/utils/mask.service.js"></script>
 		<script type="text/javascript" src="app/services/utils/tab.service.js"></script>
 		<script type="text/javascript" src="app/services/utils/utils.service.js"></script>
 		<!--/ Util Services -->
+	    
 	</body>
 </html>
