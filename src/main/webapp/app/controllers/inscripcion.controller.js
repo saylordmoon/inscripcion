@@ -45,9 +45,37 @@ angular.module("main").controller("InscripcionController",function(Utils,APP){
 	}
 	
 	this.registrarse = function(){
+				
+		Utils.Validation.init();
+		Utils.Validation.required("#txt-ongd","Nombre de la ONGD");
+		Utils.Validation.required("#sel-departamento","Departamento");
+		Utils.Validation.required("#txt-direccion","Dirección");
+		Utils.Validation.required("#txt-numero-registro","Número de Registro APCI");
+		Utils.Validation.required("#txt-telefono","Teléfono");
+		Utils.Validation.required("#txt-email","E-mail");
 		
-		console.log("Resgistrar");
-		Util.Validation.init();
+		Utils.Validation.required("#txt-directivo-nombres","Nombre de Directivo");
+		Utils.Validation.required("#txt-directivo-cargo","Cargo de Directivo");
+		Utils.Validation.required("#txt-directivo-dni","DNI de Directivo");
+		Utils.Validation.required("#txt-directivo-telefono","Teléfono de Directivo");
+		Utils.Validation.required("#txt-directivo-celular","Celular de Directivo");
+		Utils.Validation.required("#txt-directivo-email","E-mail de Directivo");
+		
+		Utils.Validation.required("#txt-contacto-nombres","Nombre de Contacto");
+		Utils.Validation.required("#txt-contacto-cargo","Cargo de Contacto");
+		Utils.Validation.required("#txt-contacto-dni","DNI de Contacto");
+		Utils.Validation.required("#txt-contacto-telefono","Teléfono de Contacto");
+		Utils.Validation.required("#txt-contacto-celular","Celular de Contacto");
+		Utils.Validation.required("#txt-contacto-email","E-mail de Contacto");
+		
+		Utils.Validation.required("#checkb-1","Declaración Jurada");
+
+		
+		
+		
+		if (Utils.Validation.run()){
+			console.log("Registrar");
+		}
 		
 		
 	}
