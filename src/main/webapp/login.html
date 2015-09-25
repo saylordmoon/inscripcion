@@ -20,27 +20,30 @@
 		<link rel="shortcut icon" href="img/favicon.png">
 	</head>
 	<body>
-		<form class="box login bmd-floating" action="/inscripcion/login" method="post">
-			<div class="row" style="margin-right: 0px;">
-				<div class="col-md-9" style="padding-right:0px;">
-					<img src="img/login.jpg" class="img-responsive" width="100%" style="min-height: 230px;" />
+		<form class="login-container bmd-floating" action="/inscripcion/login" method="post">
+			<div class="row login" style="margin-right: 0px;">
+				<div class="col-md-6" style="padding-right:0px;">
+					<img src="img/logo_experiencias.png" class="img-responsive" width="100%" style="min-height: 230px;" />
 				</div>
-				<div class="col-md-3">
-					<br />
-					<label class="control-label">R.U.C.</label>
-					<input type="text" class="form-control" placeholder="Ingrese su R.U.C." required />
-				
-					<label class="control-label">Contraseña:</label>
-					<input type="text" class="form-control" placeholder="Ingrese su contraseña" required />
-				
-					<button class="btn btn-info form-control bmd-floating bmd-ripple">
-						Ingresar
-					</button>				
+				<div class="col-md-6">
 					<hr />
+					<div class="form-group">
+						<label class="control-label">R.U.C.</label>
+						<input type="text" class="form-control" placeholder="Ingrese su R.U.C."  />
+					</div>						
+				
+					<div class="form-group">
+						<label class="control-label">Contraseña:</label>
+						<input type="text" class="form-control" placeholder="Ingrese su contraseña" />
+					</div>
+					<div class="form-group">
+						<button class="btn btn-info form-control bmd-floating bmd-ripple">
+							Ingresar
+						</button>
+					</div>	
 				</div>
 			</div>
 		</form>
-		
 		
 		<script src="js/jquery.min.js"></script>
 		<script src="js/jquery.easing.min.js"></script>
