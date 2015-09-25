@@ -20,252 +20,310 @@
 		<link rel="stylesheet" type="text/css" href="css/main.min.css">
 		
 		 <!-- Custom Fonts -->
-    	<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    	  
-	    <!-- NOTIFICACIONES -->
+		<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+		  
+		<!-- NOTIFICACIONES -->
 		<link rel="stylesheet" type="text/css" href="css/jquery.notify.css">
 
 	</head>
 	<body data-ng-controller="InscripcionController as inscripcionCtrl">
 
 		<div class="row">
-            <div class="col-md-2">
-            </div>
-            <div class="col-md-8">
-                <div class="form-horizontal">
-                    <div class="form-group">
-                        <label class="col-md-12">
-                            <h3>Formato Solicitud de Inscripción</h3>
-                        </label>
-                    </div>
-                    <hr/>
-                    <!--PARTE I-->
-                    <div class="form-group">
-                        <label class="col-md-12" ><h4>I. DATOS DE LA ONGD QUE POSTULA</h4></label>
-                        <label class="col-md-3" > 1.1 Nombre:</label>
-                        <div class="col-md-9">
-                          <input type="text" class="form-control" placeholder="Nombre" required/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3" > 1.2 Departamento:</label>
-                        <div class="col-md-5">
-                        	<select class="form-control">
-                            	<option value="">Seleccione...</option>
-                                <option>Lima</option>
-                                <option>Piura</option>
-                        	</select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3" > 1.3 Dirección:</label>
-                        <div class="col-md-9">
-                          <input type="text" class="form-control" placeholder="Dirección" required/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3" > 1.4 N° Registro APCI:</label>
-                        <div class="col-md-4">
-                          <input type="text" class="form-control" placeholder="N° Registro APCI" required/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3" > 1.5 Teléfono:</label>
-                        <div class="col-md-4">
-                          <input type="text" class="form-control" placeholder="Teléfono" required/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3" > 1.6 Email:</label>
-                        <div class="col-md-7">
-                          <input type="email" class="form-control" placeholder="Email" required/>
-                        </div>
-                    </div>
-                    <!--/PARTE I-->
-                    <hr/>
-                    <!--PARTE II-->
-                    <div class="form-group">
-                        <label class="col-md-12" ><h4>II. DATOS DE LA EXPERIENCIA QUE SE POSTULA</h4></label>
-                    </div>
-                    <div class="col-md-12">
-                   	<div class="panel panel-default">
-						<div id="panel-datosexp" class="panel-heading">
-							<a data-ng-click="inscripcionCtrl.agregarDatosExperiencia()" href="" class="pull-right">
-								<i class="glyphicon glyphicon-plus"></i>
-								Agregar
-							</a>
-							Experiencia
-						</div>								                    	
-                    	<div class="panel-body">
-							<div class="table-responsive">
-								<table class="table table-hover table-condensed table-bordered">
-									<thead>
-										<tr>	
-											<th class="col-sm-1">Número</th>
-											<th class="col-sm-4">Título</th>
-											<th class="col-sm-3">Temática</th>
-											<th class="col-sm-4">Intervención</th>
-											<th></th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr data-ng-repeat="exp in inscripcionCtrl.experiencias">
-											<td>{{ $index + 1 }}</td>
-											<td>{{ exp.titulo }}</td>
-											<td>{{ exp.tematicaId }}</td>
-											<td>{{ exp.intervencion }}</td>
-											<td>
-												<button class="btn btn-default pull-right" data-ng-click="inscripcionCtrl.borrarExperiencia(exp)"><i class="glyphicon glyphicon-trash"></i></button>
-												<button class="btn btn-default pull-right" data-ng-click="inscripcionCtrl.editarExperiencia(exp)"><i class="glyphicon glyphicon-pencil"></i></button>
-											</td>
-										</tr>
-									</tbody>
-								</table>
+			<div class="col-md-2">
+			</div>
+			<div class="col-md-8">
+				<div class="panel panel-info bmd-floating">
+					<div class="panel-heading">
+						<h4>Formato Solicitud de Inscripción</h4>
+					</div>
+					<div class="panel-body">
+						<div class="row form-horizontal">
+
+							<!--/ PARTE I-->
+							<div class="panel panel-default">
+								<div class="panel-heading ">
+									<h4>Datos de la ONGD que postula</h4>
+								</div>
+								<div class="panel-body">
+									<div class="form-group">
+										<label class="col-md-3">RUC:</label>
+										<div class="col-md-9">
+											<input type="text" class="form-control" placeholder="R.U.C." required/>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3">Nombre:</label>
+										<div class="col-md-9">
+											<input type="text" class="form-control" placeholder="Nombre" required/>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3">Departamento:</label>
+										<div class="col-md-5">
+											<select class="form-control">
+												<option value="">Seleccione...</option>
+												<option>Lima</option>
+												<option>Piura</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3">Dirección:</label>
+										<div class="col-md-9">
+										  <input type="text" class="form-control" placeholder="Dirección" required/>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3">N° Registro APCI:</label>
+										<div class="col-md-4">
+										  <input type="text" class="form-control" placeholder="N° Registro APCI" required/>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3">Teléfono:</label>
+										<div class="col-md-4">
+										  <input type="text" class="form-control" placeholder="Teléfono" required/>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3">Email:</label>
+										<div class="col-md-7">
+										  <input type="email" class="form-control" placeholder="Email" required/>
+										</div>
+									</div>
+								</div>
+							</div><!--/ PARTE I-->
+							
+							<!--PARTE II-->
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4>Datos de la experiencia que se postula</h4>
+								</div>
+								<div class="panel-body">
+									<div class="panel panel-default">
+										<div id="panel-datosexp" class="panel-heading">
+											<a data-ng-click="inscripcionCtrl.agregarDatosExperiencia()" href="" class="btn btn-info pull-right bmd-fab bmd-fab-sm bmd-ripple">
+												<i class="glyphicon glyphicon-plus"></i>										
+											</a>
+											Experiencia
+										</div>								                    	
+										<div class="panel-body">
+											<div class="table-responsive">
+												<table class="table table-hover table-condensed table-bordered">
+													<thead>
+														<tr>	
+															<th class="col-sm-1">Número</th>
+															<th class="col-sm-3">Título</th>
+															<th class="col-sm-3">Temática</th>
+															<th class="col-sm-4">Intervención</th>
+															<th class="col-sm-1"></th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr data-ng-repeat="exp in inscripcionCtrl.experiencias">
+															<td>{{ $index + 1 }}</td>
+															<td>{{ exp.titulo }}</td>
+															<td>{{ exp.tematicaId }}</td>
+															<td>{{ exp.intervencion }}</td>
+															<td>
+																<button class="btn btn-default btn-sm pull-right" data-ng-click="inscripcionCtrl.borrarExperiencia(exp)"><i class="glyphicon glyphicon-trash"></i></button>
+																<button class="btn btn-default btn-sm pull-right" data-ng-click="inscripcionCtrl.editarExperiencia(exp)"><i class="glyphicon glyphicon-pencil"></i></button>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div><!--/PARTE II-->
+
+							<!--PARTE III-->
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4>Datos del directivo/a de la ONGD que postula la experiencia</h4>
+								</div>
+								<div class="panel-body">
+									<div class="form-group">
+										<label class="col-md-3">Apellidos y Nombre:</label>
+										<div class="col-md-9">
+										  <input type="text" class="form-control" placeholder="Apellidos y Nombre" required/>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3">Cargo:</label>
+										<div class="col-md-7">
+										  <input type="text" class="form-control" placeholder="Cargo" required/>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3">DNI:</label>
+										<div class="col-md-4">
+										  <input type="text" class="form-control" placeholder="DNI" required/>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3">Teléfono:</label>
+										<div class="col-md-4">
+										  <input type="text" class="form-control" placeholder="Teléfono" required/>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3">Celular:</label>
+										<div class="col-md-4">
+										  <input type="text" class="form-control" placeholder="Celular" required/>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3">Correo electrónico (e-mail)</label>
+										<div class="col-md-7">
+										  <input type="email" class="form-control" placeholder="e-mail" required/>
+										</div>
+									</div>
+								</div>
+							</div><!--/PARTE III-->
+
+							<!--PARTE IV-->
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4>Datos de la persona de contacto de la ONGD a cargo de la experiencia</h4>
+									<p>Persona de la ONGD que proporcione información adicional solicitada.</p>
+								</div>
+								<div class="panel-body">
+									<div class="form-group">
+										<label class="col-md-3">Apellidos y Nombre:</label>
+										<div class="col-md-9">
+										  <input type="text" class="form-control" placeholder="Apellidos y Nombre" required/>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3">Cargo:</label>
+										<div class="col-md-7">
+										  <input type="text" class="form-control" placeholder="Cargo" required/>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3">DNI:</label>
+										<div class="col-md-4">
+										  <input type="text" class="form-control" placeholder="DNI" required/>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3">Teléfono:</label>
+										<div class="col-md-4">
+										  <input type="text" class="form-control" placeholder="Teléfono" required/>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3">Celular:</label>
+										<div class="col-md-4">
+										  <input type="text" class="form-control" placeholder="Celular" required/>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-md-3">Correo electrónico (e-mail)</label>
+										<div class="col-md-7">
+										  <input type="email" class="form-control" placeholder="e-mail" required/>
+										</div>
+									</div>
+								</div>
+							</div><!--/PARTE IV-->
+
+							<!--PARTE V-->
+							<div class="panel panel-default bmd-floating">
+								<div class="panel-heading">
+									<h4>Declaración jurada de la ongd que postula (un aspa en todos los ítems)</h4>
+								</div>
+								<div class="panel-body">
+									<div class="form-group">
+										<div class="col-md-12">
+											<div class="checkbox bmd-checkbox">
+												<label>
+													<input class="bmd-ripple bmd-ink-gray" type="checkbox" /> 
+													<span class="check"></span>
+													Las/os directivos de la ONGD conocen y aceptan las Bases del Concurso.
+												</label>
+											</div>
+											<br />
+											<div class="checkbox bmd-checkbox">
+												<label>
+													<input class="bmd-ripple bmd-ink-gray" type="checkbox" /> 
+													<span class="check"></span>
+													La información que se ha registrado es veraz.
+												</label>
+											</div>
+											<br />
+											<div class="checkbox bmd-checkbox">
+												<label>
+													<input class="bmd-ripple bmd-ink-gray" type="checkbox" /> 
+													<span class="check"></span>
+													Se dará la información adicional solicitada para los fines del concurso.
+												</label>
+											</div>
+											<br />
+											<div class="checkbox bmd-checkbox">
+												<label>
+													<input class="bmd-ripple bmd-ink-gray" type="checkbox" /> 
+													<span class="check"></span>
+													Se autoriza la verificación de la información de la experiencia que se postula.
+												</label>
+											</div>
+											<br />
+											<div class="checkbox bmd-checkbox">
+												<label>
+													<input class="bmd-ripple bmd-ink-gray" type="checkbox" /> 
+													<span class="check"></span>
+													Se autoriza la difusión de la experiencia.
+												</label>
+											</div>
+											<br />
+										</div>
+									</div>
+								</div>
+								
+							</div>
+
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4>Datos de ingreso</h4>
+								</div>
+								<div class="panel-body">
+									<div class="col-md-4">
+										<div class="form-group">
+											<label>Contraseña</label>
+											<input type="password" class="form-control" data-ng-model="inscripcionCtrl.inscripcion.password" placeholder="Contraseña" />
+										</div>
+										<div class="form-group">
+											<label>Confirmar contraseña</label>
+											<input type="password" class="form-control" placeholder="Confirme contraseña" />
+										</div>                    	
+									</div>
+								</div>
 							</div>
 						</div>
-                   	</div>
-                   </div>								                                     
-                   <!--/PARTE II-->                 
-                    <!--/PARTE II-->
-                    <hr/>
-                    <!--PARTE III-->
-                    <div class="form-group">
-                        <label class="col-md-12" ><h4>III. DATOS DEL DIRECTIVO/A DE LA ONGD QUE POSTULA LA EXPERIENCIA</h4></label>
-                        <label class="col-md-3" > 3.1 Apellidos y Nombre:</label>
-                        <div class="col-md-9">
-                          <input type="text" class="form-control" placeholder="Apellidos y Nombre" required/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3" > 3.2 Cargo:</label>
-                        <div class="col-md-7">
-                          <input type="text" class="form-control" placeholder="Cargo" required/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3" > 3.3 DNI:</label>
-                        <div class="col-md-4">
-                          <input type="text" class="form-control" placeholder="DNI" required/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3" > 3.4 Teléfono:</label>
-                        <div class="col-md-4">
-                          <input type="text" class="form-control" placeholder="Teléfono" required/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3" > 3.5 Celular:</label>
-                        <div class="col-md-4">
-                          <input type="text" class="form-control" placeholder="Celular" required/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3" > 3.6 Correo electrónico (e-mail)</label>
-                        <div class="col-md-7">
-                          <input type="email" class="form-control" placeholder="e-mail" required/>
-                        </div>
-                    </div>
-                    <!--/PARTE III-->
-                    <hr/>
-                    <!--PARTE IV-->
-                    <div class="form-group">
-                        <label class="col-md-12" >
-                            <h4>IV. DATOS DE LA PERSONA DE CONTACTO DE LA ONGD A CARGO DE LA EXPERIENCIA</h4>
-                        <p>Persona de la ONGD que proporcione información adicional solicitada.</p>
-                        </label>
-                        <label class="col-md-3" > 4.1 Apellidos y Nombre:</label>
-                        <div class="col-md-9">
-                          <input type="text" class="form-control" placeholder="Apellidos y Nombre" required/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3" > 4.2 Cargo:</label>
-                        <div class="col-md-7">
-                          <input type="text" class="form-control" placeholder="Cargo" required/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3" > 4.3 DNI:</label>
-                        <div class="col-md-4">
-                          <input type="text" class="form-control" placeholder="DNI" required/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3" > 4.4 Teléfono:</label>
-                        <div class="col-md-4">
-                          <input type="text" class="form-control" placeholder="Teléfono" required/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3" > 4.5 Celular:</label>
-                        <div class="col-md-4">
-                          <input type="text" class="form-control" placeholder="Celular" required/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-3" > 4.6 Correo electrónico (e-mail)</label>
-                        <div class="col-md-7">
-                          <input type="email" class="form-control" placeholder="e-mail" required/>
-                        </div>
-                    </div>
-                    <!--/PARTE IV-->
-                    <hr/>
-                    <!--PARTE V-->
-                    <div class="form-group">
-                        <label class="col-md-12" align="rigth">
-                            <h4>V. DECLARACIÓN JURADA DE LA ONGD QUE POSTULA (un aspa en todos los ítems)</h4>
-                        </label>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            <div class="col-md-offset-1 col-md-11">
-                                <div class="checkbox">
-                                    <label><input type="checkbox"> 1) Las/os directivos de la ONGD conocen y aceptan las Bases del Concurso</label><BR/>
-                                    <label><input type="checkbox"> 2) La información que se ha registrado es veraz</label><BR/>
-                                    <label><input type="checkbox"> 3) Se dará la información adicional solicitada para los fines del concurso</label><BR/>
-                                    <label><input type="checkbox"> 4) Se autoriza la verificación de la información de la experiencia que se postula</label><BR/>
-                                    <label><input type="checkbox"> 5) Se autoriza la difusión de la experiencia</label>
-                                    <br/>
-                                    <br/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <hr/>
-                    <div class="col-md-4">
-                    	<div class="form-group">
-                            <label>Contraseña</label>
-                            <input type="password" class="form-control" data-ng-model="inscripcionCtrl.inscripcion.password" placeholder="Contraseña" />
-                        </div>
-                        <div class="form-group">
-                            <label>Confirmar contraseña</label>
-                            <input type="password" class="form-control" placeholder="Confirme contraseña" />
-                        </div>                    	
-                      	<hr/>
-                        <div class="form-group">
-                            <button class="btn btn-info bmd-info bmd-floating bmd-ripple" data-ng-click="inscripcionCtrl.registrarse()">
-                                <i class="fa fa-save"></i>
-                                Registrarse
-                            </button>
-                        </div>
-					</div>                        
-                </div>
-            </div>
-            <div class="col-md-2">
-            </div>
-        </div>
-        <hr><br/>
-
+					</div>
+					<div class="panel-footer">
+						<button class="btn btn-info bmd-floating bmd-ripple" data-ng-click="inscripcionCtrl.registrarse()">
+							<i class="fa fa-save"></i>
+							Registrarse
+						</button>
+					</div>
+				</div>
+						
+			</div>
+			<div class="col-md-2">
+			</div>
+		</div>
+		
 	<!-- Modal DATOS DE LA EXPERIENCIA QUE SE POSTULA -->
-		<div class="modal fade modal-datosexperiencia" tabindex="-1" role="dialog" >
+		<div class="modal fade modal-datosexperiencia" tabindex="-1" role="dialog">
 			<div class="modal-dialog modal-md">
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
-						<h4 class="modal-title">DATOS DE LA EXPERIENCIA QUE SE POSTULA</h4>
+						<h4 class="modal-title">Datos de la experiencia que se postula</h4>
 					</div>
 					<div class="modal-body">
 						<div class="form-group">
@@ -298,7 +356,7 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button class="btn btn-sm btn-apci" data-ng-click="inscripcionCtrl.guardarExperiencia()">
+						<button class="btn btn-info bmd-floating bmd-ripple" data-ng-click="inscripcionCtrl.guardarExperiencia()">
 							<i class="glyphicon glyphicon-save"></i>
 							Guardar
 						</button>
@@ -309,23 +367,21 @@
 		
 		<!-- jQuery -->
 		<script src="js/jquery.min.js"></script>
-	    <!-- Angular -->
-	    <script src="js/angular.min.js"></script>
-	    
-	    	    
-	    <!-- Bootstrap Material Design -->
+		<!-- Angular -->
+		<script src="js/angular.min.js"></script>
+		
+		<!-- Bootstrap Material Design -->
 		<script src="js/jquery.easing.min.js"></script>
-  		<script src="js/prettify.js"></script>
-  		<script src="js/main.min.js"></script>
-  		
-  		<!-- Bootstrap Core JavaScript -->
-  		<script src="js/bootstrap.min.js"></script>
-	    
-	    
-	    <!-- String -->
+		<script src="js/prettify.js"></script>
+		<script src="js/main.min.js"></script>
+		
+		<!-- Bootstrap Core JavaScript -->
+		<script src="js/bootstrap.min.js"></script>
+		
+		<!-- String -->
 		<script src="js/string.min.js"></script>
-	    
-	    <!--  Otras librerias Controles-->
+		
+		<!--  Otras librerias Controles-->
 		<script type="text/javascript" src="js/datepicker.min.js"></script>
 		<script type="text/javascript" src="js/select2.min.js"></script>
 		<script type="text/javascript" src="js/taffy-min.js"></script>
@@ -334,18 +390,18 @@
 		<!--/ Otras librerias Controles-->
 		
 		<!-- Modulo angular -->
-	    <script src="app/app.js"></script>
-	    
-	    <!-- Controllers -->
-	    <script type="text/javascript" src="app/controllers/inscripcion.controller.js"></script>
-	    
-	    <!-- Util Services -->
+		<script src="app/app.js"></script>
+		
+		<!-- Controllers -->
+		<script type="text/javascript" src="app/controllers/inscripcion.controller.js"></script>
+		
+		<!-- Util Services -->
 		<script type="text/javascript" src="app/services/utils/notification.service.js"></script>
 		<script type="text/javascript" src="app/services/utils/validation.service.js"></script>
 		<script type="text/javascript" src="app/services/utils/mask.service.js"></script>
 		<script type="text/javascript" src="app/services/utils/tab.service.js"></script>
 		<script type="text/javascript" src="app/services/utils/utils.service.js"></script>
 		<!--/ Util Services -->
-	    
+		
 	</body>
 </html>
