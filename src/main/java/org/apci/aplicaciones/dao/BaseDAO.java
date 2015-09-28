@@ -109,6 +109,15 @@ public class BaseDAO {
 		return query(sql,pClassType,pValue,pValueAnd);
 	}
 	
+	protected <T> List<T> selectWhereAnd(Class<T> pClassType,String pColumn, Object pValue,String pColumnAnd,Object pValueAnd)
+	{
+		Select select = new Select(pClassType);
+		select.where(pColumn);
+		select.and(pColumnAnd);
+		String sql = select.getSql();
+		return query(sql,pClassType,pValue,pValueAnd);
+	}
+	
 	// Insert
 	public int insert(Object pDataObject){
 		
@@ -160,7 +169,7 @@ public class BaseDAO {
 			
 			statement = DaoUtil.setStatementParameters(statement, pDataObject);
 						
-			statement = DaoUtil.setStatementPrimaryKeyParameter(statement, pDataObject, 4);
+			statement = DaoUtil.setStatementPrimaryKeyParameter(statement, pDataObject);
 			
 			statement.executeUpdate();
 			
@@ -181,17 +190,18 @@ public class BaseDAO {
 	}
 
 	// Stored Procedures sin resultados
-	public boolean call(String pStoredProcedureName,Object pDataObject)
+	public boolean executeNonQuery(String pStoredProcedureName,Object...pParameters)
 	{
 		boolean result = false;
-		Class<?> spClassType = pDataObject.getClass();
+		
 		CallableStatement statement = null;
 		try
 		{
-			Call call = new Call(pStoredProcedureName,spClassType);
+			Call call = new Call(pStoredProcedureName,pParameters);
 			String sql = call.getSql();
 			statement = conexion.get().prepareCall(sql);
-			// Set parameters
+			 
+			statement = DaoUtil.setStatementParameters(statement, pParameters);
 			
 			statement.execute();
 		
@@ -211,22 +221,22 @@ public class BaseDAO {
 		return result;
 	}
 	//Stored procedures con  resultados (pClassType)
-	public <T> List<T> call(String pStoredProcedureName,Object pDataObject, Class<T> pClassType)
+	public <T> List<T> execute(String pStoredProcedureName,Class<T> pOutputClassType,Object...pParameters)
 	{
-		Class<?> spClassType = pDataObject.getClass();
 		CallableStatement statement = null;
 		try
 		{
-			Call call = new Call(pStoredProcedureName,spClassType);
+			Call call = new Call(pStoredProcedureName,pParameters);
 			String sql = call.getSql();
 			statement = conexion.get().prepareCall(sql);
-			//Set parameters 
+			
+			statement = DaoUtil.setStatementParameters(statement, pParameters);
 			
 			boolean hasResult = statement.execute();
 			
 			if (hasResult) {
 				ResultSet rs = statement.getResultSet();
-				return DaoUtil.mapper(rs,pClassType);
+				return DaoUtil.mapper(rs,pOutputClassType);
 			}
 			statement.close();
 		}
