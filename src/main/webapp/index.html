@@ -48,47 +48,47 @@
 									<div class="form-group">
 										<label class="col-md-3">RUC:</label>
 										<div class="col-md-9">
-											<input type="text" class="form-control" placeholder="R.U.C." required/>
+											<input data-ng-model="inscripcionCtrl.inscripcion.usuario" id="txt-RUC" type="text" class="form-control" placeholder="R.U.C." />
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-md-3">Nombre:</label>
 										<div class="col-md-9">
-											<input type="text" class="form-control" placeholder="Nombre" required/>
+											<input id="txt-ongd" data-ng-model="inscripcionCtrl.inscripcion.nombreInstitucion" type="text" class="form-control" placeholder="Nombre" required/>
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-md-3">Departamento:</label>
 										<div class="col-md-5">
-											<select class="form-control">
+											<select data-ng-model="inscripcionCtrl.inscripcion.departamentoId" id="sel-departamento" class="form-control">
 												<option value="">Seleccione...</option>
-												<option>Lima</option>
-												<option>Piura</option>
+												<option value="1">Lima</option>
+												<option value="2">Piura</option>
 											</select>
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-md-3">Dirección:</label>
 										<div class="col-md-9">
-										  <input type="text" class="form-control" placeholder="Dirección" required/>
+										  <input data-ng-model="inscripcionCtrl.inscripcion.direccionInstitucion" id="txt-direccion" type="text" class="form-control" placeholder="Dirección" required/>
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-md-3">N° Registro APCI:</label>
 										<div class="col-md-4">
-										  <input type="text" class="form-control" placeholder="N° Registro APCI" required/>
+										  <input data-ng-model="inscripcionCtrl.inscripcion.numeroRegistroAPCI" id="txt-numero-registro" type="text" class="form-control" placeholder="N° Registro APCI" required/>
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-md-3">Teléfono:</label>
 										<div class="col-md-4">
-										  <input type="text" class="form-control" placeholder="Teléfono" required/>
+										  <input data-ng-model="inscripcionCtrl.inscripcion.telefonoInstitucion" id="txt-telefono" type="text" class="form-control" placeholder="Teléfono" required/>
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-md-3">Email:</label>
 										<div class="col-md-7">
-										  <input type="email" class="form-control" placeholder="Email" required/>
+										  <input data-ng-model="inscripcionCtrl.inscripcion.emailInstitucion" id="txt-email" type="email" class="form-control" placeholder="Email" required/>
 										</div>
 									</div>
 								</div>
@@ -147,37 +147,37 @@
 									<div class="form-group">
 										<label class="col-md-3">Apellidos y Nombre:</label>
 										<div class="col-md-9">
-										  <input type="text" class="form-control" placeholder="Apellidos y Nombre" required/>
+										  <input data-ng-model="inscripcionCtrl.inscripcion.directivoNombre" id="txt-directivo-nombres" type="text" class="form-control" placeholder="Apellidos y Nombres" required/>
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-md-3">Cargo:</label>
 										<div class="col-md-7">
-										  <input type="text" class="form-control" placeholder="Cargo" required/>
+										  <input data-ng-model="inscripcionCtrl.inscripcion.directivoCargo" id="txt-directivo-cargo" type="text" class="form-control" placeholder="Cargo" required/>
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-md-3">DNI:</label>
 										<div class="col-md-4">
-										  <input type="text" class="form-control" placeholder="DNI" required/>
+										  <input data-ng-model="inscripcionCtrl.inscripcion.directivoDNI" id="txt-directivo-dni" type="text" class="form-control" placeholder="DNI" required/>
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-md-3">Teléfono:</label>
 										<div class="col-md-4">
-										  <input type="text" class="form-control" placeholder="Teléfono" required/>
+										  <input data-ng-model="inscripcionCtrl.inscripcion.directivoTelefono" id="txt-directivo-telefono" type="text" class="form-control" placeholder="Teléfono" required/>
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-md-3">Celular:</label>
 										<div class="col-md-4">
-										  <input type="text" class="form-control" placeholder="Celular" required/>
+										  <input data-ng-model="inscripcionCtrl.inscripcion.directivoCelular" id="txt-directivo-celular" type="text" class="form-control" placeholder="Celular" required/>
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-md-3">Correo electrónico (e-mail)</label>
 										<div class="col-md-7">
-										  <input type="email" class="form-control" placeholder="e-mail" required/>
+										  <input data-ng-model="inscripcionCtrl.inscripcion.directivoEmail" id="txt-directivo-email" type="email" class="form-control" placeholder="e-mail" required/>
 										</div>
 									</div>
 								</div>
@@ -193,37 +193,37 @@
 									<div class="form-group">
 										<label class="col-md-3">Apellidos y Nombre:</label>
 										<div class="col-md-9">
-										  <input type="text" class="form-control" placeholder="Apellidos y Nombre" required/>
+										  <input data-ng-model="inscripcionCtrl.inscripcion.contactoNombre" id="txt-contacto-nombres" type="text" class="form-control" placeholder="Apellidos y Nombres" required/>
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-md-3">Cargo:</label>
 										<div class="col-md-7">
-										  <input type="text" class="form-control" placeholder="Cargo" required/>
+										  <input data-ng-model="inscripcionCtrl.inscripcion.contactoCargo" id="txt-contacto-cargo" type="text" class="form-control" placeholder="Cargo" required/>
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-md-3">DNI:</label>
 										<div class="col-md-4">
-										  <input type="text" class="form-control" placeholder="DNI" required/>
+										  <input data-ng-model="inscripcionCtrl.inscripcion.contactoDNI" id="txt-contacto-dni" type="text" class="form-control" placeholder="DNI" required/>
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-md-3">Teléfono:</label>
 										<div class="col-md-4">
-										  <input type="text" class="form-control" placeholder="Teléfono" required/>
+										  <input data-ng-model="inscripcionCtrl.inscripcion.contactoTelefono" id="txt-contacto-telefono" type="text" class="form-control" placeholder="Teléfono" required/>
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-md-3">Celular:</label>
 										<div class="col-md-4">
-										  <input type="text" class="form-control" placeholder="Celular" required/>
+										  <input data-ng-model="inscripcionCtrl.inscripcion.contactoCelular" id="txt-contacto-celular" type="text" class="form-control" placeholder="Celular" required/>
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-md-3">Correo electrónico (e-mail)</label>
 										<div class="col-md-7">
-										  <input type="email" class="form-control" placeholder="e-mail" required/>
+										  <input data-ng-model="inscripcionCtrl.inscripcion.contactoEmail" id="txt-contacto-email" type="email" class="form-control" placeholder="e-mail" required/>
 										</div>
 									</div>
 								</div>
@@ -232,12 +232,12 @@
 							<!--PARTE V-->
 							<div class="panel panel-default bmd-floating">
 								<div class="panel-heading">
-									<h4>Declaración jurada de la ongd que postula (un aspa en todos los ítems)</h4>
+									<h4>Declaración jurada de la ONGD que postula (Marcar todos los ítems)</h4>
 								</div>
 								<div class="panel-body">
 									<div class="form-group">
 										<div class="col-md-12">
-											<div class="checkbox bmd-checkbox">
+											<div id="checkbox-declaracion-jurada-1" class="checkbox bmd-checkbox">
 												<label>
 													<input class="bmd-ripple bmd-ink-gray" type="checkbox" /> 
 													<span class="check"></span>
@@ -245,7 +245,7 @@
 												</label>
 											</div>
 											<br />
-											<div class="checkbox bmd-checkbox">
+											<div id="checkbox-declaracion-jurada-2" class="checkbox bmd-checkbox">
 												<label>
 													<input class="bmd-ripple bmd-ink-gray" type="checkbox" /> 
 													<span class="check"></span>
@@ -253,7 +253,7 @@
 												</label>
 											</div>
 											<br />
-											<div class="checkbox bmd-checkbox">
+											<div id="checkbox-declaracion-jurada-3" class="checkbox bmd-checkbox">
 												<label>
 													<input class="bmd-ripple bmd-ink-gray" type="checkbox" /> 
 													<span class="check"></span>
@@ -261,7 +261,7 @@
 												</label>
 											</div>
 											<br />
-											<div class="checkbox bmd-checkbox">
+											<div id="checkbox-declaracion-jurada-4" class="checkbox bmd-checkbox">
 												<label>
 													<input class="bmd-ripple bmd-ink-gray" type="checkbox" /> 
 													<span class="check"></span>
@@ -269,7 +269,7 @@
 												</label>
 											</div>
 											<br />
-											<div class="checkbox bmd-checkbox">
+											<div id="checkbox-declaracion-jurada-5" class="checkbox bmd-checkbox">
 												<label>
 													<input class="bmd-ripple bmd-ink-gray" type="checkbox" /> 
 													<span class="check"></span>
@@ -291,11 +291,11 @@
 									<div class="col-md-4">
 										<div class="form-group">
 											<label>Contraseña</label>
-											<input type="password" class="form-control" data-ng-model="inscripcionCtrl.inscripcion.password" placeholder="Contraseña" />
+											<input data-ng-model="inscripcionCtrl.inscripcion.hash" id="txt-contraseña" type="password" class="form-control" data-ng-model="inscripcionCtrl.inscripcion.password" placeholder="Contraseña" />
 										</div>
 										<div class="form-group">
 											<label>Confirmar contraseña</label>
-											<input type="password" class="form-control" placeholder="Confirme contraseña" />
+											<input id="txt-confirme-contraseña" type="password" class="form-control" placeholder="Confirme contraseña" />
 										</div>                    	
 									</div>
 								</div>

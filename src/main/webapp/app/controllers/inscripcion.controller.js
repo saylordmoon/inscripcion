@@ -44,9 +44,39 @@ angular.module("main").controller("InscripcionController",function(Utils,APP){
 		$(".modal-datosexperiencia").modal("show");
 	}
 	
+	
+	this.rucInvalido = true; 
+	
+	this.validacionRuc = function() {
+		
+		if (this.inscripcion.ruc.length == 11)
+		{
+			Utils.Rest.getList(this, APP.URL_API + "institucion/" + this.inscripcion.ruc ).success(function(data){
+				self.rucInvalido = false;
+				self.inscripcion.institucion = data.nombre;
+				self.inscripcion.QPInstitucionId = data.institucionId;
+				
+				
+			}).error(function(){
+				Utils.Notification.alerta("El RUC ingresado no puede participar en esta fase. Si cree que es un error por favor comuniquese con el correo <strong>experienciasexitosasongd@apci.gob.pe</strong>","Lo sentimos",15000);
+				self.rucInvalido = true;
+				self.inscripcion.institucion = "";
+				self.inscripcion.institucionId = "";
+			});
+		}
+		else {
+			self.rucInvalido = true;
+			self.inscripcion.institucion = "";
+			self.inscripcion.institucionId = "";
+		}
+	}
+	
+	
+	
 	this.registrarse = function(){
 				
 		Utils.Validation.init();
+		//Utils.Validation.required("#txt-ruc","R.U.C.");
 		Utils.Validation.required("#txt-ongd","Nombre de la ONGD");
 		Utils.Validation.required("#sel-departamento","Departamento");
 		Utils.Validation.required("#txt-direccion","Dirección");
@@ -68,13 +98,24 @@ angular.module("main").controller("InscripcionController",function(Utils,APP){
 		Utils.Validation.required("#txt-contacto-celular","Celular de Contacto");
 		Utils.Validation.required("#txt-contacto-email","E-mail de Contacto");
 		
-		Utils.Validation.required("#checkb-1","Declaración Jurada");
+		/*Utils.Validation.required("#checkbox-declaracion-jurada-1","Declaración Jurada");
+		Utils.Validation.required("#checkbox-declaracion-jurada-2","Declaración Jurada");
+		Utils.Validation.required("#checkbox-declaracion-jurada-3","Declaración Jurada");
+		Utils.Validation.required("#checkbox-declaracion-jurada-4","Declaración Jurada");
+		Utils.Validation.required("#checkbox-declaracion-jurada-5","Declaración Jurada");*/
 
-		
+		Utils.Validation.required("#txt-contraseña","Contraseña");
+		Utils.Validation.required("#txt-confirme-contraseña","Confirme Contraseña");
 		
 		
 		if (Utils.Validation.run()){
-			console.log("Registrar");
+			console.log("inscripcion ", this.inscripcion);		
+			Utils.Rest.save(APP.URL_API + "inscripcion", this.inscripcion);
+			
+			
+			Utils.Notification.mensaje("","Registro satisfactorio");
+			self.inscripcion = {};
+			
 		}
 		
 		
