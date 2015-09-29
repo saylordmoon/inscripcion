@@ -38,23 +38,23 @@ angular.module("main").controller("InscripcionController",function(Utils,APP){
 	
 	this.editarExperiencia = function(pExperiencia){
 		
-		console.log("Editar");
 		this.nueva = false;
 		this.experiencia = pExperiencia;
 		$(".modal-datosexperiencia").modal("show");
 	}
 	
 	
-	this.rucInvalido = true; 
+	this.rucInvalido = true;
 	
 	this.validacionRuc = function() {
 		
-		if (this.inscripcion.ruc.length == 11)
+		if (this.inscripcion.usuario.length == 11)
 		{
-			Utils.Rest.getList(this, APP.URL_API + "institucion/" + this.inscripcion.ruc ).success(function(data){
+			Utils.Rest.getList(this, APP.URL_API + "institucion/" + this.inscripcion.usuario).success(function(data){
 				self.rucInvalido = false;
 				self.inscripcion.institucion = data.nombre;
 				self.inscripcion.QPInstitucionId = data.institucionId;
+				self.inscripcion.email = data.email;
 				
 				
 			}).error(function(){
@@ -109,16 +109,24 @@ angular.module("main").controller("InscripcionController",function(Utils,APP){
 		
 		
 		if (Utils.Validation.run()){
+			
 			console.log("inscripcion ", this.inscripcion);		
-			Utils.Rest.save(APP.URL_API + "inscripcion", this.inscripcion);
-			
-			
+			Utils.Rest.save(APP.URL_API + "inscripcion", this.inscripcion).success(function(finscripcion){
+				
+				console.log("inscripcion ID", finscripcion.inscripcionId);
+				
+				console.log("experiencia ", this.experiencia);
+				for (var i = 0 ; i< self.experiencias.length; i++)
+				{
+					self.experiencias[i].inscripcionId= finscripcion.inscripcionId;
+					Utils.Rest.save(APP.URL_API + "experiencia",self.experiencias[i]);
+				}
+			});
+					
 			Utils.Notification.mensaje("","Registro satisfactorio");
 			self.inscripcion = {};
-			
-		}
-		
-		
+			self.experiencia = {};
+		}		
 	}
 	
 });

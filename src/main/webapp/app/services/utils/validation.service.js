@@ -1,5 +1,8 @@
 angular.module('main').service("ValidationService",[ "NotificationService", function(Messagebox){
-
+	$(".numero").inputmask("integer",{autoUnmask:true});
+	$(".ruc").inputmask("99999999999",{autoUnmask:true});
+	$(".dni").inputmask("99999999",{autoUnmask:true});
+	
 	var Validation = {
 		
 				init		: 	function () 

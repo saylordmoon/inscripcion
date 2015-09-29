@@ -48,7 +48,7 @@
 									<div class="form-group">
 										<label class="col-md-3">RUC:</label>
 										<div class="col-md-9">
-											<input data-ng-model="inscripcionCtrl.inscripcion.usuario" id="txt-RUC" type="text" class="form-control" placeholder="R.U.C." />
+											<input data-ng-model="inscripcionCtrl.inscripcion.usuario" id="txt-RUC" type="text" class="form-control ruc" placeholder="R.U.C." data-ng-change="inscripcionCtrl.validacionRuc()"/>
 										</div>
 									</div>
 									<div class="form-group">
@@ -153,13 +153,13 @@
 									<div class="form-group">
 										<label class="col-md-3">Cargo:</label>
 										<div class="col-md-7">
-										  <input data-ng-model="inscripcionCtrl.inscripcion.directivoCargo" id="txt-directivo-cargo" type="text" class="form-control" placeholder="Cargo" required/>
+										  <input data-ng-model="inscripcionCtrl.inscripcion.directivoCargo" id="txt-directivo-cargo" type="text" class="form-control " placeholder="Cargo" required/>
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-md-3">DNI:</label>
 										<div class="col-md-4">
-										  <input data-ng-model="inscripcionCtrl.inscripcion.directivoDNI" id="txt-directivo-dni" type="text" class="form-control" placeholder="DNI" required/>
+										  <input data-ng-model="inscripcionCtrl.inscripcion.directivoDNI" id="txt-directivo-dni" type="text" class="form-control dni" placeholder="DNI" required/>
 										</div>
 									</div>
 									<div class="form-group">
@@ -205,7 +205,7 @@
 									<div class="form-group">
 										<label class="col-md-3">DNI:</label>
 										<div class="col-md-4">
-										  <input data-ng-model="inscripcionCtrl.inscripcion.contactoDNI" id="txt-contacto-dni" type="text" class="form-control" placeholder="DNI" required/>
+										  <input data-ng-model="inscripcionCtrl.inscripcion.contactoDNI" id="txt-contacto-dni" type="text" class="form-control dni" placeholder="DNI" required/>
 										</div>
 									</div>
 									<div class="form-group">
@@ -291,7 +291,7 @@
 									<div class="col-md-4">
 										<div class="form-group">
 											<label>Contraseña</label>
-											<input data-ng-model="inscripcionCtrl.inscripcion.hash" id="txt-contraseña" type="password" class="form-control" data-ng-model="inscripcionCtrl.inscripcion.password" placeholder="Contraseña" />
+											<input data-ng-model="inscripcionCtrl.inscripcion.hash" id="txt-contraseña" type="password" class="form-control" placeholder="Contraseña" />
 										</div>
 										<div class="form-group">
 											<label>Confirmar contraseña</label>
@@ -327,7 +327,7 @@
 					</div>
 					<div class="modal-body">
 						<div class="form-group">
-							<label>Título</label>
+							<label>Título de la Experiencia</label>
 							<textarea id="txt-titulo-experiencia" data-ng-model="inscripcionCtrl.experiencia.titulo" class="form-control" rows="3"></textarea>
 						</div>
 						<div class="form-group">
@@ -335,19 +335,19 @@
 							<select id="sel-tematica-experiencia" class="form-control" data-ng-model="inscripcionCtrl.experiencia.tematicaId">
 								<option value="1">1) Asistencia-Ayuda humanitaria</option>								
 								<option value="2">2) Derechos Humanos</option>
-								<option>3) Desarrollo Humano</option>
-								<option>4) Desarrollo Rural</option>
-								<option>5) Desarrollo Territorial</option>
-								<option>6) Desarrollo Urbano-Hábitat</option>
-								<option>7) Educación</option>
-								<option>8) Emprendimientos, Mype, microfinanzas</option>
-								<option>9) Género</option>
-								<option>10) Gobernabilidad/Institucionalidad</option>
-								<option>11) Medio Ambiente</option>
-								<option>12) Prevención de Riesgos y Desastres y adaptación al cambio climático</option>
-								<option>13) Salud</option>
-								<option>14) Trabajo</option>
-								<option>15) Violencia contra Niñas, Niños y Adolescente</option>
+								<option value="3">3) Desarrollo Humano</option>
+								<option value="4">4) Desarrollo Rural</option>
+								<option value="5">5) Desarrollo Territorial</option>
+								<option value="6">6) Desarrollo Urbano-Hábitat</option>
+								<option value="7">7) Educación</option>
+								<option value="8">8) Emprendimientos, Mype, microfinanzas</option>
+								<option value="9">9) Género</option>
+								<option value="10">10) Gobernabilidad/Institucionalidad</option>
+								<option value="11">11) Medio Ambiente</option>
+								<option value="12">12) Prevención de Riesgos y Desastres y adaptación al cambio climático</option>
+								<option value="13">13) Salud</option>
+								<option value="14">14) Trabajo</option>
+								<option value="15">15) Violencia contra Niñas, Niños y Adolescente</option>
 							</select>
 						</div>
 						<div class="form-group">
