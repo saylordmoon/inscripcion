@@ -27,4 +27,5 @@ public class InscripcionResource {
 		
 		return inscripcion.add(pInscripcion.getValue());
 	}
+	
 }

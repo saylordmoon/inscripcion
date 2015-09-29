@@ -3,6 +3,7 @@ package org.apci.aplicaciones.inscripcion.resources;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -47,6 +48,7 @@ public class InscripcionExperienciaResource {
 		return experiencia.add(pExperiencia.getValue());
 	}
 	
+
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response update(JAXBElement<InscripcionExperiencia> pPregunta)
@@ -58,4 +60,18 @@ public class InscripcionExperienciaResource {
 		
 		return Response.status(Response.Status.NOT_ACCEPTABLE).build();
 	}
+
+	/*@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response addList(List<InscripcionExperiencia> pLista)
+	{
+		for (InscripcionExperiencia inscripcionExperiencia : pLista)
+		{
+			experiencia.add(inscripcionExperiencia);
+		}
+		return Response.status(Response.Status.OK).build();
+	}*/
+	
+	
+
 }

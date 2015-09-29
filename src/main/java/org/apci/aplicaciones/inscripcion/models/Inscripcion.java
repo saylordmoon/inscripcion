@@ -25,7 +25,8 @@ public class Inscripcion {
 	private String ContactoTelefono;
 	private String ContactoCelular;
 	private String ContactoEmail;
-	private Date FechaInscripcion;
+
+	private String Usuario;
 	private String Hash;
 	public int getInscripcionId() {
 		return InscripcionId;
@@ -141,17 +142,18 @@ public class Inscripcion {
 	public void setContactoEmail(String contactoEmail) {
 		ContactoEmail = contactoEmail;
 	}
-	public Date getFechaInscripcion() {
-		return FechaInscripcion;
-	}
-	public void setFechaInscripcion(Date fechaInscripcion) {
-		FechaInscripcion = fechaInscripcion;
-	}
+
 	public String getHash() {
 		return Hash;
 	}
 	public void setHash(String hash) {
 		Hash = hash;
+	}
+	public String getUsuario() {
+		return Usuario;
+	}
+	public void setUsuario(String usuario) {
+		Usuario = usuario;
 	}
 	
 
