@@ -50,6 +50,9 @@ angular.module("main").service("Utils", function($filter,TabService, Notificatio
 															},
 										setAttr :   function(controlId, attributo , valor) {
 																$("#" + controlId).attr(attributo,valor);
+															},
+										disableChilds 	:	function(controlId){
+																$('#'+ controlId).find('input, textarea, button, select').attr('disabled','disabled');
 															}
 									}
 	};
@@ -95,8 +98,75 @@ angular.module("main").service("Utils", function($filter,TabService, Notificatio
 											console.log("saved ", data);
 										});
 
+									},
+						update :    function(resource,dataPut){
+										
+										return $http.put(resource, JSON.stringify(dataPut)).success(function(data){
+											console.log("updated ", data);
+										});
 									}
 
+	};
+
+	this.File =	{
+					uploadById : function (fileControlName,url,paramName)
+					{
+						paramName = paramName || "uploadFile";
+						url = url || '/fileservice/api/v1/file/upload';
+						var fileControl = document.getElementById(fileControlName);
+						var result = null;
+						var file = fileControl.files[0];
+						if(file)
+						{
+							var formData = new FormData();
+							formData.append(paramName, file);
+							result = $.ajax({
+								url : url,
+								type : 'POST',
+								data : formData,
+								cache : false,
+								contentType : false,
+								processData : false,
+								success : function(data, textStatus, jqXHR) {
+									var message = jqXHR.responseText;
+									console.log("File uploaded");
+								},
+								error : function(jqXHR, textStatus, errorThrown) {
+									console.log("Error uploading the file");
+								}
+							});
+						}
+						return result;
+					},
+
+					upload : function (fileControl,url,paramName)
+					{
+						paramName = paramName || "uploadFile";
+						url = url || '/fileservice/api/v1/file/upload';
+						var result = null;
+						var file = fileControl.files[0];
+						if(file)
+						{
+							var formData = new FormData();
+							formData.append(paramName, file);
+							result = $.ajax({
+								url : url,
+								type : 'POST',
+								data : formData,
+								cache : false,
+								contentType : false,
+								processData : false,
+								success : function(data, textStatus, jqXHR) {
+									var message = jqXHR.responseText;
+									console.log("File uploaded");
+								},
+								error : function(jqXHR, textStatus, errorThrown) {
+									console.log("Error uploading the file");
+								}
+							});
+						}
+						return result;
+					}
 	};
 	
 });

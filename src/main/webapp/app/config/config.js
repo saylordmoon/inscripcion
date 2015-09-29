@@ -2,7 +2,7 @@ angular.module("main").config(['$routeProvider',function($routeProvider){
 
 	$routeProvider.
 
-		when('/', 			{ templateUrl: 'app/views/inicio.html' 	}).
+		when('/', 			{ templateUrl: 'views/inicio.jsp' 	}).
 
 		otherwise({	redirectTo: '/'	});
 

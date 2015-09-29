@@ -1,4 +1,5 @@
 angular.module("main").controller('MenuController', function(){
+	
 	this.items = [  
 		{nombre:"Inicio", 	icono:"glyphicon glyphicon-home", 		url:"#/" },
 	];

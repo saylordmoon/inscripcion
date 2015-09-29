@@ -118,3 +118,10 @@ white-space:normal !important;
   color: gray;
   
 }
+
+.modal-body {
+    max-height: calc(100vh - 210px);
+    overflow-y: scroll;
+}
+
+

@@ -2,15 +2,15 @@ package org.apci.aplicaciones.inscripcion.models;
 
 public class Usuario {
 	
-	private int UnsuarioId;
+	private int UsuarioId;
 	private String Usuario;
 	private String Hash;
 	
-	public int getUnsuarioId() {
-		return UnsuarioId;
+	public int getUsuarioId() {
+		return UsuarioId;
 	}
-	public void setUnsuarioId(int unsuarioId) {
-		UnsuarioId = unsuarioId;
+	public void setUsuarioId(int usuarioId) {
+		UsuarioId = usuarioId;
 	}
 	public String getUsuario() {
 		return Usuario;
