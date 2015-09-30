@@ -1,7 +1,5 @@
 package org.apci.aplicaciones.inscripcion.models;
 
-import java.sql.Date;
-
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
@@ -25,9 +23,10 @@ public class Inscripcion {
 	private String ContactoTelefono;
 	private String ContactoCelular;
 	private String ContactoEmail;
-
 	private String Usuario;
 	private String Hash;
+	private int InstitucionId;
+
 	public int getInscripcionId() {
 		return InscripcionId;
 	}
@@ -142,7 +141,6 @@ public class Inscripcion {
 	public void setContactoEmail(String contactoEmail) {
 		ContactoEmail = contactoEmail;
 	}
-
 	public String getHash() {
 		return Hash;
 	}
@@ -154,6 +152,12 @@ public class Inscripcion {
 	}
 	public void setUsuario(String usuario) {
 		Usuario = usuario;
+	}
+	public int getInstitucionId() {
+		return InstitucionId;
+	}
+	public void setInstitucionId(int institucionId) {
+		InstitucionId = institucionId;
 	}
 	
 

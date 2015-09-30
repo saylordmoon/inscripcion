@@ -4,6 +4,8 @@ import java.lang.reflect.Field;
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,8 +25,11 @@ public class DaoUtil {
 			T classObject = pClassType.getConstructor().newInstance();
 			
 			for (Field property : classProperties) {
-				Object objectValue = pResultSet.getObject(property.getName());
-				property.set(classObject, objectValue);
+				if(hasColumn(pResultSet, property.getName()))
+				{
+					Object objectValue = pResultSet.getObject(property.getName());
+					property.set(classObject, objectValue);
+				}
 			}
 			listResult.add(classObject);
 		}
@@ -116,4 +121,14 @@ public class DaoUtil {
 		return classProperties;
 	}
 	
+	public static boolean hasColumn(ResultSet rs, String columnName) throws SQLException {
+	    ResultSetMetaData rsmd = rs.getMetaData();
+	    int columns = rsmd.getColumnCount();
+	    for (int x = 1; x <= columns; x++) {
+	        if (columnName.equals(rsmd.getColumnName(x))) {
+	            return true;
+	        }
+	    }
+	    return false;
+	}
 }

@@ -53,6 +53,9 @@ angular.module("main").service("Utils", function($filter,TabService, Notificatio
 															},
 										disableChilds 	:	function(controlId){
 																$('#'+ controlId).find('input, textarea, button, select').attr('disabled','disabled');
+															},
+										enableChilds 	:	function(controlId){
+																$('#'+ controlId).find('input, textarea, button, select').removeAttr('disabled');
 															}
 									}
 	};

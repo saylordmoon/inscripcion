@@ -52,9 +52,9 @@ angular.module("main").controller("InscripcionController",function(Utils,APP){
 		{
 			Utils.Rest.getList(this, APP.URL_API + "institucion/" + this.inscripcion.usuario).success(function(data){
 				self.rucInvalido = false;
-				self.inscripcion.institucion = data.nombre;
-				self.inscripcion.QPInstitucionId = data.institucionId;
-				self.inscripcion.email = data.email;
+				self.inscripcion.nombreInstitucion = data.nombre;
+				self.inscripcion.institucionId = data.institucionId;
+				self.inscripcion.emailInstitucion = data.email;
 				
 				
 			}).error(function(){
@@ -77,35 +77,35 @@ angular.module("main").controller("InscripcionController",function(Utils,APP){
 				
 		Utils.Validation.init();
 		//Utils.Validation.required("#txt-ruc","R.U.C.");
-		Utils.Validation.required("#txt-ongd","Nombre de la ONGD");
-		Utils.Validation.required("#sel-departamento","Departamento");
-		Utils.Validation.required("#txt-direccion","Dirección");
-		Utils.Validation.required("#txt-numero-registro","Número de Registro APCI");
-		Utils.Validation.required("#txt-telefono","Teléfono");
-		Utils.Validation.required("#txt-email","E-mail");
-		
-		Utils.Validation.required("#txt-directivo-nombres","Nombre de Directivo");
-		Utils.Validation.required("#txt-directivo-cargo","Cargo de Directivo");
-		Utils.Validation.required("#txt-directivo-dni","DNI de Directivo");
-		Utils.Validation.required("#txt-directivo-telefono","Teléfono de Directivo");
-		Utils.Validation.required("#txt-directivo-celular","Celular de Directivo");
-		Utils.Validation.required("#txt-directivo-email","E-mail de Directivo");
-		
-		Utils.Validation.required("#txt-contacto-nombres","Nombre de Contacto");
-		Utils.Validation.required("#txt-contacto-cargo","Cargo de Contacto");
-		Utils.Validation.required("#txt-contacto-dni","DNI de Contacto");
-		Utils.Validation.required("#txt-contacto-telefono","Teléfono de Contacto");
-		Utils.Validation.required("#txt-contacto-celular","Celular de Contacto");
-		Utils.Validation.required("#txt-contacto-email","E-mail de Contacto");
+//		Utils.Validation.required("#txt-ongd","Nombre de la ONGD");
+//		Utils.Validation.required("#sel-departamento","Departamento");
+//		Utils.Validation.required("#txt-direccion","Dirección");
+//		Utils.Validation.required("#txt-numero-registro","Número de Registro APCI");
+//		Utils.Validation.required("#txt-telefono","Teléfono");
+//		Utils.Validation.required("#txt-email","E-mail");
+//		
+//		Utils.Validation.required("#txt-directivo-nombres","Nombre de Directivo");
+//		Utils.Validation.required("#txt-directivo-cargo","Cargo de Directivo");
+//		Utils.Validation.required("#txt-directivo-dni","DNI de Directivo");
+//		Utils.Validation.required("#txt-directivo-telefono","Teléfono de Directivo");
+//		Utils.Validation.required("#txt-directivo-celular","Celular de Directivo");
+//		Utils.Validation.required("#txt-directivo-email","E-mail de Directivo");
+//		
+//		Utils.Validation.required("#txt-contacto-nombres","Nombre de Contacto");
+//		Utils.Validation.required("#txt-contacto-cargo","Cargo de Contacto");
+//		Utils.Validation.required("#txt-contacto-dni","DNI de Contacto");
+//		Utils.Validation.required("#txt-contacto-telefono","Teléfono de Contacto");
+//		Utils.Validation.required("#txt-contacto-celular","Celular de Contacto");
+//		Utils.Validation.required("#txt-contacto-email","E-mail de Contacto");
 		
 		/*Utils.Validation.required("#checkbox-declaracion-jurada-1","Declaración Jurada");
 		Utils.Validation.required("#checkbox-declaracion-jurada-2","Declaración Jurada");
 		Utils.Validation.required("#checkbox-declaracion-jurada-3","Declaración Jurada");
 		Utils.Validation.required("#checkbox-declaracion-jurada-4","Declaración Jurada");
 		Utils.Validation.required("#checkbox-declaracion-jurada-5","Declaración Jurada");*/
-
-		Utils.Validation.required("#txt-contraseña","Contraseña");
-		Utils.Validation.required("#txt-confirme-contraseña","Confirme Contraseña");
+//
+//		Utils.Validation.required("#txt-contraseña","Contraseña");
+//		Utils.Validation.required("#txt-confirme-contraseña","Confirme Contraseña");
 		
 		
 		if (Utils.Validation.run()){
