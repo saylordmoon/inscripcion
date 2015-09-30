@@ -16,13 +16,45 @@ angular.module("main").controller("ExperienciaController" , function(Utils, APP)
 
 	this.guardar = function(){
 
+<<<<<<< HEAD
+		Utils.Validation.init();
+		Utils.Validation.required("#date-fechainicio","Fecha inicio");
+		Utils.Validation.required("#date-fechafin","Fecha fin");
+		/*Utils.Validation.required("#","Departamento");
+		Utils.Validation.required("#opciones_1","Seleccionar Ámbito");
+		
+		Utils.Validation.required("#formato","Subir Formato");*/
+		
+		//Utils.Validation.required("#documento-adicional","Documento Adicional");
+		
+		if (Utils.Validation.run()) {
+		
+		
+		this.experiencia.fechaInicio = moment(this.experiencia.fechaInicio,"DD/MM/YYYY").toDate();
+		this.experiencia.fechaFin = moment(this.experiencia.fechaFin,"DD/MM/YYYY").toDate();
+
+		console.log("fecha inicio ",this.experiencia.fechaInicio);
+		console.log("fecha fin ",this.experiencia.fechaFin);
+		
+=======
+>>>>>>> 6795b0cddfdf3f7efba4b4150783372f5b5d0d8a
 		this.experiencia.registrada = true;
 		Utils.Rest.update(APP.URL_API + "experiencia", this.experiencia);
+		
+		
+		this.experiencia.fechaInicio = null;
+		this.experiencia.fechaFin = null;
+		this.experiencia.sumilla = null;		
+		$(".modal-registrar-experiencia").modal("hide");		
+		}
+		
+		
 			
-		$('input[type="file"]').each(function(index, control)
+	$('input[type="file"]').each(function(index, control)
 		{
 			if ($(control).attr("ok") === "true") 
 			{
+				
 				control.disabled="disabled"
 				var archivoExperiencia = {};
 				archivoExperiencia.inscripcionExperienciaId = self.experiencia.inscripcionExperienciaId;
@@ -32,11 +64,18 @@ angular.module("main").controller("ExperienciaController" , function(Utils, APP)
 			}
 		});
 		
+<<<<<<< HEAD
+		//Utils.UI.Control.disableChilds("form-experiencia");
+	}
+	
+		
+=======
 		Utils.UI.Control.disableChilds("form-experiencia");
 		this.experiencia = {};
 		$(".modal-registrar-experiencia").modal("hide");
 	}
 	
+>>>>>>> 6795b0cddfdf3f7efba4b4150783372f5b5d0d8a
 	$('input[type="file"]').change(function(){
 		
 		console.log("upload",this);
@@ -52,6 +91,12 @@ angular.module("main").controller("ExperienciaController" , function(Utils, APP)
 			});
 		}
 	});
+<<<<<<< HEAD
+	
+			
+	
+
+=======
 	
 	$(".modal-registrar-experiencia").on('hidden.bs.modal', function (e) {
 		
@@ -59,5 +104,6 @@ angular.module("main").controller("ExperienciaController" , function(Utils, APP)
 		$('input[type="file"]').value('');
 		
 	})
+>>>>>>> 6795b0cddfdf3f7efba4b4150783372f5b5d0d8a
 	
 });

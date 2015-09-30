@@ -1,5 +1,7 @@
 package org.apci.aplicaciones.inscripcion.resources;
 
+import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -22,22 +24,11 @@ public class InscripcionTematicaResource {
 	}
 	
 	@GET
-	@Produces(MediaType.TEXT_PLAIN)
-	//@Produces(MediaType.APPLICATION_JSON)
-	public String get()
-	{
-		return "functiona";
-	}
-	
-	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public InscripcionTematica post(JAXBElement<InscripcionTematica> pTematica)
+	public List<InscripcionTematica> get()
 	{
-		return tematica.add(pTematica.getValue());
+		return tematica.get();
 	}
 	
 	
-	
-
 }

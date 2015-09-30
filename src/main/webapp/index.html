@@ -13,6 +13,7 @@
 		<![endif]-->
 
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/jquery.notify.css" />
 		<link rel="stylesheet" type="text/css" href="css/styles.css" />
 		
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -40,8 +41,8 @@
 						<div class="row form-horizontal">
 
 							<!--/ PARTE I-->
-							<div class="panel panel-default">
-								<div class="panel-heading ">
+							<div  class="panel panel-default">
+								<div class="panel-heading" id="div-datos-ongd">
 									<h4>Datos de la ONGD que postula</h4>
 								</div>
 								<div class="panel-body">
@@ -61,9 +62,7 @@
 										<label class="col-md-3">Departamento:</label>
 										<div class="col-md-5">
 											<select data-ng-model="inscripcionCtrl.inscripcion.departamentoId" id="sel-departamento" class="form-control">
-												<option value="">Seleccione...</option>
-												<option value="1">Lima</option>
-												<option value="2">Piura</option>
+												<option data-ng-repeat="departamento in inscripcionCtrl.departamentos"  value="{{depatamento.departamentoId}}">{{departamento.nombre}}</option>
 											</select>
 										</div>
 									</div>
@@ -76,7 +75,7 @@
 									<div class="form-group">
 										<label class="col-md-3">N° Registro APCI:</label>
 										<div class="col-md-4">
-										  <input data-ng-model="inscripcionCtrl.inscripcion.numeroRegistroAPCI" id="txt-numero-registro" type="text" class="form-control" placeholder="N° Registro APCI" required/>
+										  <input data-ng-model="inscripcionCtrl.inscripcion.numeroRegistroAPCI" id="txt-numero-registro" type="text" class="form-control" placeholder="N° Registro APCI" disabled />
 										</div>
 									</div>
 									<div class="form-group">
@@ -113,7 +112,7 @@
 													<thead>
 														<tr>	
 															<th class="col-sm-1">Número</th>
-															<th class="col-sm-3">Título</th>
+															<th class="col-sm-3">Título de la Experiencia</th>
 															<th class="col-sm-3">Temática</th>
 															<th class="col-sm-4">Intervención</th>
 															<th class="col-sm-1"></th>
@@ -141,7 +140,7 @@
 							<!--PARTE III-->
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<h4>Datos del directivo/a de la ONGD que postula la experiencia</h4>
+									<h4>Datos del directivo(a) de la ONGD que postula la experiencia</h4>
 								</div>
 								<div class="panel-body">
 									<div class="form-group">
@@ -237,41 +236,41 @@
 								<div class="panel-body">
 									<div class="form-group">
 										<div class="col-md-12">
-											<div id="checkbox-declaracion-jurada-1" class="checkbox bmd-checkbox">
+											<div class="checkbox bmd-checkbox">
 												<label>
-													<input class="bmd-ripple bmd-ink-gray" type="checkbox" /> 
+													<input id="chk-declaracion-jurada-1" class="bmd-ripple bmd-ink-gray" type="checkbox" /> 
 													<span class="check"></span>
 													Las/os directivos de la ONGD conocen y aceptan las Bases del Concurso.
 												</label>
 											</div>
 											<br />
-											<div id="checkbox-declaracion-jurada-2" class="checkbox bmd-checkbox">
+											<div class="checkbox bmd-checkbox">
 												<label>
-													<input class="bmd-ripple bmd-ink-gray" type="checkbox" /> 
+													<input id="chk-declaracion-jurada-2" class="bmd-ripple bmd-ink-gray" type="checkbox" /> 
 													<span class="check"></span>
 													La información que se ha registrado es veraz.
 												</label>
 											</div>
 											<br />
-											<div id="checkbox-declaracion-jurada-3" class="checkbox bmd-checkbox">
+											<div class="checkbox bmd-checkbox">
 												<label>
-													<input class="bmd-ripple bmd-ink-gray" type="checkbox" /> 
+													<input id="chk-declaracion-jurada-3" class="bmd-ripple bmd-ink-gray" type="checkbox" /> 
 													<span class="check"></span>
 													Se dará la información adicional solicitada para los fines del concurso.
 												</label>
 											</div>
 											<br />
-											<div id="checkbox-declaracion-jurada-4" class="checkbox bmd-checkbox">
+											<div class="checkbox bmd-checkbox">
 												<label>
-													<input class="bmd-ripple bmd-ink-gray" type="checkbox" /> 
+													<input id="chk-declaracion-jurada-4" class="bmd-ripple bmd-ink-gray" type="checkbox" /> 
 													<span class="check"></span>
 													Se autoriza la verificación de la información de la experiencia que se postula.
 												</label>
 											</div>
 											<br />
-											<div id="checkbox-declaracion-jurada-5" class="checkbox bmd-checkbox">
+											<div class="checkbox bmd-checkbox">
 												<label>
-													<input class="bmd-ripple bmd-ink-gray" type="checkbox" /> 
+													<input id="chk-declaracion-jurada-5" class="bmd-ripple bmd-ink-gray" type="checkbox" /> 
 													<span class="check"></span>
 													Se autoriza la difusión de la experiencia.
 												</label>
@@ -291,11 +290,11 @@
 									<div class="col-md-4">
 										<div class="form-group">
 											<label>Contraseña</label>
-											<input data-ng-model="inscripcionCtrl.inscripcion.hash" id="txt-contraseña" type="password" class="form-control" placeholder="Contraseña" />
+											<input data-ng-model="inscripcionCtrl.inscripcion.hash" id="txt-password" type="password" class="form-control password" placeholder="Contraseña" />
 										</div>
 										<div class="form-group">
 											<label>Confirmar contraseña</label>
-											<input id="txt-confirme-contraseña" type="password" class="form-control" placeholder="Confirme contraseña" />
+											<input id="txt-password-confirmacion" type="password" class="form-control password" placeholder="Confirme su contraseña" />
 										</div>                    	
 									</div>
 								</div>
@@ -332,27 +331,13 @@
 						</div>
 						<div class="form-group">
 							<label>Temática</label>
-							<select id="sel-tematica-experiencia" class="form-control" data-ng-model="inscripcionCtrl.experiencia.tematicaId">
-								<option value="1">1) Asistencia-Ayuda humanitaria</option>								
-								<option value="2">2) Derechos Humanos</option>
-								<option value="3">3) Desarrollo Humano</option>
-								<option value="4">4) Desarrollo Rural</option>
-								<option value="5">5) Desarrollo Territorial</option>
-								<option value="6">6) Desarrollo Urbano-Hábitat</option>
-								<option value="7">7) Educación</option>
-								<option value="8">8) Emprendimientos, Mype, microfinanzas</option>
-								<option value="9">9) Género</option>
-								<option value="10">10) Gobernabilidad/Institucionalidad</option>
-								<option value="11">11) Medio Ambiente</option>
-								<option value="12">12) Prevención de Riesgos y Desastres y adaptación al cambio climático</option>
-								<option value="13">13) Salud</option>
-								<option value="14">14) Trabajo</option>
-								<option value="15">15) Violencia contra Niñas, Niños y Adolescente</option>
+							<select id="sel-tematica-experiencia" class="form-control" data-ng-model="inscripcionCtrl.experiencia.tematicaId" data-ng-init="inscripcionCtrl.experiencia.tematicaId='1'">
+								<option data-ng-repeat="tematica in inscripcionCtrl.tematicas" value="{{tematica.inscripcionTematicaId}}">{{tematica.descripcion}}</option>								
 							</select>
 						</div>
 						<div class="form-group">
 							<label>Intervención</label>
-							<textarea data-ng-model="inscripcionCtrl.experiencia.intervencion" id="txt-tematica-experiencia" class="form-control" rows="3"></textarea>
+							<input data-ng-model="inscripcionCtrl.experiencia.intervencion" id="txt-intervencion" class="form-control"  />
 						</div>
 					</div>
 					<div class="modal-footer">

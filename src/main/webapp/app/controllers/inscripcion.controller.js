@@ -2,15 +2,19 @@ angular.module("main").controller("InscripcionController",function(Utils,APP){
 	
 	var self = this;
 	
-	this.inscripcion = {};
+	this.tematicas = [];
 	
+	this.departamentos = [];
 	
+	this.inscripcion = {};	
 	this.experiencias = [];
-	
 	//modal
 	this.experiencia = {};
 	
 	this.nueva = false;
+	
+	Utils.Rest.getList(this,APP.URL_API + "departamento", "departamentos");
+	Utils.Rest.getList(this,APP.URL_API + "tematica" , "tematicas" );
 	
 	this.agregarDatosExperiencia = function(){
 		
@@ -19,16 +23,23 @@ angular.module("main").controller("InscripcionController",function(Utils,APP){
 		$(".modal-datosexperiencia").modal("show");
 	}
 	
-	
 	this.guardarExperiencia = function() {
 		
 		console.log("Guardar");
-		if (this.nueva) this.experiencias.push(this.experiencia);
-		console.log("Experiencias" , this.experiencias);
-		this.experiencia = {};
-		$(".modal-datosexperiencia").modal("hide");
+		
+		Utils.Validation.init();
+		Utils.Validation.required("#txt-titulo-experiencia","Titulo de la Experiencia");
+		Utils.Validation.required("#sel-tematica-experiencia","Tematica");
+		Utils.Validation.required("#txt-intervencion","Intervención");
+		
+		if (Utils.Validation.run()){
+			
+			if (this.nueva) this.experiencias.push(this.experiencia);
+			console.log("Experiencias" , this.experiencias);
+			this.experiencia = {};
+			$(".modal-datosexperiencia").modal("hide");
+		}
 	}
-	
 	
 	this.borrarExperiencia = function(pExperiencia) {
 		
@@ -43,7 +54,6 @@ angular.module("main").controller("InscripcionController",function(Utils,APP){
 		$(".modal-datosexperiencia").modal("show");
 	}
 	
-	
 	this.rucInvalido = true;
 	
 	this.validacionRuc = function() {
@@ -55,6 +65,9 @@ angular.module("main").controller("InscripcionController",function(Utils,APP){
 				self.inscripcion.nombreInstitucion = data.nombre;
 				self.inscripcion.institucionId = data.institucionId;
 				self.inscripcion.emailInstitucion = data.email;
+				self.inscripcion.numeroRegistroAPCI = data.codigo;
+				self.inscripcion.direccionInstitucion = data.domicilio;
+				self.inscripcion.telefonoInstitucion = data.telefono;
 				
 				
 			}).error(function(){
@@ -71,41 +84,54 @@ angular.module("main").controller("InscripcionController",function(Utils,APP){
 		}
 	}
 	
-	
-	
 	this.registrarse = function(){
 				
 		Utils.Validation.init();
-		//Utils.Validation.required("#txt-ruc","R.U.C.");
-//		Utils.Validation.required("#txt-ongd","Nombre de la ONGD");
-//		Utils.Validation.required("#sel-departamento","Departamento");
-//		Utils.Validation.required("#txt-direccion","Dirección");
-//		Utils.Validation.required("#txt-numero-registro","Número de Registro APCI");
-//		Utils.Validation.required("#txt-telefono","Teléfono");
-//		Utils.Validation.required("#txt-email","E-mail");
-//		
-//		Utils.Validation.required("#txt-directivo-nombres","Nombre de Directivo");
-//		Utils.Validation.required("#txt-directivo-cargo","Cargo de Directivo");
-//		Utils.Validation.required("#txt-directivo-dni","DNI de Directivo");
-//		Utils.Validation.required("#txt-directivo-telefono","Teléfono de Directivo");
-//		Utils.Validation.required("#txt-directivo-celular","Celular de Directivo");
-//		Utils.Validation.required("#txt-directivo-email","E-mail de Directivo");
-//		
-//		Utils.Validation.required("#txt-contacto-nombres","Nombre de Contacto");
-//		Utils.Validation.required("#txt-contacto-cargo","Cargo de Contacto");
-//		Utils.Validation.required("#txt-contacto-dni","DNI de Contacto");
-//		Utils.Validation.required("#txt-contacto-telefono","Teléfono de Contacto");
-//		Utils.Validation.required("#txt-contacto-celular","Celular de Contacto");
-//		Utils.Validation.required("#txt-contacto-email","E-mail de Contacto");
 		
-		/*Utils.Validation.required("#checkbox-declaracion-jurada-1","Declaración Jurada");
-		Utils.Validation.required("#checkbox-declaracion-jurada-2","Declaración Jurada");
-		Utils.Validation.required("#checkbox-declaracion-jurada-3","Declaración Jurada");
-		Utils.Validation.required("#checkbox-declaracion-jurada-4","Declaración Jurada");
-		Utils.Validation.required("#checkbox-declaracion-jurada-5","Declaración Jurada");*/
-//
-//		Utils.Validation.required("#txt-contraseña","Contraseña");
-//		Utils.Validation.required("#txt-confirme-contraseña","Confirme Contraseña");
+		var ongdNombre = Utils.Validation.required("#txt-ongd","Nombre de la ONGD",false);
+		var ongdDep = Utils.Validation.required("#sel-departamento","Departamento",false);
+		var ongdDir = Utils.Validation.required("#txt-direccion","Dirección",false);
+		var ongdTel = Utils.Validation.required("#txt-telefono","Teléfono",false);
+		var ongdEmail = Utils.Validation.required("#txt-email","E-mail de la ONGD",false);
+		
+		var datosOngd = ongdNombre && ongdDep && ongdDir && ongdTel && ongdEmail;
+
+		Utils.Validation.validate(datosOngd,"Por favor complete los datos de la ONGD","Datos de la ONGD");
+		Utils.Validation.email("#txt-email","E-mail");
+		
+
+		var dirNom = Utils.Validation.required("#txt-directivo-nombres","Nombre de Directivo",false);
+		var dirCar = Utils.Validation.required("#txt-directivo-cargo","Cargo de Directivo",false);
+		var dirDNI = Utils.Validation.required("#txt-directivo-dni","DNI de Directivo",false);
+
+		var dirTel = Utils.Validation.required("#txt-directivo-telefono","Teléfono de Directivo",false);
+		var dirCel = Utils.Validation.required("#txt-directivo-celular","Celular de Directivo",false);
+		var dirEmail = Utils.Validation.required("#txt-directivo-email","E-mail de Directivo",false);
+
+		var directivo = dirNom && dirCar && dirDNI && dirTel && dirCel && dirEmail;
+		Utils.Validation.validate(directivo,"Por favor complete los datos del Directivo","Datos del Directivo");
+		Utils.Validation.email("#txt-directivo-email","E-mail del Directivo");
+		if (dirDNI) Utils.Validation.len("#txt-directivo-dni", "DNI Directivo",11);
+	
+		var conNom = Utils.Validation.required("#txt-contacto-nombres","Nombre de Contacto",false);
+		var conCar = Utils.Validation.required("#txt-contacto-cargo","Cargo de Contacto",false);
+		var conDNI = Utils.Validation.required("#txt-contacto-dni","DNI de Contacto",false);
+		var conTel = Utils.Validation.required("#txt-contacto-telefono","Teléfono de Contacto",false);
+		var conCel = Utils.Validation.required("#txt-contacto-celular","Celular de Contacto",false);
+		var conEmail = Utils.Validation.required("#txt-contacto-email","E-mail de Contacto",false);
+		
+		var contacto = conNom && conCar && conDNI && conTel && conCel && conEmail;
+		Utils.Validation.validate(contacto,"Por favor complete los datos del Contacto","Datos del Contacto");
+		Utils.Validation.email("#txt-directivo-email","E-mail de Contacto");
+		if (conDNI) Utils.Validation.len("#txt-contacto-dni", "DNI Contacto",11);
+
+		var declaracionJurada = $("#chk-declaracion-jurada-1").is(':checked') && $("#chk-declaracion-jurada-2").is(':checked') && $("#chk-declaracion-jurada-3").is(':checked') &&  $("#chk-declaracion-jurada-4").is(':checked') &&  $("#chk-declaracion-jurada-5").is(':checked'); 
+		Utils.Validation.isTrueVar(declaracionJurada, "Declaracion Jurada", ".checkbox" )
+		
+		if (Utils.Validation.required("#txt-password", "Contraseña") && Utils.Validation.required("#txt-password-confirmacion", "Confirme su contraseña")) {
+			Utils.Validation.equalsVar($("#txt-password").val(), $("#txt-password-confirmacion").val(),"Contraseña","Las contraseñas ingresadas no son iguales",".password");
+		}
+		
 		
 		
 		if (Utils.Validation.run()){
@@ -128,5 +154,4 @@ angular.module("main").controller("InscripcionController",function(Utils,APP){
 			self.experiencia = {};
 		}		
 	}
-	
 });

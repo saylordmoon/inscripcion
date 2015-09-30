@@ -1,5 +1,7 @@
 package org.apci.aplicaciones.inscripcion.dao;
 
+import java.util.List;
+
 import org.apci.aplicaciones.dao.BaseDAO;
 import org.apci.aplicaciones.inscripcion.models.InscripcionTematica;
 import org.apci.aplicaciones.inscripcion.services.IInscripcionTematicaService;
@@ -7,12 +9,8 @@ import org.apci.aplicaciones.inscripcion.services.IInscripcionTematicaService;
 public class InscripcionTematicaDAO extends BaseDAO implements IInscripcionTematicaService {
 
 	@Override
-	public InscripcionTematica add(InscripcionTematica pTematica) {
+	public List<InscripcionTematica> get() {
 		
-		int tematicaId = insert(pTematica); 
-		
-		pTematica.setInscripcionTematicaId(tematicaId);
-		
-		return pTematica;
+		return super.select(InscripcionTematica.class);
 	}
 }

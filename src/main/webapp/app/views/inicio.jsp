@@ -1,3 +1,19 @@
+<script type="text/javascript">
+            $(document).ready(function () {                
+                $('#datePickerinicio')
+                .datepicker({
+                    format: 'dd/mm/yyyy'
+                }); 
+               
+               $('#datePickerfin')
+                .datepicker({
+                    format: 'dd/mm/yyyy'
+                });
+               
+            });
+            
+   </script>
+
 <div class="row" data-ng-controller="ExperienciaController as expCtrl">
 	<div class="col-md-12">
 
@@ -20,9 +36,10 @@
 								<td>{{$index+1}}</td>
 								<td>{{experiencia.titulo}}</td>
 								<td>
-									<button data-ng-show="experiencia.registrada" class="btn btn-info bmd-fab bmd-fab-sm bmd-bg-blue-800 bmd-text-blue-50 bmd-ripple">
-										<i class="fa fa-edit"></i>
-									</button>
+									<span data-ng-show="experiencia.registrada" class="btn btn-info bmd-bg-blue-800 bmd-text-blue-50 bmd-ripple">
+										<i class="fa fa-check"></i>
+										Registrada
+									</span>
 									<button data-ng-click="expCtrl.registrarExperiencia(experiencia)" data-ng-hide="experiencia.registrada" class="btn btn-info bmd-ripple">
 										<i class="fa fa-folder-open"></i>
 										Presentar experiencia
@@ -50,31 +67,96 @@
 					<h4 class="modal-title">Presentación de la experiencia</h4>
 				</div>
 				<div id="form-experiencia" class="modal-body">
-
 					<div class="row">
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<div class="form-group">
-								<label>Fecha Incio</label>
-								<input data-ng-model="expCtrl.experiencia.fechaInicio" type="date" class="fecha form-control" />
+								<label>Fecha Inicio de la Experiencia</label>
+								<div class="input-group input-append date" id="datePickerinicio">
+					                <input type="text" data-ng-model="expCtrl.experiencia.fechaInicio" class="form-control fecha" placeholder="Fecha Inicio"/>
+					                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+					            </div>
 							</div>
 						</div>
-						<div class="col-md-6">
+						<div class="col-md-4">
 							<div class="form-group">
-								<label>Fecha Fin</label>
-								<input data-ng-model="expCtrl.experiencia.fechaFin" type="date" class="fecha form-control" />
+								<label>Fecha Fin de la Experiencia</label>
+								<div class="input-group input-append date" id="datePickerfin">
+					                <input type="text" class="form-control" data-ng-model="expCtrl.experiencia.fechaFin"  class="form-control fecha" placeholder="Fecha Fin"/>
+					                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+					            </div>
 							</div>
 						</div>
 					</div>
-
-					<div class="form-group">
-						<label>Sumilla: </label>
-						<textarea data-ng-model="expCtrl.experiencia.sumilla" class="form-control" rows="4" placeholder="en máximo 150 palabras describa lo esencial de la experiencia que postula, que la hace exitosa." required></textarea>
+					<div class="row">
+					<div class="col-md-12">
+						<div class="form-group" id="txt-sumilla">
+							<label>Sumilla: </label>
+							<textarea data-ng-model="expCtrl.experiencia.sumilla" class="form-control" rows="4" placeholder="en máximo 150 palabras describa lo esencial de la experiencia que postula, que la hace exitosa." required></textarea>
+						</div>
+						</div>
 					</div>
-
 					<hr style="margin-top: 0px" />
 
 					<div class="row">
 						<div class="col-md-4">
+							<div class="form-group">
+								<button class="btn btn-default bmd-ripple">
+									<i class="fa fa-plus-square-o"></i>
+									Departamento
+								</button>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<button class="btn btn-default bmd-ripple">
+									<i class="fa fa-plus-square-o"></i>
+									Provincia
+								</button>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<button class="btn btn-default bmd-ripple">
+									<i class="fa fa-plus-square-o"></i>
+									Distrito
+								</button>
+							</div>
+						</div>						
+					</div>
+						<div class="table-responsive">
+							<table class="table table-bordered">
+								<thead>
+									<tr>
+										<th class="col-md-1">Nº</th>
+										<th class="col-md-4">Departamento</th>
+										<th class="col-md-3">Provincia</th>
+										<th class="col-md-3">Distrito</th>
+										<th class="col-md-1"></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>{{$index+1}}</td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td>
+											<button class="btn btn-default btn-sm pull-right bmd-ripple">
+												<i class="glyphicon glyphicon-trash"></i>
+											</button>
+											
+											<!-- <button class="btn btn-info bmd-ripple">
+												<i class="fa fa-folder-open"></i>
+												Agregar
+											</button> -->
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						
+						
+						<!-- <div class="col-md-4">
 							<div class="form-group">
 								<label>Departamento:</label>
 								<select class="form-control">
@@ -99,8 +181,7 @@
 									<option>Distrito</option>
 								</select>
 							</div>
-						</div>
-					</div>
+						</div> -->
 					
 					<div class="row">
 						<div class="col-md-12">
@@ -147,7 +228,7 @@
 								</a>
 							</div>
 						</div>
-						<div class="col-md-6">
+						<div class="col-md-6" >
 							<div class="form-group">
 								<a id="formato-ok" href="#" class="btn btn-info btn-xs pull-right bmd-floating bmd-ripple" style="display:none;"> <i class="fa fa-check"></i> </a>
 								<label class="control-label">2. Subir formato</label>
@@ -243,7 +324,7 @@
 				</div>
 
 				<div class="modal-footer">
-					<button data-ng-click="expCtrl.guardar()" class="btn btn-info bmd-ripple bmd-floating" data-ng-click="">
+					<button data-ng-click="expCtrl.guardar()" class="btn btn-info bmd-ripple bmd-floating">
 						<i class="fa fa-save"></i>
 						Registrar
 					</button>
@@ -253,3 +334,7 @@
 	</div><!--/ Modal  -->
 
 </div>
+
+<link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
+
+		
