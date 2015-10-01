@@ -19,7 +19,7 @@ angular.module('main').service("ValidationService",[ "NotificationService", func
 								{
 									var error = "El campo " + fieldName + " es obligatorio";
 									value = $(control).val();
-									var angularRex = /\? \w+:\w+ \?/;
+									var angularRex = /\? \w+:\w* \?/;
 									var exp = (value !== '') && (value !== null) && (value !== undefined) && (value.toString().length > 0) && (!angularRex.test(value));
 									Validation.evaluate(exp,error,control,undefined,fieldName,showMessage);
 									return exp;

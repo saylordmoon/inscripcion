@@ -44,7 +44,9 @@ public class FileUtil {
 
 		try
 		{
+			if (theDir.exists()) return true;
 			result = theDir.mkdirs();
+			
 		} 
 		catch(SecurityException se)
 		{

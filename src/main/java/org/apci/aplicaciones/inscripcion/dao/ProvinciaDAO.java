@@ -14,7 +14,7 @@ public class ProvinciaDAO extends BaseDAO implements IProvinciaService{
 	}
 
 	public List<Distrito> distritos(int pProvinciaId) {
-		return super.selectWhere(Distrito.class, "ProvinciaId" , pProvinciaId);
+		return super.execute("SpGetUbigeoProvinciaDistritos",Distrito.class, pProvinciaId);
 	}
 
 }

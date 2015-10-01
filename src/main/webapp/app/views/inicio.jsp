@@ -1,19 +1,3 @@
-<script type="text/javascript">
-            $(document).ready(function () {                
-                $('#datePickerinicio')
-                .datepicker({
-                    format: 'dd/mm/yyyy'
-                }); 
-               
-               $('#datePickerfin')
-                .datepicker({
-                    format: 'dd/mm/yyyy'
-                });
-               
-            });
-            
-   </script>
-
 <div class="row" data-ng-controller="ExperienciaController as expCtrl">
 	<div class="col-md-12">
 
@@ -68,153 +52,119 @@
 				</div>
 				<div id="form-experiencia" class="modal-body">
 					<div class="row">
-						<div class="col-md-4">
+						<div class="col-md-6">
 							<div class="form-group">
-								<label>Fecha Inicio de la Experiencia</label>
-								<div class="input-group input-append date" id="datePickerinicio">
-					                <input type="text" data-ng-model="expCtrl.experiencia.fechaInicio" class="form-control fecha" placeholder="Fecha Inicio"/>
-					                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-					            </div>
+								<label><i class="glyphicon glyphicon-calendar"></i> Fecha Inicio de la Experiencia:</label>
+								<input id="dat-fecha-inicio" type="text" data-ng-model="expCtrl.experiencia.fechaInicio" class="form-control fecha" data-provide="datepicker" data-date-format="dd/mm/yyyy" />
 							</div>
 						</div>
-						<div class="col-md-4">
+						<div class="col-md-6">
 							<div class="form-group">
-								<label>Fecha Fin de la Experiencia</label>
-								<div class="input-group input-append date" id="datePickerfin">
-					                <input type="text" class="form-control" data-ng-model="expCtrl.experiencia.fechaFin"  class="form-control fecha" placeholder="Fecha Fin"/>
-					                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-					            </div>
+								<label><i class="glyphicon glyphicon-calendar"></i> Fecha Fin de la Experiencia:</label>
+				                <input id="dat-fecha-fin" type="text" data-ng-model="expCtrl.experiencia.fechaFin" class="form-control fecha" data-provide="datepicker" data-date-format="dd/mm/yyyy" />
 							</div>
 						</div>
 					</div>
 					<div class="row">
 					<div class="col-md-12">
-						<div class="form-group" id="txt-sumilla">
+						<div class="form-group">
 							<label>Sumilla: </label>
-							<textarea data-ng-model="expCtrl.experiencia.sumilla" class="form-control" rows="4" placeholder="en máximo 150 palabras describa lo esencial de la experiencia que postula, que la hace exitosa." required></textarea>
+							<textarea id="txt-sumilla" data-ng-model="expCtrl.experiencia.sumilla" class="form-control" rows="4" placeholder="en máximo 150 palabras describa lo esencial de la experiencia que postula, que la hace exitosa." required></textarea>
 						</div>
 						</div>
 					</div>
-					<hr style="margin-top: 0px" />
-
-					<div class="row">
-						<div class="col-md-4">
-							<div class="form-group">
-								<button class="btn btn-default bmd-ripple">
-									<i class="fa fa-plus-square-o"></i>
-									Departamento
-								</button>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="form-group">
-								<button class="btn btn-default bmd-ripple">
-									<i class="fa fa-plus-square-o"></i>
-									Provincia
-								</button>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="form-group">
-								<button class="btn btn-default bmd-ripple">
-									<i class="fa fa-plus-square-o"></i>
-									Distrito
-								</button>
-							</div>
-						</div>						
-					</div>
-						<div class="table-responsive">
-							<table class="table table-bordered">
-								<thead>
-									<tr>
-										<th class="col-md-1">Nº</th>
-										<th class="col-md-4">Departamento</th>
-										<th class="col-md-3">Provincia</th>
-										<th class="col-md-3">Distrito</th>
-										<th class="col-md-1"></th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>{{$index+1}}</td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td>
-											<button class="btn btn-default btn-sm pull-right bmd-ripple">
-												<i class="glyphicon glyphicon-trash"></i>
-											</button>
-											
-											<!-- <button class="btn btn-info bmd-ripple">
-												<i class="fa fa-folder-open"></i>
-												Agregar
-											</button> -->
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-						
-						
-						<!-- <div class="col-md-4">
-							<div class="form-group">
-								<label>Departamento:</label>
-								<select class="form-control">
-									<option>Departamento</option>
-								</select>
-							</div>
-						</div>
-
-						<div class="col-md-4">
-							<div class="form-group">
-								<label>Provincia:</label>
-								<select class="form-control">
-									<option>Provincia</option>
-								</select>
-							</div>
-						</div>
-
-						<div class="col-md-4">
-							<div class="form-group">
-								<label>Distrito:</label>
-								<select class="form-control">
-									<option>Distrito</option>
-								</select>
-							</div>
-						</div> -->
-					
+														
 					<div class="row">
 						<div class="col-md-12">
-							<label>La población que intervino en la experiencia es del ámbito:</label>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-3">
-							<div class="radio">
-								<label>
-									<input data-ng-model="expCtrl.experiencia.ambito" type="radio" name="opciones" id="opciones_1" value="U" checked>
-									Urbano
-								</label>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="radio">
-								<label>
-									<input data-ng-model="expCtrl.experiencia.ambito" type="radio" name="opciones" id="opciones_2" value="R">
-									Rural
-								</label>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="radio">
-								<label>
-									<input data-ng-model="expCtrl.experiencia.ambito" type="radio" name="opciones" id="opciones_3" value="A">
-									Ambos
-								</label>
+
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h5>Ubicacion de la experiencia</h5>
+								</div>
+								<div id="panel-ubicacion" class="panel-body">
+									<div class="row">
+										<div class="col-md-3">
+											<div class="form-group">
+												<label>Departamento:</label>
+												<select id="sel-departamento" class="form-control" data-ng-model="expCtrl.ambito.departamento" data-ng-change="expCtrl.departamentoSelected()" data-ng-init="expCtrl.ambito.departamento=''">
+													<option data-ng-repeat="departamento in expCtrl.departamentos" data-id="{{departamento.departamentoId}}" value="{{departamento.nombre}}">{{departamento.nombre}}</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group">
+												<label>Provincia:</label>
+												<select id="sel-provincia" class="form-control" data-ng-model="expCtrl.ambito.provincia" data-ng-change="expCtrl.provinciaSelected()">
+													<option data-ng-repeat="provincia in expCtrl.provincias" data-id="{{provincia.provinciaId}}" value="{{provincia.nombre}}">{{provincia.nombre}}</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<div class="form-group">
+												<label>Distrito:</label>
+												<select id="sel-distrito" class="form-control" data-ng-model="expCtrl.ambito.distrito">
+													<option data-ng-repeat="distrito in expCtrl.distritos" data-id="{{distrito.distritoId}}" value="{{distrito.nombre}}">{{distrito.nombre}}</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-md-3">
+											<br />
+											<button class="btn btn-default bmd-ripple" data-ng-click="expCtrl.agregarAmbito()">
+												<i class="fa fa-plus"></i>
+												Agregar
+											</button>
+										</div>
+									</div>
+
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<div class="table-responsive bmd-ripple">
+											<table class="table table-bordered table-condensed">
+												<thead>
+													<tr>
+														<th class="col-md-1">Nº</th>
+														<th class="col-md-4">Departamento</th>
+														<th class="col-md-3">Provincia</th>
+														<th class="col-md-3">Distrito</th>
+														<th class="col-md-1"></th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr data-ng-repeat="ambito in expCtrl.ambitos">
+														<td>{{$index+1}}</td>
+														<td>{{ambito.departamento}}</td>
+														<td>{{ambito.provincia}}</td>
+														<td>{{ambito.distrito}}</td>
+														<td>
+															<button class="btn btn-default btn-sm pull-right bmd-ripple" data-ng-click="expCtrl.borrarAmbito(ambito)">
+																<i class="glyphicon glyphicon-trash"></i>
+															</button>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
 					
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="control-label">La población que intervino en la experiencia es del ámbito:</label>
+								<select id="sel-ambito" data-ng-model="expCtrl.experiencia.ambito" class="form-control">
+									<option value="U">Urbano</option>
+									<option value="R">Rural</option>
+									<option value="A">Ambos</option>
+								</select>
+							</div>
+							
+						</div>
+					</div>
+								
 					<hr style="margin-top: 0px" />
 
 					<div class="row">
@@ -301,7 +251,7 @@
 										<input id="imagen5" name="uploadFile" type="file" class="file" accept="image/jpg,image/png,image/jpeg">
 									</div>
 									<div class="col-md-6">
-										<a id="imagen6-ok" href="#" class="btn btn-info btn-xs pull-right bmd-floating bmd-ripple" style="display:none;"><i class="fa fa-check"></i>/a>
+										<a id="imagen6-ok" href="#" class="btn btn-info btn-xs pull-right bmd-floating bmd-ripple" style="display:none;"><i class="fa fa-check"></i></a>
 										<input id="imagen6" name="uploadFile" type="file" class="file" accept="image/jpg,image/png,image/jpeg" />
 
 										<a id="imagen7-ok" href="#" class="btn btn-info btn-xs pull-right bmd-floating bmd-ripple" style="display:none;"> <i class="fa fa-check"></i></a>
