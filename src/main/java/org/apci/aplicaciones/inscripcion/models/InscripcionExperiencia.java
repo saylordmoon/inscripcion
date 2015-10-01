@@ -10,7 +10,7 @@ public class InscripcionExperiencia {
 	private int InscripcionId;
 	private String Titulo;
 	private int TematicaId;
-	private int IntervencionId;
+	private String Intervencion;
 	private String Sumilla;
 	private String Ubigeo;
 	private String Ambito;
@@ -78,11 +78,11 @@ public class InscripcionExperiencia {
 	public void setTematicaId(int tematicaId) {
 		TematicaId = tematicaId;
 	}
-	public int getIntervencionId() {
-		return IntervencionId;
+	public String getIntervencion() {
+		return Intervencion;
 	}
-	public void setIntervencionId(int intervencionId) {
-		IntervencionId = intervencionId;
+	public void setIntervencion(String intervencion) {
+		Intervencion = intervencion;
 	}
 
 }

@@ -6,7 +6,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Inscripcion {
 	private int InscripcionId;
 	private String NombreInstitucion;
-	private int DepartamentoId;
+	private String Departamento;
+	private String Provincia;
+	private String Distrito;
+	
 	private String DireccionInstitucion;
 	private int NumeroRegistroAPCI;
 	private String TelefonoInstitucion;
@@ -26,7 +29,24 @@ public class Inscripcion {
 	private String Usuario;
 	private String Hash;
 	private int InstitucionId;
-
+	public String getProvincia() {
+		return Provincia;
+	}
+	public void setProvincia(String provincia) {
+		Provincia = provincia;
+	}
+	public String getDistrito() {
+		return Distrito;
+	}
+	public void setDistrito(String distrito) {
+		Distrito = distrito;
+	}
+	public String getDepartamento() {
+		return Departamento;
+	}
+	public void setDepartamento(String departamento) {
+		Departamento = departamento;
+	}
 	public int getInscripcionId() {
 		return InscripcionId;
 	}
@@ -38,12 +58,6 @@ public class Inscripcion {
 	}
 	public void setNombreInstitucion(String nombreInstitucion) {
 		NombreInstitucion = nombreInstitucion;
-	}
-	public int getDepartamentoId() {
-		return DepartamentoId;
-	}
-	public void setDepartamentoId(int departamentoId) {
-		DepartamentoId = departamentoId;
 	}
 	public String getDireccionInstitucion() {
 		return DireccionInstitucion;
@@ -159,6 +173,4 @@ public class Inscripcion {
 	public void setInstitucionId(int institucionId) {
 		InstitucionId = institucionId;
 	}
-	
-
 }

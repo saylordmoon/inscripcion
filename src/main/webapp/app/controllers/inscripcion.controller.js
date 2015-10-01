@@ -1,4 +1,4 @@
-angular.module("main").controller("InscripcionController",function(Utils,APP){
+angular.module("main").controller("InscripcionController",function(Utils,APP,$location){
 	
 	var self = this;
 	
@@ -13,7 +13,7 @@ angular.module("main").controller("InscripcionController",function(Utils,APP){
 	
 	this.nueva = false;
 	
-	Utils.Rest.getList(this,APP.URL_API + "departamento", "departamentos");
+	//Utils.Rest.getList(this,APP.URL_API + "departamento", "departamentos");
 	Utils.Rest.getList(this,APP.URL_API + "tematica" , "tematicas" );
 	
 	this.agregarDatosExperiencia = function(){
@@ -34,6 +34,7 @@ angular.module("main").controller("InscripcionController",function(Utils,APP){
 		
 		if (Utils.Validation.run()){
 			
+			this.experiencia.tematica = Utils.UI.Select.getSelectedText("sel-tematica-experiencia");
 			if (this.nueva) this.experiencias.push(this.experiencia);
 			console.log("Experiencias" , this.experiencias);
 			this.experiencia = {};
@@ -58,9 +59,9 @@ angular.module("main").controller("InscripcionController",function(Utils,APP){
 	
 	this.validacionRuc = function() {
 		
-		if (this.inscripcion.usuario.length == 11)
+		if (this.inscripcion.ruc.length == 11)
 		{
-			Utils.Rest.getList(this, APP.URL_API + "institucion/" + this.inscripcion.usuario).success(function(data){
+			Utils.Rest.getList(this, APP.URL_API + "institucion/" + this.inscripcion.ruc).success(function(data){
 				self.rucInvalido = false;
 				self.inscripcion.nombreInstitucion = data.nombre;
 				self.inscripcion.institucionId = data.institucionId;
@@ -68,8 +69,14 @@ angular.module("main").controller("InscripcionController",function(Utils,APP){
 				self.inscripcion.numeroRegistroAPCI = data.codigo;
 				self.inscripcion.direccionInstitucion = data.domicilio;
 				self.inscripcion.telefonoInstitucion = data.telefono;
+				self.inscripcion.departamento = data.departamento;
+				self.inscripcion.provincia = data.provincia;
+				self.inscripcion.distrito = data.distrito;
+				self.inscripcion.usuario = data.ruc;
 				
-				
+				self.inscripcion.directivoNombre = data.representante;
+				if (data.representante) self.inscripcion.directivoCargo = "Representante Legal";
+								
 			}).error(function(){
 				Utils.Notification.alerta("El RUC ingresado no puede participar en esta fase. Si cree que es un error por favor comuniquese con el correo <strong>experienciasexitosasongd@apci.gob.pe</strong>","Lo sentimos",15000);
 				self.rucInvalido = true;
@@ -89,16 +96,16 @@ angular.module("main").controller("InscripcionController",function(Utils,APP){
 		Utils.Validation.init();
 		
 		var ongdNombre = Utils.Validation.required("#txt-ongd","Nombre de la ONGD",false);
-		var ongdDep = Utils.Validation.required("#sel-departamento","Departamento",false);
 		var ongdDir = Utils.Validation.required("#txt-direccion","Dirección",false);
 		var ongdTel = Utils.Validation.required("#txt-telefono","Teléfono",false);
 		var ongdEmail = Utils.Validation.required("#txt-email","E-mail de la ONGD",false);
 		
-		var datosOngd = ongdNombre && ongdDep && ongdDir && ongdTel && ongdEmail;
+		var datosOngd = ongdNombre && ongdDir && ongdTel && ongdEmail;
 
 		Utils.Validation.validate(datosOngd,"Por favor complete los datos de la ONGD","Datos de la ONGD");
 		Utils.Validation.email("#txt-email","E-mail");
 		
+		Utils.Validation.minLen("#panel-experiencia", this.experiencias, 1, "Experiencia" , "panel-danger");
 
 		var dirNom = Utils.Validation.required("#txt-directivo-nombres","Nombre de Directivo",false);
 		var dirCar = Utils.Validation.required("#txt-directivo-cargo","Cargo de Directivo",false);
@@ -111,7 +118,7 @@ angular.module("main").controller("InscripcionController",function(Utils,APP){
 		var directivo = dirNom && dirCar && dirDNI && dirTel && dirCel && dirEmail;
 		Utils.Validation.validate(directivo,"Por favor complete los datos del Directivo","Datos del Directivo");
 		Utils.Validation.email("#txt-directivo-email","E-mail del Directivo");
-		if (dirDNI) Utils.Validation.len("#txt-directivo-dni", "DNI Directivo",11);
+		if (dirDNI) Utils.Validation.len("#txt-directivo-dni", "DNI Directivo",8);
 	
 		var conNom = Utils.Validation.required("#txt-contacto-nombres","Nombre de Contacto",false);
 		var conCar = Utils.Validation.required("#txt-contacto-cargo","Cargo de Contacto",false);
@@ -123,7 +130,7 @@ angular.module("main").controller("InscripcionController",function(Utils,APP){
 		var contacto = conNom && conCar && conDNI && conTel && conCel && conEmail;
 		Utils.Validation.validate(contacto,"Por favor complete los datos del Contacto","Datos del Contacto");
 		Utils.Validation.email("#txt-directivo-email","E-mail de Contacto");
-		if (conDNI) Utils.Validation.len("#txt-contacto-dni", "DNI Contacto",11);
+		if (conDNI) Utils.Validation.len("#txt-contacto-dni", "DNI Contacto",8);
 
 		var declaracionJurada = $("#chk-declaracion-jurada-1").is(':checked') && $("#chk-declaracion-jurada-2").is(':checked') && $("#chk-declaracion-jurada-3").is(':checked') &&  $("#chk-declaracion-jurada-4").is(':checked') &&  $("#chk-declaracion-jurada-5").is(':checked'); 
 		Utils.Validation.isTrueVar(declaracionJurada, "Declaracion Jurada", ".checkbox" )
@@ -132,26 +139,20 @@ angular.module("main").controller("InscripcionController",function(Utils,APP){
 			Utils.Validation.equalsVar($("#txt-password").val(), $("#txt-password-confirmacion").val(),"Contraseña","Las contraseñas ingresadas no son iguales",".password");
 		}
 		
-		
-		
 		if (Utils.Validation.run()){
 			
 			console.log("inscripcion ", this.inscripcion);		
 			Utils.Rest.save(APP.URL_API + "inscripcion", this.inscripcion).success(function(finscripcion){
 				
-				console.log("inscripcion ID", finscripcion.inscripcionId);
-				
-				console.log("experiencia ", this.experiencia);
-				for (var i = 0 ; i< self.experiencias.length; i++)
-				{
-					self.experiencias[i].inscripcionId= finscripcion.inscripcionId;
-					Utils.Rest.save(APP.URL_API + "experiencia",self.experiencias[i]);
-				}
+				Utils.Rest.save(APP.URL_API + "experiencia/" + finscripcion.inscripcionId + "/list",self.experiencias).success(function(){
+					var usuario = {};
+					usuario.usuario = self.inscripcion.usuario;
+					usuario.hash = self.inscripcion.hash;
+					usuario.institucionId = self.inscripcion.institucionId;
+					Utils.Rest.save(APP.URL_API + "usuario/login",usuario);
+					window.location = APP.URL + "login";
+				});
 			});
-					
-			Utils.Notification.mensaje("","Registro satisfactorio");
-			self.inscripcion = {};
-			self.experiencia = {};
 		}		
 	}
 });

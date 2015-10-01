@@ -9,6 +9,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -61,16 +62,18 @@ public class InscripcionExperienciaResource {
 		return Response.status(Response.Status.NOT_ACCEPTABLE).build();
 	}
 
-	/*@POST
+	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response addList(List<InscripcionExperiencia> pLista)
+	@Path("{InscripcionId}/list")
+	public Response addList(List<InscripcionExperiencia> pLista , @PathParam("InscripcionId") int pInscripcionId)
 	{
 		for (InscripcionExperiencia inscripcionExperiencia : pLista)
 		{
+			inscripcionExperiencia.setInscripcionId(pInscripcionId);
 			experiencia.add(inscripcionExperiencia);
 		}
 		return Response.status(Response.Status.OK).build();
-	}*/
+	}
 	
 	
 

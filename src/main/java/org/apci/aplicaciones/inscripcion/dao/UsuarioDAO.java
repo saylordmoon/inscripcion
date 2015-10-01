@@ -11,7 +11,7 @@ public class UsuarioDAO extends BaseDAO implements IUsuarioService {
 	@Override
 	public Boolean validate(String pUsuario, String pHash) {
 
-		return (query("SELECT InscripcionId as UsuarioId, Usuario, Hash FROM Inscripcion WHERE Usuario = ? AND Hash = ?",Usuario.class, pUsuario, pHash).size() == 1);
+		return (query("SELECT InscripcionId as UsuarioId, Usuario, Hash , InstitucionId FROM Inscripcion WHERE Usuario = ? AND Hash = ?",Usuario.class, pUsuario, pHash).size() == 1);
 	}
 
 	@Override

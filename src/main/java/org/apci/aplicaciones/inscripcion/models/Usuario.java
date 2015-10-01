@@ -5,7 +5,14 @@ public class Usuario {
 	private int UsuarioId;
 	private String Usuario;
 	private String Hash;
+	private int InstitucionId;
 	
+	public int getInstitucionId() {
+		return InstitucionId;
+	}
+	public void setInstitucionId(int institucionId) {
+		InstitucionId = institucionId;
+	}
 	public int getUsuarioId() {
 		return UsuarioId;
 	}
