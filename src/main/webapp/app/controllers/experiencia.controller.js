@@ -24,49 +24,7 @@ angular.module("main").controller("ExperienciaController" , function(Utils, APP)
 		$(".modal-registrar-experiencia").modal("show");
 	}
 
-	this.guardar = function(){
 
-		Utils.Validation.init();
-		Utils.Validation.required("#dat-fecha-inicio","Fecha de inicio");
-		Utils.Validation.required("#dat-fecha-fin","Fecha de Fin");
-		
-		Utils.Validation.dateLessThan("#dat-fecha-inicio",this.experiencia.fechaFin,"Fecha de Inicio");
-		Utils.Validation.dateGreaterThan("#dat-fecha-fin",this.experiencia.fechaInicio,"Fecha de Fin");
-		
-		Utils.Validation.required("#txt-sumilla","Sumilla");
-		Utils.Validation.required("#formato","Documento de la Experiencia");
-		
-		Utils.Validation.minLen("#panel-ubicacion", this.ambitos, 1, "Ubicacion" , "panel-danger");
-		
-		Utils.Validation.required("#sel-ambito","Ambito");
-		
-		if (Utils.Validation.run()) {
-		
-			this.experiencia.fechaInicio = moment(this.experiencia.fechaInicio,"DD/MM/YYYY").toDate();
-			this.experiencia.fechaFin = moment(this.experiencia.fechaFin,"DD/MM/YYYY").toDate();
-			this.experiencia.registrada = true;
-			
-			Utils.Rest.update(APP.URL_API + "experiencia", this.experiencia);
-				
-			$('input[type="file"]').each(function(index, control)
-			{
-				if ($(control).attr("ok") === "true") 
-				{
-					control.disabled="disabled"
-					var archivoExperiencia = {};
-					archivoExperiencia.inscripcionExperienciaId = self.experiencia.inscripcionExperienciaId;
-					archivoExperiencia.archivo = control.files[0].name;
-					archivoExperiencia.tipoArchivo = S(control.files[0].name).left(1).toUpperCase().s;
-					Utils.Rest.save(APP.URL_API + "archivoexperiencia", archivoExperiencia);
-				}
-			});
-
-			this.experiencia.fechaInicio = null;
-			this.experiencia.fechaFin = null;
-			this.experiencia.sumilla = null;
-			$(".modal-registrar-experiencia").modal("hide");
-		}
-	}
 	
 	this.departamentoSelected = function(){
 		
@@ -119,5 +77,52 @@ angular.module("main").controller("ExperienciaController" , function(Utils, APP)
 			});
 		}
 	});
+	
+	this.guardar = function(){
 
+		Utils.Validation.init();
+		Utils.Validation.required("#dat-fecha-inicio","Fecha de inicio");
+		Utils.Validation.required("#dat-fecha-fin","Fecha de Fin");
+		
+		Utils.Validation.dateLessThan("#dat-fecha-inicio",this.experiencia.fechaFin,"Fecha de Inicio");
+		Utils.Validation.dateGreaterThan("#dat-fecha-fin",this.experiencia.fechaInicio,"Fecha de Fin");
+		
+		Utils.Validation.required("#txt-sumilla","Sumilla");
+		Utils.Validation.required("#formato","Documento de la Experiencia");
+		
+		Utils.Validation.minLen("#panel-ubicacion", this.ambitos, 1, "Ubicacion" , "panel-danger");
+		
+		Utils.Validation.required("#sel-ambito","Ambito");
+		
+		if (Utils.Validation.run()) {
+		
+			this.experiencia.fechaInicio = moment(this.experiencia.fechaInicio,"DD/MM/YYYY").toDate();
+			this.experiencia.fechaFin = moment(this.experiencia.fechaFin,"DD/MM/YYYY").toDate();
+			this.experiencia.ubigeo = JSON.stringify(this.ambitos);
+			this.experiencia.registrada = true;
+			delete this.experiencia.$$hashKey;
+			
+			Utils.Rest.update(APP.URL_API + "experiencia", this.experiencia).success(function(){
+				
+				$('input[type="file"]').each(function(index, control)
+				{
+					if ($(control).attr("ok") === "true") 
+					{
+						control.disabled="disabled"
+						var archivoExperiencia = {};
+						archivoExperiencia.inscripcionExperienciaId = self.experiencia.inscripcionExperienciaId;
+						archivoExperiencia.archivo = control.files[0].name;
+						archivoExperiencia.tipoArchivo = S(control.files[0].name).left(1).toUpperCase().s;
+						Utils.Rest.save(APP.URL_API + "archivoexperiencia", archivoExperiencia);
+					}
+				});
+				
+				self.experiencia.fechaInicio = null;
+				self.experiencia.fechaFin = null;
+				self.experiencia.sumilla = null;
+				$(".modal-registrar-experiencia").modal("hide");
+			
+			});
+		}
+	}
 });
