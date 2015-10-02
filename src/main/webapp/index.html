@@ -15,6 +15,7 @@
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 		<link rel="stylesheet" type="text/css" href="css/jquery.notify.css" />
 		<link rel="stylesheet" type="text/css" href="css/styles.css" />
+		<link rel="stylesheet" type="text/css" href="css/style2.css" />
 		
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<link rel="stylesheet" href="css/prettify.css">
@@ -27,15 +28,22 @@
 		<link rel="stylesheet" type="text/css" href="css/jquery.notify.css">
 
 	</head>
-	<body data-ng-controller="InscripcionController as inscripcionCtrl">
-
+	<body data-ng-controller="InscripcionController as inscripcionCtrl" class="home page page-id-10 page-template page-template-template-full-nopad page-template-template-full-nopad-php pattern-bedge-grunge">
+		
 		<div class="row">
-			<div class="col-md-2">
-			</div>
+			<br /><br />
+		</div>
+		<div class="row">
+			<div class="col-md-2"></div>
 			<div class="col-md-8">
-				<div class="panel panel-info bmd-floating">
-					<div class="panel-heading">
-						<h4>Formato Solicitud de Inscripción</h4>
+				<a href="http://usi-08:9090/faq/index.html">
+					<img src="img/Slider-ongd.jpg" class="bmd-floating" width="100%" alt="First Slide">
+				</a>
+				
+				<br />
+				<div class="panel panel-default bmd-floating bmd-ripple">
+					<div class="panel-heading" align="center">
+						<h3>Solicitud de Inscripción</h3>
 					</div>
 					<div class="panel-body">
 						<div class="row form-horizontal">
@@ -316,7 +324,7 @@
 		
 	<!-- Modal DATOS DE LA EXPERIENCIA QUE SE POSTULA -->
 		<div class="modal fade modal-datosexperiencia" tabindex="-1" role="dialog">
-			<div class="modal-dialog modal-md">
+			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -337,7 +345,10 @@
 						</div>
 						<div class="form-group">
 							<label>Intervención</label>
-							<input data-ng-model="inscripcionCtrl.experiencia.intervencion" id="txt-intervencion" class="form-control"  />
+							<input data-ng-model="inscripcionCtrl.experiencia.intervencion" id="txt-intervencion" class="form-control" data-ng-change="inscripcionCtrl.buscarIntervencion()" />
+							<ul data-ng-show="inscripcionCtrl.autocomplete" class="nav nav-pills nav-stacked bmd-nav-pills-default bmd-floating">
+								<li data-ng-repeat="intervencion in inscripcionCtrl.intervenciones | filter:inscripcionCtrl.experiencia.intervencion"><a href="" data-ng-click="inscripcionCtrl.autocompleteSelected(intervencion.nombre)"  class="bmd-ripple">{{intervencion.nombre}}</a></li>
+							</ul>
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -388,6 +399,7 @@
 		<script type="text/javascript" src="app/services/utils/tab.service.js"></script>
 		<script type="text/javascript" src="app/services/utils/utils.service.js"></script>
 		<!--/ Util Services -->
+	
 		
 	</body>
 </html>

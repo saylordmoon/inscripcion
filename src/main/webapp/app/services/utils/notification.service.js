@@ -1,7 +1,7 @@
 angular.module('main').service("NotificationService",function(){
 
 	var tema = "default"; // default dark-theme
-	var posicion =  { x:"right", y:"top" }; //right | left | center //top | bottom | center
+	var posicion =  { x:"right", y:"bottom" }; //right | left | center //top | bottom | center
 	var duracion = 5000;
 	var botonCerrar = false;
 

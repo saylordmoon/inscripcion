@@ -12,8 +12,13 @@ angular.module("main").controller("InscripcionController",function(Utils,APP,$lo
 	this.experiencia = {};
 	
 	this.nueva = false;
+	this.autocomplete=false;
 	
-	//Utils.Rest.getList(this,APP.URL_API + "departamento", "departamentos");
+	this.institucion = {};
+	this.intervenciones = [];
+	
+	
+	
 	Utils.Rest.getList(this,APP.URL_API + "tematica" , "tematicas" );
 	
 	this.agregarDatosExperiencia = function(){
@@ -61,7 +66,7 @@ angular.module("main").controller("InscripcionController",function(Utils,APP,$lo
 		
 		if (this.inscripcion.ruc.length == 11)
 		{
-			Utils.Rest.getList(this, APP.URL_API + "institucion/" + this.inscripcion.ruc).success(function(data){
+			Utils.Rest.getList(this, APP.URL_API + "institucion/" + this.inscripcion.ruc,"institucion").success(function(data){
 				self.rucInvalido = false;
 				self.inscripcion.nombreInstitucion = data.nombre;
 				self.inscripcion.institucionId = data.institucionId;
@@ -73,9 +78,13 @@ angular.module("main").controller("InscripcionController",function(Utils,APP,$lo
 				self.inscripcion.provincia = data.provincia;
 				self.inscripcion.distrito = data.distrito;
 				self.inscripcion.usuario = data.ruc;
-				
 				self.inscripcion.directivoNombre = data.representante;
-				if (data.representante) self.inscripcion.directivoCargo = "Representante Legal";
+				
+				if (data.representante) { 
+					self.inscripcion.directivoCargo = "Representante Legal";
+				}
+				
+				Utils.Rest.getList(self, APP.URL_API + "intervencion/" + data.institucionId, "intervenciones");
 								
 			}).error(function(){
 				Utils.Notification.alerta("El RUC ingresado no puede participar en esta fase. Si cree que es un error por favor comuniquese con el correo <strong>experienciasexitosasongd@apci.gob.pe</strong>","Lo sentimos",15000);
@@ -151,8 +160,26 @@ angular.module("main").controller("InscripcionController",function(Utils,APP,$lo
 					usuario.institucionId = self.inscripcion.institucionId;
 					Utils.Rest.save(APP.URL_API + "usuario/login",usuario);
 					window.location = APP.URL + "login";
+					window.open(APP.URL + "login","_blank");
 				});
 			});
 		}		
 	}
+	
+	this.buscarIntervencion = function(){
+		
+		if (S(this.experiencia.intervencion).length > 0 ) {
+			this.autocomplete = true;
+		}
+		else {
+			this.autocomplete = false;
+		}
+	}
+	
+	this.autocompleteSelected = function(pValue) {
+		
+		this.experiencia.intervencion = pValue;
+		this.autocomplete=false;
+	}
+	
 });

@@ -1,3 +1,4 @@
+
 <div class="row" data-ng-controller="ExperienciaController as expCtrl">
 	<div class="col-md-12">
 
@@ -172,7 +173,7 @@
 							<div class="form-group">
 								<label>1. Descargar y completar el formato: </label>
 								<br />
-								<a href="archivos/Formato2.doc" download>
+								<a href="../archivos/Formato2.doc" download>
 									<i class="fa  fa-file-pdf-o"></i>
 									Formato
 								</a>
