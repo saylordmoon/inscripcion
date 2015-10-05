@@ -1,4 +1,4 @@
-var app = angular.module('main',['ngRoute'])
+var app = angular.module('main',[])
 
 .constant("APP", 
 		{

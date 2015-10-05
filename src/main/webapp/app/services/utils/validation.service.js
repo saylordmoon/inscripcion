@@ -2,7 +2,7 @@ angular.module('main').service("ValidationService",[ "NotificationService", func
 	$(".numero").inputmask("integer",{autoUnmask:true});
 	$(".ruc").inputmask("99999999999",{autoUnmask:true});
 	$(".dni").inputmask("99999999",{autoUnmask:true});
-	$(".fecha").inputmask("99/99/9999",{autoUnmask:true});
+	$(".fecha").inputmask("99/99/9999");
 	
 	var Validation = {
 		

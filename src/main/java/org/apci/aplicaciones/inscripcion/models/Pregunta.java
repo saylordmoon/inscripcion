@@ -1,0 +1,101 @@
+package org.apci.aplicaciones.inscripcion.models;
+
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
+public class Pregunta {
+	
+	private int PreguntaId;
+	private String Texto;
+	private String Respuesta;
+	private int CategoriaId;
+	private String QuienPregunta;
+	private String QuienResponde;
+	private int QPPersonaId;
+	private int QPInstitucionId;
+	private int QRPersonaId;
+	private int QRInstitucionId;
+	private boolean Respondida;
+	private boolean Publicada;
+	private boolean Eliminada;
+	
+	public int getPreguntaId() {
+		return PreguntaId;
+	}
+	public void setPreguntaId(int preguntaId) {
+		PreguntaId = preguntaId;
+	}
+	public String getTexto() {
+		return Texto;
+	}
+	public void setTexto(String texto) {
+		Texto = texto;
+	}
+	public String getRespuesta() {
+		return Respuesta;
+	}
+	public void setRespuesta(String respuesta) {
+		Respuesta = respuesta;
+	}
+	public int getCategoriaId() {
+		return CategoriaId;
+	}
+	public void setCategoriaId(int categoriaId) {
+		CategoriaId = categoriaId;
+	}
+	public String getQuienPregunta() {
+		return QuienPregunta;
+	}
+	public void setQuienPregunta(String quienPregunta) {
+		QuienPregunta = quienPregunta;
+	}
+	public String getQuienResponde() {
+		return QuienResponde;
+	}
+	public void setQuienResponde(String quienResponde) {
+		QuienResponde = quienResponde;
+	}
+	public int getQPPersonaId() {
+		return QPPersonaId;
+	}
+	public void setQPPersonaId(int qPPersonaId) {
+		QPPersonaId = qPPersonaId;
+	}
+	public int getQPInstitucionId() {
+		return QPInstitucionId;
+	}
+	public void setQPInstitucionId(int qPInstitucionId) {
+		QPInstitucionId = qPInstitucionId;
+	}
+	public int getQRPersonaId() {
+		return QRPersonaId;
+	}
+	public void setQRPersonaId(int qRPersonaId) {
+		QRPersonaId = qRPersonaId;
+	}
+	public int getQRInstitucionId() {
+		return QRInstitucionId;
+	}
+	public void setQRInstitucionId(int qRInstitucionId) {
+		QRInstitucionId = qRInstitucionId;
+	}
+	public boolean isRespondida() {
+		return Respondida;
+	}
+	public void setRespondida(boolean respondida) {
+		Respondida = respondida;
+	}
+	public boolean isPublicada() {
+		return Publicada;
+	}
+	public void setPublicada(boolean publicada) {
+		Publicada = publicada;
+	}
+	public boolean isEliminada() {
+		return Eliminada;
+	}
+	public void setEliminada(boolean eliminada) {
+		Eliminada = eliminada;
+	}
+
+}
