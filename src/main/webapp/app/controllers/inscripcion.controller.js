@@ -150,21 +150,26 @@ angular.module("main").controller("InscripcionController",function(Utils,APP,$lo
 		}
 		
 		if (Utils.Validation.run()){
-			
-			console.log("inscripcion ", this.inscripcion);		
-			Utils.Rest.save(APP.URL_API + "inscripcion", this.inscripcion).success(function(finscripcion){
-				
-				Utils.Rest.save(APP.URL_API + "experiencia/" + finscripcion.inscripcionId + "/list",self.experiencias).success(function(){
-					var usuario = {};
-					usuario.usuario = self.inscripcion.usuario;
-					usuario.hash = self.inscripcion.hash;
-					usuario.institucionId = self.inscripcion.institucionId;
-					Utils.Rest.save(APP.URL_API + "usuario/login",usuario);
-					window.location = APP.URL + "login";
-					window.open(APP.URL + "login","_blank");
-				});
-			});
+
+			$(".modal-confirmacion").modal("show");
 		}		
+	}
+
+	this.confirmarRegistro = function() {
+
+		console.log("inscripcion ", this.inscripcion);		
+		Utils.Rest.save(APP.URL_API + "inscripcion", this.inscripcion).success(function(finscripcion){
+				
+			Utils.Rest.save(APP.URL_API + "experiencia/" + finscripcion.inscripcionId + "/list",self.experiencias).success(function(){
+				var usuario = {};
+				usuario.usuario = self.inscripcion.usuario;
+				usuario.hash = self.inscripcion.hash;
+				usuario.institucionId = self.inscripcion.institucionId;
+				Utils.Rest.save(APP.URL_API + "usuario/login",usuario);
+				window.location = APP.URL + "login";
+				window.open(APP.URL + "login","_blank");
+			});
+		});
 	}
 	
 	this.buscarIntervencion = function(){

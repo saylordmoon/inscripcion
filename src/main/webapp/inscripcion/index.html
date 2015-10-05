@@ -138,7 +138,6 @@
 												Agregar Experiencia										
 											</a>
 											<h5>Experiencia</h5>
-											
 										</div>								                    	
 										<div class="panel-body">
 											<div class="table-responsive">
@@ -166,6 +165,9 @@
 													</tbody>
 												</table>
 											</div>
+										</div>
+										<div style="color: red;margin-left:20px;">
+											<p>* Por favor, verifique y valide la información que registra en esta sección. Una vez terminada la inscripción no podrá registrar mas experiencias.</p>
 										</div>
 									</div>
 								</div>
@@ -376,6 +378,7 @@
 								<li data-ng-repeat="intervencion in inscripcionCtrl.intervenciones | filter:inscripcionCtrl.experiencia.intervencion"><a href="" data-ng-click="inscripcionCtrl.autocompleteSelected(intervencion.nombre)"  class="bmd-ripple">{{intervencion.nombre}}</a></li>
 							</ul>
 						</div>
+						
 					</div>
 					<div class="modal-footer">
 						<button class="btn btn-info bmd-floating bmd-ripple" data-ng-click="inscripcionCtrl.guardarExperiencia()">
@@ -386,6 +389,26 @@
 				</div>
 			</div>
 		</div><!--/ Modal DATOS DE LA EXPERIENCIA QUE SE POSTULA  -->
+		<!-- Modal  -->
+		<div class="modal fade modal-confirmacion" role="dialog" >
+			<div class="modal-dialog modal-md">
+				<div class="modal-content">
+					<div class="modal-header bmd-text-blue-50 bmd-bg-info">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title ">Finalizar inscripción</h4>
+					</div>
+					<div class="modal-body">
+						 <h4> Por favor, verifique y valide la información que registra. Una vez terminada la inscripción no podrá registrar mas experiencias.</h4>
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-info btn-lg bmd-ripple bmd-floating" data-ng-click="inscripcionCtrl.confirmarRegistro()"><i class="fa fa-check"></i> Aceptar</button>
+						<button class="btn bmd-text-red-50 bmd-bg-red-300 bmd-ripple bmd-floating btn-lg" data-dismiss="modal" aria-label="Close" ><i class="fa fa-times"></i> Cancelar y agregar mas experiencias</button>
+					</div>
+				</div>
+			</div>
+		</div><!--/ Modal  -->
 		
 		<!-- jQuery -->
 		<script src="../js/jquery.min.js"></script>

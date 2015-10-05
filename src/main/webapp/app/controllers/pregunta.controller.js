@@ -15,11 +15,9 @@ angular.module("main").controller("PreguntaController",function    (Utils,APP){
 		if (!this.rucInvalido) {
 			Utils.Validation.init();
 			Utils.Validation.required("#txt-nombres","Nombre");
-			//Utils.Validation.required("#txt-institucion","Instituci&oacute;n");
 			Utils.Validation.required("#txt-texto","Pregunta");
 			
 			this.pregunta.quienPregunta = this.pregunta.nombres+' / '+this.pregunta.institucion;
-			
 					
 			Utils.Rest.save(APP.URL_API +"pregunta",this.pregunta).success(function(){
 				refresh();
