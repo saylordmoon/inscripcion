@@ -12,7 +12,7 @@ public class Authentication {
 	public static final String SESSION_NAME = "5df9f63916ebf8528697b629022993e8";
 	public static final String LOGIN_URL = "/login";
 	public static final String LOGOUT_URL = "/login";
-	public static final String LOGIN_PAGE = "login.html";
+	public static final String LOGIN_PAGE = "inscripcion/login.html";
 	public static final String LOGGED_PAGE = "app/";
 	private static Usuario usuario;
 	

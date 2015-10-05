@@ -17,7 +17,7 @@ angular.module("main").controller("InscripcionController",function(Utils,APP,$lo
 	this.institucion = {};
 	this.intervenciones = [];
 	
-	
+	this.rucInvalido = true;
 	
 	Utils.Rest.getList(this,APP.URL_API + "tematica" , "tematicas" );
 	

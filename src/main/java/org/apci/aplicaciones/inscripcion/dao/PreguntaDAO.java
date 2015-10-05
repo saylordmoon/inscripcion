@@ -17,7 +17,7 @@ public class PreguntaDAO extends BaseDAO implements IPreguntaService {
 	@Override
 	public List<Pregunta> publicadas() {
 		
-		return super.selectWhere(Pregunta.class, "Publicada", true);
+		return super.selectWhereAnd(Pregunta.class, "Publicada", true,"CategoriaId",3);
 	}
 
 	@Override
@@ -36,7 +36,4 @@ public class PreguntaDAO extends BaseDAO implements IPreguntaService {
 		return super.update(pPregunta);
 		
 	}
-	
-	
-
 }
