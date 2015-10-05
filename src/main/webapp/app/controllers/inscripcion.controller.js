@@ -23,9 +23,10 @@ angular.module("main").controller("InscripcionController",function(Utils,APP,$lo
 	
 	this.agregarDatosExperiencia = function(){
 		
-		console.log("agregar");
-		this.nueva =true;
-		$(".modal-datosexperiencia").modal("show");
+		if (!this.rucInvalido) {
+			this.nueva =true;
+			$(".modal-datosexperiencia").modal("show");
+		}
 	}
 	
 	this.guardarExperiencia = function() {
