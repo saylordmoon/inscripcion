@@ -153,45 +153,46 @@
 										<h3>Haga su Pregunta</h3>
 										<hr />	
 									</div>
-									<form class="form-horizontal">
-										<div class="form-group">
-											<label class="control-label">
-												Nombres:
-											</label>
-											<input data-ng-model="preguntaCtrl.pregunta.nombres" type="text" class="form-control" id="txt-nombres" placeholder="Nombres" />
+									<div class="rows">
+										<div class="col-md-1">										
 										</div>
-										<div class="form-group">
-											<label class="control-label">
-												Institución:
-											</label>
-											<input data-ng-model="preguntaCtrl.pregunta.institucion" type="text" class="form-control" id="txt-institucion" placeholder="Institución" />
-										</div>
-										<div class="form-group">
-											<label class="control-label">
-												Pregunta:
-											</label>
-											<textarea data-ng-model="preguntaCtrl.pregunta.texto" class="form-control" rows="5" id="txt-texto" placeholder="Preguntas" ></textarea>
-										</div>
-										<div class="form-group">
-											<div class="col-md-offset-1 col-md-11">
-												<button data-ng-click="preguntaCtrl.enviarPregunta()" class="btn btn-apci">
+										<div class="col-md-10">
+											<form>
+												<div class="form-group">
+													<label for="txt-nombres">Nombres:</label>
+												    <input data-ng-model="preguntaCtrl.pregunta.nombres" type="text" class="form-control" id="txt-nombres" placeholder="Nombres">
+												</div>
+												<div class="form-group">
+													<label for="txt-institucion">Institución:</label>
+													<input data-ng-model="preguntaCtrl.pregunta.institucion" type="text" class="form-control" id="txt-institucion" placeholder="Institución">
+												</div>
+												<div class="form-group">
+													<label for="txt-texto">Pregunta:</label>
+													<textarea data-ng-model="preguntaCtrl.pregunta.texto" class="form-control" rows="5" id="txt-texto" placeholder="Preguntas" ></textarea>
+												</div>
+												<button data-ng-click="preguntaCtrl.enviarPregunta()" class="btn btn-default">
 													Enviar <i class="glyphicon glyphicon glyphicon-send"></i>
 												</button>
-											</div>
+											</form>
+											<br />
+											<br />														
 										</div>
-									</form>
-									<br />
+										<div class="col-md-1">										
+										</div>
+										
+									</div>
+									
 									<div align="left">
 										<h3>Preguntas Frecuentes</h3>
 										<hr class="style-two" />
 									</div>
 									<div data-ng-repeat="pregunta in preguntaCtrl.preguntas" class="panel panel-default" style="margin-bottom:auto;margin-top:3px;">
 										 <div class="panel-heading">		  
-										  <a style="text-decoration:none; font-weight: bold; text-align:justify;" data-ng-click="collapsed=!collapsed" data-ng-value="Collapse" >
+										  <a style=cursor:pointer; text-decoration:none; font-weight: bold; text-align:justify;" data-ng-click="collapsed=!collapsed" data-ng-value="Collapse" >
 										  		<span class="pull-right">
 								                   <i class="glyphicon glyphicon-menu-down"></i>
 								               </span>               
-								              {{pregunta.texto}}
+								              <strong>{{pregunta.texto}}</strong>
 										  </a>
 										 </div>
 										 <div data-ng-show="collapsed" class="panel-body" >
@@ -206,10 +207,7 @@
 					</section>
 					<section class="section section-padded section-alt ">
 					</section>
-					
-					
 				</article>
-
 			</div>
 		</div>
 
