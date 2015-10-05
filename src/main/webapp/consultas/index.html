@@ -159,18 +159,22 @@
 											<div class="col-md-10">
 												<form>
 													<div class="form-group">
+														<label for="txt-nombres">R.U.C:</label>
+													    <input data-ng-change="preguntaCtrl.validacionRuc()" data-ng-model="preguntaCtrl.pregunta.ruc" type="text" class="form-control ruc" id="txt-ruc" placeholder="R.U.C.">
+													</div>
+													<div class="form-group">
 														<label for="txt-nombres">Nombres:</label>
-													    <input data-ng-model="preguntaCtrl.pregunta.nombres" type="text" class="form-control" id="txt-nombres" placeholder="Nombres">
+													    <input data-ng-disabled="preguntaCtrl.rucInvalido" data-ng-model="preguntaCtrl.pregunta.nombres" type="text" class="form-control" id="txt-nombres" placeholder="Nombres">
 													</div>
 													<div class="form-group">
 														<label for="txt-institucion">Institución:</label>
-														<input data-ng-model="preguntaCtrl.pregunta.institucion" type="text" class="form-control" id="txt-institucion" placeholder="Institución">
+														<input data-ng-disabled="preguntaCtrl.rucInvalido" data-ng-model="preguntaCtrl.pregunta.institucion" type="text" class="form-control" id="txt-institucion" placeholder="Institución">
 													</div>
 													<div class="form-group">
 														<label for="txt-texto">Pregunta:</label>
-														<textarea data-ng-model="preguntaCtrl.pregunta.texto" class="form-control" rows="5" id="txt-texto" placeholder="Preguntas" ></textarea>
+														<textarea data-ng-disabled="preguntaCtrl.rucInvalido" data-ng-model="preguntaCtrl.pregunta.texto" class="form-control" rows="5" id="txt-texto" placeholder="Preguntas" ></textarea>
 													</div>
-													<button data-ng-click="preguntaCtrl.enviarPregunta()" class="btn btn-default">
+													<button data-ng-disabled="preguntaCtrl.rucInvalido" data-ng-click="preguntaCtrl.enviarPregunta()" class="btn btn-default">
 														Enviar <i class="glyphicon glyphicon glyphicon-send"></i>
 													</button>
 												</form>

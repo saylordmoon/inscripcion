@@ -15,10 +15,17 @@ public class Pregunta {
 	private int QPInstitucionId;
 	private int QRPersonaId;
 	private int QRInstitucionId;
+	private String Departamento;
 	private boolean Respondida;
 	private boolean Publicada;
 	private boolean Eliminada;
 	
+	public String getDepartamento() {
+		return Departamento;
+	}
+	public void setDepartamento(String departamento) {
+		Departamento = departamento;
+	}
 	public int getPreguntaId() {
 		return PreguntaId;
 	}
