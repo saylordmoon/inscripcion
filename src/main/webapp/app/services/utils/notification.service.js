@@ -25,7 +25,7 @@ angular.module('main').service("NotificationService",function(){
 				mensaje: function(mensaje, titulo) { 
 					titulo = titulo || "Información";
 					notify({
-						type: "información", //alert | success | error | warning | info
+						type: "info", //alert | success | error | warning | info
 						title: titulo,
 						theme: tema,
 						position: 	posicion,

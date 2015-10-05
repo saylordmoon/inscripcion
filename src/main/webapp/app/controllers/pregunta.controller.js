@@ -6,7 +6,7 @@ angular.module("main").controller("PreguntaController",function    (Utils,APP){
 	refresh();
 	
 	this.pregunta = {};
-	this.pregunta.categoriaId = 1;
+	this.pregunta.categoriaId = 3;
 	
 	this.enviarPregunta = function(){
 		
@@ -18,12 +18,12 @@ angular.module("main").controller("PreguntaController",function    (Utils,APP){
 		this.pregunta.quienPregunta = this.pregunta.nombres+' / '+this.pregunta.institucion;
 		
 				
-		Utils.Rest.save(APP.API_URL +"pregunta",this.pregunta).success(function(){
+		Utils.Rest.save(APP.URL_API +"pregunta",this.pregunta).success(function(){
 			refresh();
 		});
 		
 		this.pregunta = {};
-		this.pregunta.categoriaId = 1;
+		this.pregunta.categoriaId = 3;
 		
 		if(Utils.Validation.run()){
 			Utils.Notification.mensaje("Su pregunta se envi\u00F3", "Gracias");
