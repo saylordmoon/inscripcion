@@ -64,7 +64,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label><i class="glyphicon glyphicon-calendar"></i> Fecha Inicio de la Intervención:</label>
-								<input id="dat-fecha-inicio" type="text" data-ng-model="expCtrl.experiencia.fechaInicio" class="form-control fecha" data-provide="datepicker" data-date-format="dd/mm/yyyy" placeholder="dd/mm/aaaa" />
+								<input id="dat-fecha-inicio" type="text" data-ng-model="expCtrl.experiencia.fechaInicio" class="form-control" data-provide="datepicker" data-date-format="dd/mm/yyyy" placeholder="dd/mm/aaaa" />
 							</div>
 						</div>
 						<div class="col-md-6">
