@@ -18,8 +18,10 @@ angular.module("main").controller("ExperienciaController" , function(Utils, APP)
 	this.registrarExperiencia = function(pExperiencia){
 
 		this.experiencia = pExperiencia;
-		this.experiencia.fechaInicio = moment(pExperiencia.fechaInicio,"DD/MM/YYYY").toString();
-		this.experiencia.fechaFin = moment(pExperiencia.fechaFin,"DD/MM/YYYY").toString();
+		if (pExperiencia.fechaInicio)
+			this.experiencia.fechaInicio = moment(pExperiencia.fechaInicio,"DD/MM/YYYY").toString();
+		if (pExperiencia.fechaFin)
+			this.experiencia.fechaFin = moment(pExperiencia.fechaFin,"DD/MM/YYYY").toString();
 		console.log("Registrar experiencia");
 		$(".modal-registrar-experiencia").modal("show");
 	}
@@ -135,4 +137,6 @@ angular.module("main").controller("ExperienciaController" , function(Utils, APP)
 			
 			});
 		}
+		
+		Utils.Mask.init();
 });
