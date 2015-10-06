@@ -7,7 +7,7 @@ angular.module('main').service("NotificationService",function(){
 
 	return {
 				info: function(mensaje, titulo) { 
-					titulo = titulo || "Ok";
+					titulo = titulo || "Información";
 					notify({
 						type: "success", //alert | success | error | warning | info
 						title: titulo,

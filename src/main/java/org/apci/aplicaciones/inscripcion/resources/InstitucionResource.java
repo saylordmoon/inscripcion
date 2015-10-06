@@ -34,6 +34,7 @@ public class InstitucionResource {
 		return result;
 	}
 	
+	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Institucion> getAll()

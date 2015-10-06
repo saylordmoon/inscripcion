@@ -1,5 +1,7 @@
 package org.apci.aplicaciones.inscripcion.dao;
 
+import java.util.List;
+
 import org.apci.aplicaciones.dao.BaseDAO;
 import org.apci.aplicaciones.inscripcion.models.Inscripcion;
 import org.apci.aplicaciones.inscripcion.services.IInscripcionService;
@@ -13,5 +15,17 @@ public class InscripcionDAO extends BaseDAO implements IInscripcionService {
 		pInscripcion.setInscripcionId(inscripcionId);
 		
 		return pInscripcion;
+	}
+
+	@Override
+	public boolean validate(String pRUC) {
+		
+		boolean result = false;
+		
+		List<Inscripcion> exists = selectWhere(Inscripcion.class,"Usuario",pRUC);
+		
+		result = (exists.size() == 0);
+		
+		return result;
 	}
 }

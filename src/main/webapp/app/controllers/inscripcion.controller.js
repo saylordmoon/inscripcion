@@ -21,6 +21,51 @@ angular.module("main").controller("InscripcionController",function(Utils,APP,$lo
 	
 	Utils.Rest.getList(this,APP.URL_API + "tematica" , "tematicas" );
 	
+	
+	
+	this.validacionRuc = function() {
+		
+		if (this.inscripcion.ruc.length == 11)
+		{
+			Utils.Rest.getList(this,APP.URL_API + "inscripcion/" + this.inscripcion.ruc + "/validar").success(function(){
+				Utils.Rest.getList(self, APP.URL_API + "institucion/" + self.inscripcion.ruc,"institucion").success(function(data){
+					self.rucInvalido = false;
+					self.inscripcion.nombreInstitucion = data.nombre;
+					self.inscripcion.institucionId = data.institucionId;
+					self.inscripcion.emailInstitucion = data.email;
+					self.inscripcion.numeroRegistroAPCI = data.codigo;
+					self.inscripcion.direccionInstitucion = data.domicilio;
+					self.inscripcion.telefonoInstitucion = data.telefono;
+					self.inscripcion.departamento = data.departamento;
+					self.inscripcion.provincia = data.provincia;
+					self.inscripcion.distrito = data.distrito;
+					self.inscripcion.usuario = data.ruc;
+					self.inscripcion.directivoNombre = data.representante;
+					
+					if (data.representante) { 
+						self.inscripcion.directivoCargo = "Representante Legal";
+					}
+					
+					Utils.Rest.getList(self, APP.URL_API + "intervencion/" + data.institucionId, "intervenciones");
+									
+				}).error(function(){
+					Utils.Notification.alerta("El RUC ingresado no puede participar en esta fase. Si cree que es un error por favor comuniquese con el correo <strong>experienciasexitosasongd@apci.gob.pe</strong>","Lo sentimos",15000);
+					self.rucInvalido = true;
+					self.inscripcion.institucion = "";
+					self.inscripcion.institucionId = "";
+				});
+
+			}).error(function(){
+				Utils.Notification.info("El RUC ingresado ya se encuentra inscrito","");
+			});
+		}
+		else {
+			self.rucInvalido = true;
+			self.inscripcion.institucion = "";
+			self.inscripcion.institucionId = "";
+		}
+	}
+	
 	this.agregarDatosExperiencia = function(){
 		
 		if (!this.rucInvalido) {
@@ -63,43 +108,7 @@ angular.module("main").controller("InscripcionController",function(Utils,APP,$lo
 	
 	this.rucInvalido = true;
 	
-	this.validacionRuc = function() {
-		
-		if (this.inscripcion.ruc.length == 11)
-		{
-			Utils.Rest.getList(this, APP.URL_API + "institucion/" + this.inscripcion.ruc,"institucion").success(function(data){
-				self.rucInvalido = false;
-				self.inscripcion.nombreInstitucion = data.nombre;
-				self.inscripcion.institucionId = data.institucionId;
-				self.inscripcion.emailInstitucion = data.email;
-				self.inscripcion.numeroRegistroAPCI = data.codigo;
-				self.inscripcion.direccionInstitucion = data.domicilio;
-				self.inscripcion.telefonoInstitucion = data.telefono;
-				self.inscripcion.departamento = data.departamento;
-				self.inscripcion.provincia = data.provincia;
-				self.inscripcion.distrito = data.distrito;
-				self.inscripcion.usuario = data.ruc;
-				self.inscripcion.directivoNombre = data.representante;
-				
-				if (data.representante) { 
-					self.inscripcion.directivoCargo = "Representante Legal";
-				}
-				
-				Utils.Rest.getList(self, APP.URL_API + "intervencion/" + data.institucionId, "intervenciones");
-								
-			}).error(function(){
-				Utils.Notification.alerta("El RUC ingresado no puede participar en esta fase. Si cree que es un error por favor comuniquese con el correo <strong>experienciasexitosasongd@apci.gob.pe</strong>","Lo sentimos",15000);
-				self.rucInvalido = true;
-				self.inscripcion.institucion = "";
-				self.inscripcion.institucionId = "";
-			});
-		}
-		else {
-			self.rucInvalido = true;
-			self.inscripcion.institucion = "";
-			self.inscripcion.institucionId = "";
-		}
-	}
+	
 	
 	this.registrarse = function(){
 				

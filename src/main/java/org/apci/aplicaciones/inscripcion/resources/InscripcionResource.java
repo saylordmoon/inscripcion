@@ -1,10 +1,13 @@
 package org.apci.aplicaciones.inscripcion.resources;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import javax.xml.bind.JAXBElement;
 
 import org.apci.aplicaciones.inscripcion.dao.InscripcionDAO;
@@ -28,4 +31,13 @@ public class InscripcionResource {
 		return inscripcion.add(pInscripcion.getValue());
 	}
 	
+	@GET
+	@Path("/{ruc}/validar")
+	public Response exists(@PathParam("ruc") String pRUC )
+	{
+		if (inscripcion.validate(pRUC))
+			return Response.status(Response.Status.OK).build();
+		
+		return Response.status(Response.Status.NOT_FOUND).build();
+	}
 }
