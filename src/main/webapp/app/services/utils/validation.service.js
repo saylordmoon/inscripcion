@@ -56,7 +56,7 @@ angular.module('main').service("ValidationService",[ "NotificationService", func
 									var error = "El campo " + fieldName + " debe ser de " + pLen + " caracteres";
 									value = $(control).val();
 									var exp = (value.toString().length == pLen) || (S(value).isEmpty());
-									Validation.evaluate(exp,error,control);
+									Validation.evaluate(exp,error,control,undefined,fieldName);
 									return exp;
 								}
 				,minLen		:  	function(control,value,min,fieldName,pclass)
