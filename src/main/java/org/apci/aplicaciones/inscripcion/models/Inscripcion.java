@@ -8,8 +8,7 @@ public class Inscripcion {
 	private String NombreInstitucion;
 	private String Departamento;
 	private String Provincia;
-	private String Distrito;
-	
+	private String Distrito;	
 	private String DireccionInstitucion;
 	private int NumeroRegistroAPCI;
 	private String TelefonoInstitucion;

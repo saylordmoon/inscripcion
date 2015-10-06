@@ -95,9 +95,19 @@ angular.module("main").controller("ExperienciaController" , function(Utils, APP)
 		Utils.Validation.required("#sel-ambito","Ambito");
 		
 		if (Utils.Validation.run()) {
+			
+			$(".modal-confirmacion-experiencia").modal("show");		
+			}
+		}
 		
+		
+		this.confirmarRegistroExperiencia = function() {
+			
 			this.experiencia.fechaInicio = moment(this.experiencia.fechaInicio,"DD/MM/YYYY").toDate();
 			this.experiencia.fechaFin = moment(this.experiencia.fechaFin,"DD/MM/YYYY").toDate();
+			console.log("Fecha Inicio",this.experiencia.fechaInicio);
+			console.log("Fecha Fin",this.experiencia.fechaFin);
+			
 			this.experiencia.ubigeo = JSON.stringify(this.ambitos);
 			this.experiencia.registrada = true;
 			delete this.experiencia.$$hashKey;
@@ -120,9 +130,9 @@ angular.module("main").controller("ExperienciaController" , function(Utils, APP)
 				self.experiencia.fechaInicio = null;
 				self.experiencia.fechaFin = null;
 				self.experiencia.sumilla = null;
+				$(".modal-confirmacion-experiencia").modal("hide");
 				$(".modal-registrar-experiencia").modal("hide");
 			
 			});
 		}
-	}
 });

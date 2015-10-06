@@ -37,11 +37,11 @@ fieldset[disabled] .btn-apci:hover{
 	color:#002E9A;background-color:#FFFFFF;border-color:#eea236}
 
 .bs-callout {
-    padding: 20px;
-    margin: 20px 0;
+    padding: 7px;
+    margin: 5px 0;
     border: 1px solid #eee;
-    border-left-width: 5px;
-    border-radius: 3px;
+    border-left-width: 4px;
+    border-radius: 2px;
 }
 .bs-callout h4 {
     margin-top: 0;
@@ -51,10 +51,10 @@ fieldset[disabled] .btn-apci:hover{
     margin-bottom: 0;
 }
 .bs-callout code {
-    border-radius: 3px;
+    border-radius: 2px;
 }
 .bs-callout+.bs-callout {
-    margin-top: -5px;
+    margin-top: -4px;
 }
 .bs-callout-default {
     border-left-color: #777;
@@ -100,29 +100,92 @@ hr.style-two {
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 }
 
-/* Styling for Select2 with error */
-div.has-error ul.select2-choices {
-  border-color: rgb(185, 74, 72) !important;
+hr.style-three {
+    border: 0;
+    border-bottom: 1px dashed #ccc;
+    background: #999;
+}
+hr.style-five {
+    border: 0;
+    height: 0; /* Firefox... */
+    box-shadow: 0 0 10px 1px black;
+}
+hr.style-five:after {  /* Not really supposed to work, but does */
+    content: "\00a0";  /* Prevent margin collapse */
+}
+hr.style-eight {
+    padding: 0;
+    border: none;
+    border-top: medium double #333;
+    color: #333;
+    text-align: center;
+}
+hr.style-eight:after {
+    content: "§";
+    display: inline-block;
+    position: relative;
+    top: -0.7em;
+    font-size: 1.5em;
+    padding: 0 0.25em;
+    background: white;
 }
 
 .cursor {
-    cursor: pointer;
+	cursor: pointer;
 }
 
-/*.btn{
-white-space:normal !important;
-    max-width:100%;
-}*/
-
-.disabled {
-  color: gray;
-  
+textarea.sin-borde { 
+	border-style:none;
+	border:none; 
+	background-color: #FFFFFF; 
+	margin: 0px;
+	text-align: justify;
+    overflow: hidden;
+    /*
+	height: auto;
+	display:block;
+	overflow:hidden;
+	 */
+	width: 100%; 
 }
 
-.modal-body {
-    max-height: calc(100vh - 210px);
-    overflow-y: scroll;
+textarea.auto-text-area{
+    min-height: 100%; /* for default height */
+    overflow: hidden;
+    resize: none;
+    border-style:none;
+	border:none; 
+	background-color: #FFFFFF; 
+	margin: 0px; 
+	/*height: auto;*/
+	display:block;	
+	width: 100%; 
+      }
+      
+i.estilo-asterisco{
+	color:red;
+	font: icon; 
+	font-size: x-large; 
+	
 }
+
+.t {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+.tc {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.rel {
+    position: relative;
+}
+
+/* book */
 
 .book {
     margin: 0 auto;
@@ -151,6 +214,81 @@ white-space:normal !important;
     max-width: 100%;
     height: 100%;
 }
+
+
+
+table.fondo{
+    background: repeating-radial-gradient(red, yellow 10%, green 20%);
+
+    /*
+    linear-gradient
+    radial-gradient
+    repeating-linear-gradient
+    repeating-radial-gradient
+    */
+}
+
+
+
+.carousel{
+    /* background: #2f4357; */
+    margin-top: 20px;
+}
+.carousel .item img{
+    margin: 0 auto; /* Align slide image horizontally center */
+}
+
+
+
+/* parpadeo */
+.luz.on{
+  color: #0099ff;/*color del texto al cambiar*/
+  text-shadow:
+     1px  1px rgba(255, 255, 255, .1),
+    -1px -1px rgba(0, 0, 0, .88),
+     0px  0px 20px #eb9c1f;/*color de la luz del texto*/
+}
+.luz{
+  font-size:18px;/*tamaño de la fuente*/
+  color: #243d82;
+  text-shadow:
+     1px  1px rgba(255, 255, 255, .1),
+    -1px -1px rgba(0, 0, 0, .88);
+}
+
+
+.caja {
+   /* margin:20px auto 40px auto;	
+   border:1px solid #d9d9d9;
+   height:30px;
+   overflow: hidden; */
+   width: 100%;
+   position:relative;
+}
+select {
+   background: transparent;
+   border: none;
+   font-size: 14px;
+   height: 30px;
+   padding: 5px;
+   width: 100%;
+}
+select:focus{ outline: none;}
+
+.caja::after{
+	content:"\025be";
+	font-size: 35px;
+	display:table-cell;
+	padding-top:3px;
+	text-align:center;
+	width:30px;
+	height:30px;	
+	position:absolute;
+	top:0;
+	right:0px;	
+	pointer-events: none;
+}
+
 
 
 

@@ -181,7 +181,7 @@
 							<div class="form-group">
 								<label>1. Descargar y completar el formato: </label>
 								<br />
-								<a href="../archivos/Formato2.doc" download>
+								<a href="../archivos/Formato2.pdf" download>
 									<i class="fa  fa-file-pdf-o"></i>
 									Formato
 								</a>
@@ -287,6 +287,27 @@
 						<i class="fa fa-save"></i>
 						Registrar
 					</button>
+				</div>
+			</div>
+		</div>
+	</div><!--/ Modal  -->
+	
+	<!-- Modal  -->
+	<div class="modal fade modal-confirmacion-experiencia" role="dialog" >
+		<div class="modal-dialog modal-md">
+			<div class="modal-content">
+				<div class="modal-header bmd-text-blue-50 bmd-bg-info">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title ">Finalizar Registro de Experiencia</h4>
+				</div>
+				<div class="modal-body">
+					 <h4> Por favor, verifique y valide la información que registra. Una vez terminado el registro no podrá modificar su experiencia.</h4>
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-info btn-lg bmd-ripple bmd-floating" data-ng-click="expCtrl.confirmarRegistroExperiencia()"><i class="fa fa-check"></i> Aceptar</button>
+					<button class="btn bmd-text-red-50 bmd-bg-red-300 bmd-ripple bmd-floating btn-lg" data-dismiss="modal" aria-label="Close" ><i class="fa fa-times"></i> Cancelar experiencia</button>
 				</div>
 			</div>
 		</div>
