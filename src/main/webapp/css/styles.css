@@ -134,6 +134,16 @@ hr.style-eight:after {
 	cursor: pointer;
 }
 
+.disabled {
+  color: gray;
+  
+}
+
+.modal-body {
+    max-height: calc(100vh - 210px);
+    overflow-y: scroll;
+}
+
 textarea.sin-borde { 
 	border-style:none;
 	border:none; 
