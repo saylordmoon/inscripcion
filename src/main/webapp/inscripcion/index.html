@@ -26,6 +26,9 @@
 		  
 		<!-- NOTIFICACIONES -->
 		<link rel="stylesheet" type="text/css" href="../css/jquery.notify.css">
+		
+		<link rel="shortcut icon" href="../favicon.ico?v=1.1"> 
+		<link rel="shortcut icon" href="../img/favicon.png">
 
 	</head>
 	<body data-ng-controller="InscripcionController as inscripcionCtrl" class="home page page-id-10 page-template page-template-template-full-nopad page-template-template-full-nopad-php pattern-bedge-grunge">
@@ -69,6 +72,11 @@
 				</nav>
 				<div class="panel panel-default bmd-floating">
 					<div class="panel-heading" align="center">
+						<a href="#" class="btn btn-info bmd-ripple bmd-fab bmd-fab-sm bmd-floating pull-right">
+						  <!-- <i class="bmd-icon material-icons">&#xe8fd;</i> -->
+						  <i class="bmd-icon material-icons">help_outline</i>
+						</a>
+					
 						<h3>Solicitud de Inscripción</h3>
 					</div>
 					<div class="panel-body">
@@ -338,9 +346,9 @@
 						</div>
 					</div>
 					<div class="panel-footer">
-						<button data-ng-disabled="inscripcionCtrl.rucInvalido" class="btn btn-info bmd-floating bmd-ripple" data-ng-click="inscripcionCtrl.registrarse()">
+						<button data-ng-disabled="inscripcionCtrl.rucInvalido" class="btn btn-info btn-lg bmd-floating bmd-ripple" data-ng-click="inscripcionCtrl.registrarse()">
 							<i class="fa fa-save"></i>
-							Registrarse
+							Inscribirse
 						</button>
 					</div>
 				</div>
@@ -448,7 +456,5 @@
 		<script type="text/javascript" src="../app/services/utils/tab.service.js"></script>
 		<script type="text/javascript" src="../app/services/utils/utils.service.js"></script>
 		<!--/ Util Services -->
-	
-		
 	</body>
 </html>
