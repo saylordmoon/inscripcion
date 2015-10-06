@@ -181,7 +181,7 @@
 							<div class="form-group">
 								<label>1. Descargar y completar el formato: </label>
 								<br />
-								<a href="../archivos/Formato2.pdf" download>
+								<a href="../archivos/Formato2.docx" download>
 									<i class="fa  fa-file-pdf-o"></i>
 									Formato
 								</a>
