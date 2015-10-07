@@ -97,7 +97,7 @@
 									<div class="form-group">
 										<label class="col-md-3">Nombre:</label>
 										<div class="col-md-9">
-											<input data-ng-disabled="inscripcionCtrl.rucInvalido" id="txt-ongd" data-ng-model="inscripcionCtrl.inscripcion.nombreInstitucion" type="text" class="form-control" placeholder="Nombre" required/>
+											<input data-ng-disabled="inscripcionCtrl.rucInvalido" id="txt-ongd" data-ng-model="inscripcionCtrl.inscripcion.nombreInstitucion" type="text" class="form-control" placeholder="Nombre y Apellidos" required/>
 										</div>
 									</div>
 									<div class="form-group">
@@ -408,11 +408,11 @@
 						<h4 class="modal-title ">Finalizar inscripción</h4>
 					</div>
 					<div class="modal-body">
-						 <h4> Por favor, verifique y valide la información que registra. Una vez terminada la inscripción no podrá registrar mas experiencias.</h4>
+						  <p style="font-size: 15px;"> Por favor, verifique y valide la información que registra. Una vez terminada la inscripción no podrá registrar mas experiencias.</p>
 					</div>
 					<div class="modal-footer">
-						<button class="btn btn-info btn-lg bmd-ripple bmd-floating" data-ng-click="inscripcionCtrl.confirmarRegistro()"><i class="fa fa-check"></i> Aceptar</button>
-						<button class="btn bmd-text-red-50 bmd-bg-red-300 bmd-ripple bmd-floating btn-lg" data-dismiss="modal" aria-label="Close" ><i class="fa fa-times"></i> Cancelar y agregar mas experiencias</button>
+						<button class="btn btn-info bmd-ripple bmd-floating" data-ng-click="inscripcionCtrl.confirmarRegistro()"><i class="fa fa-check"></i> Aceptar</button>
+						<button class="btn bmd-text-red-50 bmd-bg-red-300 bmd-ripple bmd-floating" data-dismiss="modal" aria-label="Close" ><i class="fa fa-times"></i> Cancelar y agregar mas experiencias</button>
 					</div>
 				</div>
 			</div>

@@ -23,7 +23,7 @@
 								<td>
 									<span data-ng-show="experiencia.registrada" class="btn btn-info bmd-bg-blue-800 bmd-text-blue-50 bmd-ripple">
 										<i class="fa fa-check"></i>
-										Registrada
+										Experiencia Registrada
 									</span>
 									<button data-ng-click="expCtrl.registrarExperiencia(experiencia)" data-ng-hide="experiencia.registrada" class="btn btn-info bmd-ripple">
 										<i class="fa fa-folder-open"></i>
@@ -303,11 +303,11 @@
 					<h4 class="modal-title ">Finalizar Registro de Experiencia</h4>
 				</div>
 				<div class="modal-body">
-					 <h4> Por favor, verifique y valide la información que registra. Una vez terminado el registro no podrá modificar su experiencia.</h4>
+					 <p style="font-size: 15px;"> Verifique y valide su información. Una vez finalizado el registro no podrá realizar modificaciones.</p>
 				</div>
 				<div class="modal-footer">
-					<button class="btn btn-info btn-lg bmd-ripple bmd-floating" data-ng-click="expCtrl.confirmarRegistroExperiencia()"><i class="fa fa-check"></i> Aceptar</button>
-					<button class="btn bmd-text-red-50 bmd-bg-red-300 bmd-ripple bmd-floating btn-lg" data-dismiss="modal" aria-label="Close" ><i class="fa fa-times"></i> Cancelar experiencia</button>
+					<button class="btn btn-info bmd-ripple bmd-floating" data-ng-click="expCtrl.confirmarRegistroExperiencia()"><i class="fa fa-check"></i> Aceptar</button>
+					<button class="btn bmd-text-red-50 bmd-bg-red-300 bmd-ripple bmd-floating" data-dismiss="modal" aria-label="Close" ><i class="fa fa-times"></i> Cancelar y continuar con el registro</button>
 				</div>
 			</div>
 		</div>
