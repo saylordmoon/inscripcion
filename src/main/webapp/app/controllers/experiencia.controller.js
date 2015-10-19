@@ -15,6 +15,14 @@ angular.module("main").controller("ExperienciaController" , function(Utils, APP)
 	Utils.Rest.getList(this, APP.URL_API + "experiencia","experiencias");
 	Utils.Rest.getList(this, APP.URL_API + "departamento","departamentos");
 	
+	//agregado
+	this.mostrarExperiencia = function(pExperiencia){
+		this.experiencia = pExperiencia;
+		$(".modal-mostrar-experiencia").modal("show");
+	}
+	
+	//
+	
 	this.registrarExperiencia = function(pExperiencia){
 
 		this.experiencia = pExperiencia;

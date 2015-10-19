@@ -39,4 +39,17 @@ public class UsuarioResource {
 		
 		return pUsuario.getValue();
 	}
+	
+	//agregado
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/loginconsulta")
+	public Usuario loginconsulta(JAXBElement<Usuario> pUsuario , @Context HttpServletRequest pRequest)
+	{
+		HttpSession session = pRequest.getSession();
+		session.setAttribute(Authentication.SESSION_NAME,pUsuario.getValue());
+		
+		return pUsuario.getValue();
+	}
 }

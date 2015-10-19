@@ -4,7 +4,7 @@ angular.module("main").controller('MenuController', function(Utils,APP){
 	
 	this.items = [  
 		{ nombre:"Inicio", 	icono:"glyphicon glyphicon-home", 		url:"#/" },
-		{ nombre:"Preguntas Frecuentes", icono:"fa fa-comments-o", url:"#/pregunta" },
+		/*{ nombre:"Preguntas Frecuentes", icono:"fa fa-comments-o", url:"#/pregunta" },*/
 	];
 
  	$("#menu-toggle").click(function(e) {  e.preventDefault();$("#wrapper").toggleClass("toggled"); });

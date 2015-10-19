@@ -140,7 +140,7 @@ hr.style-eight:after {
 }
 
 .modal-body {
-    max-height: calc(100vh - 210px);
+    /* max-height: calc(100vh - 210px); */
     overflow-y: scroll;
 }
 
@@ -300,5 +300,23 @@ select:focus{ outline: none;}
 }
 
 
+/*tamaño del modal Mostrar Experiencia*/
+.modal-tamanolg {
+    width: 1200px;
+}
 
+/* demo specific styles */
+.gal {text-align:center}
+.gal img {margin:10px}
+.gal img:hover {-webkit-box-shadow: 0px 0px 5px #333;-moz-box-shadow: 0px 0px 5px #333;}
+
+/* contorno del panel (video / audiovisual) */
+.panel-default-contorno{
+border-color: #2196F3;
+}
+
+/* fondo del panel (video / audiovisual) */
+.panel-fondo{
+	background-color:#EEEEEE;
+}
 
