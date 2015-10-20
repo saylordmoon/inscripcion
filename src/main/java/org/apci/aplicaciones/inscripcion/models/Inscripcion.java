@@ -1,8 +1,12 @@
 package org.apci.aplicaciones.inscripcion.models;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 @XmlRootElement
+//@XmlAccessorType(XmlAccessType.FIELD)
 public class Inscripcion {
 	private int InscripcionId;
 	private String NombreInstitucion;
@@ -26,6 +30,7 @@ public class Inscripcion {
 	private String ContactoCelular;
 	private String ContactoEmail;
 	private String Usuario;
+	//@XmlTransient
 	private String Hash;
 	private int InstitucionId;
 	public String getProvincia() {

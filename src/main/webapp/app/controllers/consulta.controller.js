@@ -1,4 +1,4 @@
-angular.module("main").controller("ExperienciaController" , function(Utils, APP){
+angular.module("main").controller("ConsultaController" , function(Utils, APP){
 	
 	var self = this;
 
@@ -14,6 +14,42 @@ angular.module("main").controller("ExperienciaController" , function(Utils, APP)
 	
 	Utils.Rest.getList(this, APP.URL_API + "experiencia","experiencias");
 	Utils.Rest.getList(this, APP.URL_API + "departamento","departamentos");
+	
+	//agregado par visualizar nombre de institución
+	this.instituciones = [];	
+	Utils.Rest.getList(this,APP.URL_API + 'inscripcion',"instituciones");
+	
+	
+	this.archivosExperiencia=[];
+	
+	
+	
+	
+	//agregado
+	this.mostrarExperiencia = function(pExperiencia){
+		this.experiencia = pExperiencia;
+		
+		console.log("experiencia: ", pExperiencia);
+		$(".modal-mostrar-experiencia").modal("show");
+		
+		Utils.Rest.getList(this,APP.URL_API + "archivoexperiencia/"+ this.experiencia.inscripcionExperienciaId , "archivosExperiencia");
+		
+		console.log("Experiencia" , this.experiencia.inscripcionExperienciaId);
+		console.log("Inscripcion" , this.instituciones);
+		
+		
+		/*var control = this;
+		$('input[type="file"]').each(function(index, control)
+				{
+						var archivoExperiencia = {};
+						archivoExperiencia.inscripcionExperienciaId = self.experiencia.inscripcionExperienciaId;
+						archivoExperiencia.archivo = control.files[0].name;
+						archivoExperiencia.tipoArchivo = S(control.files[0].name).left(1).toUpperCase().s;
+						Utils.Rest.getList(this,APP.URL_API + "archivoexperiencia", archivoExperiencia);
+				});*/
+	}
+	
+	//
 	
 	this.registrarExperiencia = function(pExperiencia){
 
@@ -124,7 +160,7 @@ angular.module("main").controller("ExperienciaController" , function(Utils, APP)
 						var archivoExperiencia = {};
 						archivoExperiencia.inscripcionExperienciaId = self.experiencia.inscripcionExperienciaId;
 						archivoExperiencia.archivo = control.files[0].name;
-						archivoExperiencia.tipoArchivo = $(control).attr("data-tipo");
+						archivoExperiencia.tipoArchivo = S(control.files[0].name).left(1).toUpperCase().s;
 						Utils.Rest.save(APP.URL_API + "archivoexperiencia", archivoExperiencia);
 					}
 				});

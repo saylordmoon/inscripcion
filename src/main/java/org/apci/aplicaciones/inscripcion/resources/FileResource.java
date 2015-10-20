@@ -26,11 +26,14 @@ import org.glassfish.jersey.media.multipart.FormDataParam;
 public class FileResource {
 	
     @GET
-    @Path("/download")
+    @Path("/download/{RUC}/{ExperienciaId}/{FileName}")
     @Produces("application/zip")
-    public Response downloadZippedFile() {
+    public Response downloadZippedFile(	@PathParam("RUC") String pRUC,
+    									@PathParam("ExperienciaId") String pExperienciaId,
+    									@PathParam("FileName") String pFileName ) 
+    {
  
-    	String fileName = "prueba";
+    	String fileName = pRUC + "/" + pExperienciaId +  "/" + pFileName;
     	
         File file = new File(FileUtil.UPLOAD_FILE_SERVER + fileName);
  

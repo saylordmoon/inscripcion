@@ -191,7 +191,7 @@
 							<div class="form-group">
 								<a id="formato-ok" href="#" class="btn btn-info btn-xs pull-right bmd-floating bmd-ripple" style="display:none;"> <i class="fa fa-check"></i> </a>
 								<label class="control-label">2. Subir formato</label>
-								<input id="formato" name="uploadFile" type="file" class="file" />
+								<input id="formato" name="uploadFile" type="file" class="file" data-tipo="F" />
       						</div>
 						</div>
 					</div>
@@ -203,7 +203,7 @@
 							<div class="form-group">
 								<a id="documento-adicional-ok" href="#" class="btn btn-info btn-xs pull-right bmd-floating bmd-ripple" style="display:none;"> <i class="fa fa-check"></i> </a>
 								<label class="control-label">Documento con información adicional (No mayor a 5 paginas)</label>
-								<input id="documento-adicional" name="uploadFile" type="file" class="file" />
+								<input id="documento-adicional" name="uploadFile" type="file" class="file" data-tipo="FA" />
 							</div>
 						</div>
 					</div>
@@ -218,7 +218,7 @@
 									Audiovisual (Máximo 90 segundos)
 								</label>
 								<a id="audio-visual-ok" href="#" class="btn btn-info btn-xs pull-right bmd-floating bmd-ripple" style="display:none;"> <i class="fa fa-check"></i> </a>
-								<input id="audio-visual" name="uploadFile" type="file" class="file" />
+								<input id="audio-visual" name="uploadFile" type="file" class="file" data-tipo="AV" />
 							</div>
 						</div>
 						<div class="col-md-6">
@@ -228,7 +228,7 @@
 									<i class="fa fa-video-camera"></i>
 									Video (Máximo 3 minutos)
 								</label>
-								<input id="video" name="uploadFile" type="file" class="file" />
+								<input id="video" name="uploadFile" type="file" class="file" data-tipo="V" />
 							</div>
 						</div>
 					</div>
@@ -245,35 +245,35 @@
 								<div class="row">
 									<div class="col-md-6">
 										<a id="imagen1-ok" href="#" class="btn btn-info btn-xs pull-right bmd-floating bmd-ripple" style="display:none;"> <i class="fa fa-check"></i></a>
-										<input id="imagen1" name="uploadFile" type="file" class="file" />
+										<input id="imagen1" name="uploadFile" type="file" class="file" data-tipo="I" />
 
 										<a id="imagen2-ok" href="#" class="btn btn-info btn-xs pull-right bmd-floating bmd-ripple" style="display:none;"> <i class="fa fa-check"></i></a>
-										<input id="imagen2" name="uploadFile" type="file" class="file" />
+										<input id="imagen2" name="uploadFile" type="file" class="file" data-tipo="I" />
 										
 										<a id="imagen3-ok" href="#" class="btn btn-info btn-xs pull-right bmd-floating bmd-ripple" style="display:none;"> <i class="fa fa-check"></i></a>
-										<input id="imagen3" name="uploadFile" type="file" class="file" />
+										<input id="imagen3" name="uploadFile" type="file" class="file" data-tipo="I"  />
 
 										<a id="imagen4-ok" href="#" class="btn btn-info btn-xs pull-right bmd-floating bmd-ripple" style="display:none;"> <i class="fa fa-check"></i></a>
-										<input id="imagen4" name="uploadFile" type="file" class="file" />
+										<input id="imagen4" name="uploadFile" type="file" class="file" data-tipo="I" />
 
 										<a id="imagen5-ok" href="#" class="btn btn-info btn-xs pull-right bmd-floating bmd-ripple" style="display:none;"> <i class="fa fa-check"></i></a>
-										<input id="imagen5" name="uploadFile" type="file" class="file" />
+										<input id="imagen5" name="uploadFile" type="file" class="file" data-tipo="I" />
 									</div>
 									<div class="col-md-6">
 										<a id="imagen6-ok" href="#" class="btn btn-info btn-xs pull-right bmd-floating bmd-ripple" style="display:none;"><i class="fa fa-check"></i></a>
-										<input id="imagen6" name="uploadFile" type="file" class="file" />
+										<input id="imagen6" name="uploadFile" type="file" class="file" data-tipo="I" />
 
 										<a id="imagen7-ok" href="#" class="btn btn-info btn-xs pull-right bmd-floating bmd-ripple" style="display:none;"> <i class="fa fa-check"></i></a>
-										<input id="imagen7" name="uploadFile" type="file" class="file" />
+										<input id="imagen7" name="uploadFile" type="file" class="file" data-tipo="I" />
 
 										<a id="imagen8-ok" href="#" class="btn btn-info btn-xs pull-right bmd-floating bmd-ripple" style="display:none;"> <i class="fa fa-check"></i></a>
-										<input id="imagen8" name="uploadFile" type="file" class="file" />
+										<input id="imagen8" name="uploadFile" type="file" class="file" data-tipo="I" />
 										
 										<a id="imagen9-ok" href="#" class="btn btn-info btn-xs pull-right bmd-floating bmd-ripple" style="display:none;"> <i class="fa fa-check"></i></a>
-										<input id="imagen9" name="uploadFile" type="file" class="file" />
+										<input id="imagen9" name="uploadFile" type="file" class="file" data-tipo="I" />
 
 										<a id="imagen10-ok" href="#" class="btn btn-info btn-xs pull-right bmd-floating bmd-ripple" style="display:none;"> <i class="fa fa-check"></i></a>
-										<input id="imagen10" name="uploadFile" type="file" class="file" />
+										<input id="imagen10" name="uploadFile" type="file" class="file" data-tipo="I" />
 									</div>
 								</div>
 							</div>

@@ -1,6 +1,6 @@
 
 
-<div class="row" data-ng-controller="ExperienciaController as expCtrl">
+<div class="row" data-ng-controller="ConsultaController as consultaCtrl">
 	<div class="col-md-12">
 
 		<div class="panel panel-default">
@@ -14,16 +14,19 @@
 						<thead>
 							<tr class="info">
 								<th class="col-md-1">Nº</th>
-								<th class="col-md-9">Experiencia</th>
+								<th class="col-md-4">Experiencia</th>
+								<th class="col-md-4">Institución</th>
 								<th class="col-md-2"></th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr data-ng-repeat="experiencia in expCtrl.experiencias">
+							<tr data-ng-repeat="experiencia in consultaCtrl.experiencias">
 								<td>{{$index+1}}</td>
 								<td>{{experiencia.titulo}}</td>
+								<!-- <td>{{consultaCtrl.instituciones.nombre}}</td> -->
+								<td>{{experiencia.inscripcionId | tipo : consultaCtrl.instituciones : "inscripcionId" : "nombreInstitucion"}}</td>
 								<td>
-									<button data-ng-click="expCtrl.mostrarExperiencia(experiencia)" class="btn btn-info bmd-ripple">
+									<button data-ng-click="consultaCtrl.mostrarExperiencia(experiencia)" class="btn btn-info bmd-ripple">
 										<i class="fa fa-folder-open"></i>
 										Visualizar experiencia
 									</button>
@@ -54,7 +57,7 @@
 		                <div class="col-md-12">
 		                    <div class="form-group">
 		                        <label>Título: </label>
-		                        <textarea id="txt-titulo" class="form-control" rows="4" readonly>{{expCtrl.experiencia.titulo}}</textarea>
+		                        <textarea id="txt-titulo" class="form-control" rows="4" readonly>{{consultaCtrl.experiencia.titulo}}</textarea>
 		                    </div>
 		                </div>
 		            </div>
@@ -62,13 +65,13 @@
 		                <div class="col-md-6">
 		                    <div class="form-group">
 		                        <label>Ubicación de la experiencia:</label>
-		                        <input id="txt-ubicacion" type="text" class="form-control" value="{{expCtrl.experiencia.ubigeo}}" readonly/>
+		                        <input id="txt-ubicacion" type="text" class="form-control" value="{{consultaCtrl.experiencia.ubigeo}}" readonly/>
 		                    </div>
 		                </div>
 		                <div class="col-md-6">
 		                    <div class="form-group">
 		                        <label>La población que intervino en la experiencia es del ámbito:</label>
-		                        <input id="txt-ambito" type="text" class="form-control" value="{{expCtrl.experiencia.ambito}}" readonly/>
+		                        <input id="txt-ambito" type="text" class="form-control" value="{{consultaCtrl.experiencia.ambito}}" readonly/>
 		                    </div>
 		                </div>
 		            </div>
@@ -76,13 +79,13 @@
 		                <div class="col-md-6">
 		                    <div class="form-group">
 		                        <label><i class="glyphicon glyphicon-calendar"></i> Fecha Inicio de la Intervención:</label>
-		                        <input id="dat-fecha-inicio" type="text" class="form-control" value="{{expCtrl.experiencia.fechaInicio}}" readonly/>
+		                        <input id="dat-fecha-inicio" type="text" class="form-control" value="{{consultaCtrl.experiencia.fechaInicio}}" readonly/>
 		                    </div>
 		                </div>
 		                <div class="col-md-6">
 		                    <div class="form-group">
 		                        <label><i class="glyphicon glyphicon-calendar"></i> Fecha Fin de la Intervención:</label>
-		                        <input id="dat-fecha-fin" type="text" class="form-control fecha" value="{{expCtrl.experiencia.fechaFin}}" readonly/>
+		                        <input id="dat-fecha-fin" type="text" class="form-control" value="{{consultaCtrl.experiencia.fechaFin}}" readonly/>
 		                    </div>
 		                </div>
 		            </div>
@@ -96,11 +99,12 @@
 		                            <div class="form-horizontal">
 		                                <div class="form-group">
 		                                    <label class="col-sm-3">Formato:</label>
-		                                    <div class="col-sm-6">
-		                                        <input id="txt-formato" type="text" class="form-control" value="{{expCtrl.archivoExperiencia.archivo}}" readonly/>
-		                                    </div>
+		                                    <!-- <div class="col-sm-6">
+		                                        <input id="txt-formato" type="text" class="form-control" readonly/>
+		                                    </div> -->
 		                                    <div class="col-sm-3 pull-left">
-		                                        <a href="#" class="btn btn-primary bmd-ripple" style="margin-top:0px;"><i class="fa fa-file"></i>&nbsp;Formato</a>
+		                                        <a  href="../api/v1/file/download/{{consultaCtrl.experiencia.inscripcionId | tipo : consultaCtrl.instituciones : 'inscripcionId' : 'RUC'}}/{{consultaCtrl.experiencia.inscripcionExperienciaId}}/{{formato.archivo}}" class="btn btn-primary bmd-ripple" style="margin-top:0px;"><i class="fa fa-eye">
+		                                        </i>&nbsp;Ver</a>
 		                                    </div>
 		                                </div>
 		                            </div>
@@ -109,11 +113,12 @@
 		                            <div class="form-horizontal">
 		                                <div class="form-group">
 		                                    <label class="col-sm-3">Formato Adicional:</label>
-		                                    <div class="col-sm-6">
-		                                        <input id="txt-formato-adicional" type="text" class="form-control" value="{{expCtrl.archivoExperiencia.archivo}}" readonly/>
-		                                    </div>
+		                                   <!--  <div class="col-sm-6">
+		                                        <input id="txt-formato-adicional" type="text" class="form-control" readonly/>
+		                                    </div> -->
 		                                    <div class="col-sm-3 pull-left">
-		                                        <a href="#" class="btn btn-primary bmd-ripple" style="margin-top:0px;"><i class="fa fa-file"></i>&nbsp;Formato Adicional</a>
+		                                        <a href="#" class="btn btn-primary bmd-ripple" style="margin-top:0px;">
+		                                        <i class="fa fa-eye"></i>&nbsp;Ver</a>
 		                                    </div>
 		                                </div>
 		                            </div>
@@ -129,7 +134,8 @@
 		                    <div class="panel-fondo panel-default ">
 		                        <div class="panel-body bmd-card-image">
 		                            <div class="flex-video widescreen" style="margin: 0 auto;text-align:center;">
-		                                <iframe allowfullscreen="" src="https://www.youtube.com/embed/6NbAAmDuv_8?feature=player_detailpage%22" frameborder="0"></iframe>
+		                            	<iframe src="" frameborder="0"></iframe>
+		                               <!--  <iframe allowfullscreen="" src="https://www.youtube.com/embed/6NbAAmDuv_8?feature=player_detailpage%22" frameborder="0"></iframe> -->
 		                            </div>
 		                            <figcaption class="bmd-card-caption text-center">
 		                                <h3>Video</h3>
@@ -141,7 +147,8 @@
 		                    <div class="panel-fondo panel-default-contorno">
 		                        <div class="panel-body bmd-card-image">
 		                            <div class="flex-video widescreen" style="margin: 0 auto;text-align:center;">
-		                                <iframe allowfullscreen="" src="" frameborder="0"></iframe>
+		                                <iframe src="" frameborder="0">
+		                                </iframe>
 		                            </div>
 		                            <figcaption class="bmd-card-caption text-center">
 		                                <h3>AudioVisual</h3>
@@ -156,17 +163,11 @@
 			            	<div class="text-center">
 				                <h3>Galería de Fotos</h3><br/>
 				            </div>
-				            <div class="gal">  
-				                <a class="fancybox" rel="group" href="demo/img1.jpg" title="Imagen 01"><img src="demo/img1s.jpg" alt=""></a>
-				            	<a class="fancybox" rel="group" href="demo/img2.jpg" title="Imagen 02"><img src="demo/img2s.jpg" alt=""></a>
-				            	<a class="fancybox" rel="group" href="demo/img3.jpg" title="Imagen 03"><img src="demo/img3s.jpg" alt=""></a>
-				            	<a class="fancybox" rel="group" href="demo/img4.jpg" title="Imagen 04"><img src="demo/img4s.jpg" alt=""></a><br />
-				                <a class="fancybox" rel="group" href="demo/img1.jpg" title="Imagen 05"><img src="demo/img1s.jpg" alt=""></a>
-				                <a class="fancybox" rel="group" href="demo/img2.jpg" title="Imagen 06"><img src="demo/img2s.jpg" alt=""></a>
-				                <a class="fancybox" rel="group" href="demo/img3.jpg" title="Imagen 07"><img src="demo/img3s.jpg" alt=""></a>
-				                <a class="fancybox" rel="group" href="demo/img4.jpg" title="Imagen 08"><img src="demo/img4s.jpg" alt=""></a><br />
-				                <a class="fancybox" rel="group" href="demo/img1.jpg" title="Imagen 09"><img src="demo/img1s.jpg" alt=""></a>
-				                <a class="fancybox" rel="group" href="demo/img2.jpg" title="Imagen 10"><img src="demo/img2s.jpg" alt=""></a>
+
+				            <div class="gal" data-ng-init="archivo.tipoArchivo = 'D'" >
+				            	<a data-ng-repeat="imagen in consultaCtrl.archivosExperiencia | filter : archivo" class="fancybox" rel="group" href="../api/v1/file/download/{{consultaCtrl.experiencia.inscripcionId | tipo : consultaCtrl.instituciones : 'inscripcionId' : 'RUC'}}/{{consultaCtrl.experiencia.inscripcionExperienciaId}}/{{imagen.archivo}}">
+				            		<img src="../api/v1/file/download/{{consultaCtrl.experiencia.inscripcionId | tipo : consultaCtrl.instituciones : 'inscripcionId' : 'RUC'}}/{{consultaCtrl.experiencia.inscripcionExperienciaId}}/{{imagen.archivo}}" alt="" height="130px" width="200px">
+				            	</a>
 				            </div>
 		            	</div>
 		            </div>

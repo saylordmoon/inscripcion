@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apci.aplicaciones.dao.BaseDAO;
 import org.apci.aplicaciones.inscripcion.models.Inscripcion;
+import org.apci.aplicaciones.inscripcion.models.InscripcionInstitucion;
 import org.apci.aplicaciones.inscripcion.services.IInscripcionService;
 
 public class InscripcionDAO extends BaseDAO implements IInscripcionService {
@@ -27,5 +28,11 @@ public class InscripcionDAO extends BaseDAO implements IInscripcionService {
 		result = (exists.size() == 0);
 		
 		return result;
+	}
+
+	@Override
+	public List<InscripcionInstitucion> get() {
+
+		return query("SELECT InscripcionId, NombreInstitucion, usuario as RUC FROM inscripcion",InscripcionInstitucion.class);
 	}
 }
