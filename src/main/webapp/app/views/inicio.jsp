@@ -191,7 +191,7 @@
 							<div class="form-group">
 								<a id="formato-ok" href="#" class="btn btn-info btn-xs pull-right bmd-floating bmd-ripple" style="display:none;"> <i class="fa fa-check"></i> </a>
 								<label class="control-label">2. Subir formato</label>
-								<input id="formato" name="uploadFile" type="file" class="file" data-tipo="F" />
+								<input id="formato" name="uploadFile" type="file" class="file" data-tipo="D" />
       						</div>
 						</div>
 					</div>
@@ -203,7 +203,7 @@
 							<div class="form-group">
 								<a id="documento-adicional-ok" href="#" class="btn btn-info btn-xs pull-right bmd-floating bmd-ripple" style="display:none;"> <i class="fa fa-check"></i> </a>
 								<label class="control-label">Documento con información adicional (No mayor a 5 paginas)</label>
-								<input id="documento-adicional" name="uploadFile" type="file" class="file" data-tipo="FA" />
+								<input id="documento-adicional" name="uploadFile" type="file" class="file" data-tipo="F" />
 							</div>
 						</div>
 					</div>
@@ -218,7 +218,7 @@
 									Audiovisual (Máximo 90 segundos)
 								</label>
 								<a id="audio-visual-ok" href="#" class="btn btn-info btn-xs pull-right bmd-floating bmd-ripple" style="display:none;"> <i class="fa fa-check"></i> </a>
-								<input id="audio-visual" name="uploadFile" type="file" class="file" data-tipo="AV" />
+								<input id="audio-visual" name="uploadFile" type="file" class="file" data-tipo="A" />
 							</div>
 						</div>
 						<div class="col-md-6">

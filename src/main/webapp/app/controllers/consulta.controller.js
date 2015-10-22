@@ -1,4 +1,4 @@
-angular.module("main").controller("ConsultaController" , function(Utils, APP){
+angular.module("main").controller("ConsultaController" , function(Utils, APP,$filter){
 	
 	var self = this;
 
@@ -24,29 +24,37 @@ angular.module("main").controller("ConsultaController" , function(Utils, APP){
 	
 	
 	
-	
 	//agregado
 	this.mostrarExperiencia = function(pExperiencia){
-		this.experiencia = pExperiencia;
 		
 		console.log("experiencia: ", pExperiencia);
+		this.experiencia = pExperiencia;
+
+		this.experiencia.fechaInicio = $filter("date")(this.experiencia.fechaInicio,"dd/MM/yyyy");
+		this.experiencia.fechaFin = $filter("date")(this.experiencia.fechaFin,"dd/MM/yyyy");
+		this.experiencia.ambito = $filter("ambito")(this.experiencia.ambito);
+		
+		
 		$(".modal-mostrar-experiencia").modal("show");
 		
 		Utils.Rest.getList(this,APP.URL_API + "archivoexperiencia/"+ this.experiencia.inscripcionExperienciaId , "archivosExperiencia");
 		
-		console.log("Experiencia" , this.experiencia.inscripcionExperienciaId);
-		console.log("Inscripcion" , this.instituciones);
+		/*console.log("Experiencia" , this.experiencia.inscripcionExperienciaId);
+		console.log("Inscripcion" , this.instituciones);*/
+	
+		this.ubigeoexperiencia= JSON.parse(this.experiencia.ubigeo);
+		//console.log("ubigeoexperiencia" , this.ubigeoexperiencia , this.ubigeoexperiencia[0] );
 		
-		
-		/*var control = this;
-		$('input[type="file"]').each(function(index, control)
-				{
-						var archivoExperiencia = {};
-						archivoExperiencia.inscripcionExperienciaId = self.experiencia.inscripcionExperienciaId;
-						archivoExperiencia.archivo = control.files[0].name;
-						archivoExperiencia.tipoArchivo = S(control.files[0].name).left(1).toUpperCase().s;
-						Utils.Rest.getList(this,APP.URL_API + "archivoexperiencia", archivoExperiencia);
-				});*/
+		for (var i=0; i<this.ubigeoexperiencia.length; i++)
+			{
+				this.ubigeoexperiencia[i].departamento;
+				this.ubigeoexperiencia[i].provincia;
+				this.ubigeoexperiencia[i].distrito;
+				/*console.log("Departamento",this.ubigeoexperiencia[i].departamento);
+				console.log("Provincia",this.ubigeoexperiencia[i].provincia);
+				console.log("Distrito",this.ubigeoexperiencia[i].distrito);*/
+			}
+	
 	}
 	
 	//

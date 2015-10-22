@@ -27,7 +27,7 @@ public class FileResource {
 	
     @GET
     @Path("/download/{RUC}/{ExperienciaId}/{FileName}")
-    @Produces("application/zip")
+    //@Produces("application/zip")
     public Response downloadZippedFile(	@PathParam("RUC") String pRUC,
     									@PathParam("ExperienciaId") String pExperienciaId,
     									@PathParam("FileName") String pFileName ) 
