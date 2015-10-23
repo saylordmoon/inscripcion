@@ -29,6 +29,12 @@ public class InscripcionExperienciaDAO extends BaseDAO implements IInscripcionEx
 		
 		return super.update(pExperiencia);
 	}
+
+	@Override
+	public List<InscripcionExperiencia> getAll() {
+		
+		return super.query("Select * from inscripcionExperiencia where InscripcionExperienciaId > 65",InscripcionExperiencia.class);
+	}
 	
 	
 }

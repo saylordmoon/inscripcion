@@ -15,10 +15,20 @@ import javax.xml.bind.JAXBElement;
 
 import org.apci.aplicaciones.inscripcion.models.Usuario;
 import org.apci.aplicaciones.util.auth.Authentication;
+import org.apci.aplicaciones.util.auth.AuthenticationAdmin;
 
 
 @Path("/usuario")
 public class UsuarioResource {
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/admin")
+	public Response getAdmin(@Context HttpServletRequest pRequest)
+	{
+		AuthenticationAdmin.getUser(pRequest);
+		return Response.status(Response.Status.OK).build();
+	}
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)

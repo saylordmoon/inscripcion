@@ -12,7 +12,9 @@ angular.module("main").controller("ConsultaController" , function(Utils, APP,$fi
 	this.ambitos = [];
 	this.ambito = {};
 	
-	Utils.Rest.getList(this, APP.URL_API + "experiencia","experiencias");
+	Utils.Rest.getList(this, APP.URL_API + "experiencia/all","experiencias").success(function(data){
+		console.log("experiencias",data);
+	});
 	Utils.Rest.getList(this, APP.URL_API + "departamento","departamentos");
 	
 	//agregado par visualizar nombre de institución

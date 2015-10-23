@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<title>APCI - Experiencias Exitosas ONGD</title>
+		
+		<link rel="stylesheet" type="text/css" href="../css/login.css">
+		<link rel="stylesheet" href="../css/bootstrap.min.css">
+		<link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css">
+		
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<link rel="stylesheet" href="../css/prettify.css">
+		<link rel="stylesheet" href="../css/main.min.css">
+		
+		<link rel="shortcut icon" href="favicon.ico?v=1.1"> 
+		<link rel="shortcut icon" href="img/favicon.png">
+	</head>
+	<body style="background-color: #e6e6e6;">
+		<form action="/inscripcion/loginadmin" method="post" style="height: 100%;">
+			<div data-ng-controller="LoginController as loginCtrl" class="login-container">
+				<div class="panel panel-default bmd-floating login" style="width: 40%; min-width: 250px; max-width: 500px;">
+					<div class="panel-heading bmd-ripple">
+						<h4>Administración</h4>
+					</div>
+					<div class="panel-body">
+						<div class="form-group">
+							<label>Usuario</label>
+							<input id="usuario" name="usuario" type="text" class="form-control" placeholder="Usuario" required />
+						</div>
+						<div class="form-group">
+							<label>Contraseña</label>
+							<input id="password" name="password" type="password" class="form-control" placeholder="Contraseña" required />
+						</div>
+					</div>
+					<div class="panel-footer">
+						<button class="btn btn-info bmd-floating bmd-ripple" data-ng-click="loginCtrl.login()">
+							<i class="fa fa-sign-in"></i>
+							Ingresar
+						</button>
+					</div>
+				</div>
+			</div>
+		</form>
+		<script src="../js/jquery.min.js"></script>
+		
+		
+		<script src="../js/jquery.easing.min.js"></script>
+  		<script src="../js/prettify.js"></script>
+  		<script src="../js/main.min.js"></script>
+  		<script src="../js/bootstrap.min.js"></script>
+	</body>
+</html>

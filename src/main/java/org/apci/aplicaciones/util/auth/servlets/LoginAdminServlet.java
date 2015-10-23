@@ -9,31 +9,28 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apci.aplicaciones.util.auth.AuthenticationConsulta;
+import org.apci.aplicaciones.util.auth.AuthenticationAdmin;
 import org.apci.aplicaciones.inscripcion.dao.UsuarioDAO;
 import org.apci.aplicaciones.inscripcion.models.Usuario;
-import org.apci.aplicaciones.inscripcion.services.IUsuarioService;
 
-@WebServlet("/loginconsulta")
-public class LoginServletConsulta extends HttpServlet {
+@WebServlet("/loginadmin")
+public class LoginAdminServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private IUsuarioService usuario;
-	
-	public LoginServletConsulta() {
+	public LoginAdminServlet() {
      
 		super();
-		usuario = new UsuarioDAO();
+		new UsuarioDAO();
     }
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		if (AuthenticationConsulta.isLoggedIn(request)) {
+		if (AuthenticationAdmin.isLoggedIn(request)) {
 			
-			response.sendRedirect(AuthenticationConsulta.LOGGED_PAGE);
+			response.sendRedirect(AuthenticationAdmin.LOGGED_PAGE);
 		}
 		else {
 			
-			response.sendRedirect(AuthenticationConsulta.LOGIN_PAGE);
+			response.sendRedirect(AuthenticationAdmin.LOGIN_PAGE);
 		}
 	}
 	
@@ -42,12 +39,13 @@ public class LoginServletConsulta extends HttpServlet {
 		String username = request.getParameter("usuario").trim();
 		String password = request.getParameter("password").trim();
 		
-		if (usuario.validate(username, password)) {
+		if (username.equals("admin") && password.equals("admin123")) {
 			
 			HttpSession session = request.getSession();
-			Usuario user = usuario.getByName(username);
-			session.setAttribute(AuthenticationConsulta.SESSION_NAME,user);
-			response.sendRedirect(AuthenticationConsulta.LOGGED_PAGE);
+			Usuario user = new  Usuario();
+			user.setUsuario("Administrador");
+			session.setAttribute(AuthenticationAdmin.SESSION_NAME,user);
+			response.sendRedirect(AuthenticationAdmin.LOGGED_PAGE);
 		}
 		else {
 			

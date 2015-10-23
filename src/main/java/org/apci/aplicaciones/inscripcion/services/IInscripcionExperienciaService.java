@@ -8,7 +8,9 @@ public interface IInscripcionExperienciaService {
 	
 	InscripcionExperiencia add(InscripcionExperiencia pExperiencia);
 	
-	List<InscripcionExperiencia> get(int pInscripcion); 
+	List<InscripcionExperiencia> get(int pInscripcion);
+	
+	List<InscripcionExperiencia> getAll();
 	
 	boolean update(InscripcionExperiencia pExperiencia);
 

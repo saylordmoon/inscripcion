@@ -11,7 +11,7 @@ public class PreguntaDAO extends BaseDAO implements IPreguntaService {
 	@Override
 	public List<Pregunta> get() {
 		
-		return super.select(Pregunta.class);
+		return super.selectWhere(Pregunta.class,"CategoriaId",3);
 	}
 	
 	@Override

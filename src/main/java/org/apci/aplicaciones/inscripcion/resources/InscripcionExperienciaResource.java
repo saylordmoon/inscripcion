@@ -21,6 +21,7 @@ import org.apci.aplicaciones.inscripcion.models.InscripcionExperiencia;
 import org.apci.aplicaciones.inscripcion.models.Usuario;
 import org.apci.aplicaciones.inscripcion.services.IInscripcionExperienciaService;
 import org.apci.aplicaciones.util.auth.Authentication;
+import org.apci.aplicaciones.util.auth.AuthenticationAdmin;
 
 
 @Path("/experiencia")
@@ -30,6 +31,16 @@ public class InscripcionExperienciaResource {
 	
 	public InscripcionExperienciaResource(){
 		experiencia= new InscripcionExperienciaDAO();
+	}
+	
+	@GET
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/all")
+	public List<InscripcionExperiencia> getAll(@Context HttpServletRequest pRequest)
+	{
+		AuthenticationAdmin.getUser(pRequest);
+		
+		return experiencia.getAll();
 	}
 	
 	@GET

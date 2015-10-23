@@ -7,13 +7,13 @@ import javax.ws.rs.WebApplicationException;
 import org.apci.aplicaciones.inscripcion.models.Usuario;
 import org.apci.aplicaciones.util.HttpUtil;
 
-public class AuthenticationConsulta {
+public class AuthenticationAdmin {
 	
-	public static final String SESSION_NAME = "5df9f63916ebf8528697b629022993e8";
-	public static final String LOGIN_URL = "/loginconsulta";
-	public static final String LOGOUT_URL = "/loginconsulta";
-	public static final String LOGIN_PAGE = "inscripcion/login_consulta.html";
-	public static final String LOGGED_PAGE = "app/";
+	public static final String SESSION_NAME = "989808dd9088f8528697b629022993e8";
+	public static final String LOGIN_URL = "/loginadmin";
+	public static final String LOGOUT_URL = "/loginadmin";
+	public static final String LOGIN_PAGE = "admin/index.html";
+	public static final String LOGGED_PAGE = "app/admin.html";
 	private static Usuario usuario;
 	
 	public static boolean isLoggedIn(HttpServletRequest pRequest)
