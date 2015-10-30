@@ -18,7 +18,6 @@ import org.apci.aplicaciones.inscripcion.dao.InscripcionDAO;
 import org.apci.aplicaciones.inscripcion.models.Inscripcion;
 import org.apci.aplicaciones.inscripcion.models.InscripcionInstitucion;
 import org.apci.aplicaciones.inscripcion.services.IInscripcionService;
-import org.apci.aplicaciones.util.auth.Authentication;
 
 @Path ("/inscripcion")
 public class InscripcionResource {

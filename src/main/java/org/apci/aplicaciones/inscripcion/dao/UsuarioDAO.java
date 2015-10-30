@@ -17,7 +17,7 @@ public class UsuarioDAO extends BaseDAO implements IUsuarioService {
 	@Override
 	public Usuario getByName(String pUsuario) {
 
-		List<Usuario> lstUsuario = query("SELECT InscripcionId as UsuarioId, Usuario, Hash FROM Inscripcion WHERE Usuario = ?", Usuario.class, pUsuario);
+		List<Usuario> lstUsuario = query("SELECT InscripcionId as UsuarioId, Usuario, Hash, InstitucionId FROM Inscripcion WHERE Usuario = ?", Usuario.class, pUsuario);
 		Usuario usuario = null;
 
 		if (lstUsuario.size() > 0){

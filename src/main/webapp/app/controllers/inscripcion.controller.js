@@ -19,7 +19,7 @@ angular.module("main").controller("InscripcionController",function(Utils,APP,$lo
 	
 	this.rucInvalido = true;
 	
-	Utils.Rest.getList(this,APP.URL_API + "tematica" , "tematicas" );
+	Utils.Rest.getList(this,APP.URL_API + "tematica", "tematicas" );
 	
 	
 	

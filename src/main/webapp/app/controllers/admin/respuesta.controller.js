@@ -15,7 +15,7 @@ angular.module("main").controller("RespuestaController",function(Utils,APP){
 	this.publicar = function(pregunta) {
 		
 		pregunta.publicada = !pregunta.publicada;
-		Utils.Rest.update(APP.API_URL +"pregunta",pregunta).success(function(){
+		Utils.Rest.update(APP.URL_API +"pregunta",pregunta).success(function(){
 			refresh();
 		});
 		
@@ -29,14 +29,15 @@ angular.module("main").controller("RespuestaController",function(Utils,APP){
 	this.guardarRespuesta = function(){
 		
 		this.pregunta.respondida = true;
-		Utils.Rest.update(APP.API_URL +"pregunta",this.pregunta);
+		Utils.Rest.update(APP.URL_API +"pregunta",this.pregunta);
 		this.pregunta = {};
 		this.pregunta.categoriaId = 1;
 		$(".modal-respuesta").modal("hide");
 	}
 	
 	$('.modal-respuesta').on('hide.bs.modal', function (e) {
-		refresh();  
-	})
+		refresh();
+	});
 	
 });
+

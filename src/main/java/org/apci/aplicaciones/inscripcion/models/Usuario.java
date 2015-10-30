@@ -1,9 +1,17 @@
 package org.apci.aplicaciones.inscripcion.models;
 
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlAccessType;
+
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Usuario {
 	
 	private int UsuarioId;
 	private String Usuario;
+	@XmlTransient
 	private String Hash;
 	private int InstitucionId;
 	

@@ -25,4 +25,10 @@ public class InstitucionDAO extends BaseDAO implements IInstitucionService{
 		return query("select * from VwExperiencias2015",Institucion.class);
 	}
 
+	@Override
+	public Institucion getById(int pInstitucionId) {
+		
+		return selectById(Institucion.class, pInstitucionId).get(0);
+	}
+
 }

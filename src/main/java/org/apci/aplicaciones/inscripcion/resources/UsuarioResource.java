@@ -32,10 +32,10 @@ public class UsuarioResource {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response get(@Context HttpServletRequest pRequest)
+	public Usuario get(@Context HttpServletRequest pRequest)
 	{
-		Authentication.getUser(pRequest);
-		return Response.status(Response.Status.OK).build();
+		Usuario usuario = Authentication.getUser(pRequest);
+		return usuario;
 	}
 	
 	@POST

@@ -2,6 +2,8 @@ angular.module("main").controller("ExperienciaController" , function(Utils, APP)
 	
 	var self = this;
 
+	this.usuario = {};
+
 	this.experiencias = [];
 	this.experiencia = {};
 	
@@ -12,9 +14,71 @@ angular.module("main").controller("ExperienciaController" , function(Utils, APP)
 	this.ambitos = [];
 	this.ambito = {};
 	
-	Utils.Rest.getList(this, APP.URL_API + "experiencia","experiencias");
+	refresh();
 	Utils.Rest.getList(this, APP.URL_API + "departamento","departamentos");
+
+	///////////////////////////////////////////////////////////////////////////
+
+	this.inscripcionexperiencia = {};
+	this.nueva = false;
+	this.autocomplete=false;
+
+	this.tematicas = [];
+	Utils.Rest.getList(this,APP.URL_API + "tematica" , "tematicas" );
+
+	this.intervenciones = [];
+
+	Utils.Rest.getList(this,APP.URL_API + "usuario", "usuario").success(function(data){
+
+		Utils.Rest.getList(self, APP.URL_API + "intervencion/" + data.InstitucionId, "intervenciones");
+	});
+
+	this.agregarExperiencia = function(){
+
+		$(".modal-datos-experiencia").modal("show");
+		console.log("Agregar experiencia");
+	}
+
+	this.buscarIntervencion = function(){
+		
+		if (S(this.inscripcionexperiencia.intervencion).length > 0 ) {
+			this.autocomplete = true;
+		}
+		else {
+			this.autocomplete = false;
+		}
+	}
 	
+	this.autocompleteSelected = function(pValue) {
+		
+		this.inscripcionexperiencia.intervencion = pValue;
+		this.autocomplete=false;
+	}
+
+	this.guardarNuevaExperiencia = function(){
+
+		Utils.Validation.init();
+		Utils.Validation.required("#txt-titulo-experiencia","Titulo de la Experiencia");
+		Utils.Validation.required("#sel-tematica-experiencia","Tematica");
+		Utils.Validation.required("#txt-intervencion","Intervención");
+		
+		if (Utils.Validation.run()){
+
+			this.inscripcionexperiencia.inscripcionId = this.usuario.UsuarioId;
+			Utils.Rest.save(APP.URL_API + "experiencia",this.inscripcionexperiencia);
+			this.inscripcionexperiencia = {};
+			$(".modal-datos-experiencia").modal("hide");
+			refresh();
+		}
+	}
+
+	function refresh() {
+
+		Utils.Rest.getList(self, APP.URL_API + "experiencia","experiencias");
+	}
+
+	/////////////////////////////////////////////////////////////////
+
 	this.registrarExperiencia = function(pExperiencia){
 
 		this.experiencia = pExperiencia;
@@ -25,15 +89,12 @@ angular.module("main").controller("ExperienciaController" , function(Utils, APP)
 		console.log("Registrar experiencia");
 		$(".modal-registrar-experiencia").modal("show");
 	}
-
-
 	
 	this.departamentoSelected = function(){
 		
 		var departamentoId = Utils.UI.Select.getSelectedAttr("sel-departamento","data-id");
 		Utils.Rest.getList(this,APP.URL_API + "departamento/" + departamentoId + "/provincia" ,"provincias");
 		this.ambito.provincia = "";
-		
 	}
 	
 	this.provinciaSelected = function() {

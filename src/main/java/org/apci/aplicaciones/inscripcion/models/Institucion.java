@@ -1,9 +1,13 @@
 package org.apci.aplicaciones.inscripcion.models;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement
 public class Institucion {
+	
 	private int institucionId;
 	private String ruc;
 	private String nombre;

@@ -17,6 +17,7 @@
 							</a>
 						</span>
 						<h4>{{pregunta.quienPregunta}}</h4>
+						<p>{{pregunta.fechaRegistro | date : "dd/MM/yyyy"}}</p>
 						<p>{{pregunta.texto}}</p>
 							<div class="bs-callout bs-callout-warning"> 
 								<h5>{{pregunta.respuesta}}</h5>

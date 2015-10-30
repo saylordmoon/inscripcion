@@ -4,7 +4,11 @@
 
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h5>Experiencias registradas</h5>
+				<a href="" class="btn btn-info bmd-ripple bmd-floating pull-right" data-ng-click="expCtrl.agregarExperiencia()">
+					<i class="fa fa-plus"></i>
+					Agregar nueva  experiencia
+				</a>
+				<h5>Experiencias Inscritas</h5>
 			</div>
 			<div class="panel-body">
 				<div class="table-responsive">
@@ -13,6 +17,7 @@
 							<tr>
 								<th class="col-md-1">Nº</th>
 								<th class="col-md-9">Experiencia</th>
+								<th class="col-md-9">Tematica</th>
 								<th class="col-md-2"></th>
 							</tr>
 						</thead>
@@ -20,8 +25,9 @@
 							<tr data-ng-repeat="experiencia in expCtrl.experiencias">
 								<td>{{$index+1}}</td>
 								<td>{{experiencia.titulo}}</td>
+								<td>{{experiencia.tematicaId | tipo: expCtrl.tematicas : "inscripcionTematicaId" : "descripcion" }}</td>
 								<td>
-									<span data-ng-show="experiencia.registrada" class="btn btn-info bmd-bg-blue-800 bmd-text-blue-50 bmd-ripple">
+									<span data-ng-show="experiencia.registrada" class="btn btn-success bmd-text-green-50 bmd-ripple">
 										<i class="fa fa-check"></i>
 										Experiencia Registrada
 									</span>
@@ -38,7 +44,6 @@
 			<div class="panel-footer">
 			</div>
 		</div>
-				
 	</div>
 
 	<!-- Modal  -->
@@ -313,8 +318,48 @@
 		</div>
 	</div><!--/ Modal  -->
 
+	<!-- Modal datos de la experiencia que se postula -->
+	<div class="modal fade modal-datos-experiencia" tabindex="-1" role="dialog">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">Datos de la experiencia que se postula</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<label>Título de la Experiencia</label>
+						<textarea id="txt-titulo-experiencia" data-ng-model="expCtrl.inscripcionexperiencia.titulo" class="form-control" rows="3"></textarea>
+					</div>
+					<div class="form-group">
+						<label>Temática</label>
+						<select id="sel-tematica-experiencia" class="form-control" data-ng-model="expCtrl.inscripcionexperiencia.tematicaId" data-ng-init="expCtrl.experiencia.tematicaId='1'">
+							<option data-ng-repeat="tematica in expCtrl.tematicas" value="{{tematica.inscripcionTematicaId}}">{{tematica.descripcion}}</option>								
+						</select>
+					</div>
+					<div class="form-group">
+						<label>Intervención</label>
+						<input data-ng-model="expCtrl.inscripcionexperiencia.intervencion" id="txt-intervencion" class="form-control" data-ng-change="expCtrl.buscarIntervencion()" />
+						<ul data-ng-show="expCtrl.autocomplete" class="nav nav-pills nav-stacked bmd-nav-pills-default bmd-floating">
+							<li data-ng-repeat="intervencion in expCtrl.intervenciones | filter:expCtrl.experiencia.intervencion"><a href="" data-ng-click="expCtrl.autocompleteSelected(intervencion.nombre)"  class="bmd-ripple">{{intervencion.nombre}}</a></li>
+						</ul>
+					</div>
+					
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-info bmd-floating bmd-ripple" data-ng-click="expCtrl.guardarNuevaExperiencia()">
+						<i class="glyphicon glyphicon-save"></i>
+						Guardar
+					</button>
+				</div>
+			</div>
+		</div>
+	</div><!--/ Modal datos de la experiencia que se postula  -->
+
 </div>
 
-<link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
+
 
 		

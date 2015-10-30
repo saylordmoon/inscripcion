@@ -9,27 +9,37 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import javax.xml.bind.JAXBElement;
 
+import org.apci.aplicaciones.inscripcion.dao.InstitucionDAO;
 import org.apci.aplicaciones.inscripcion.dao.PreguntaDAO;
+import org.apci.aplicaciones.inscripcion.dao.RespuestaDAO;
 import org.apci.aplicaciones.inscripcion.models.Pregunta;
+import org.apci.aplicaciones.inscripcion.models.Respuesta;
+import org.apci.aplicaciones.inscripcion.services.IInstitucionService;
 import org.apci.aplicaciones.inscripcion.services.IPreguntaService;
+import org.apci.aplicaciones.inscripcion.services.IRespuestaService;
 
 @Path("/pregunta")
 public class PreguntaResource {
 	IPreguntaService pregunta;
+	IRespuestaService respuesta;
+	IInstitucionService institucion;
 	
 	
 	public PreguntaResource() {
 		pregunta = new PreguntaDAO();
+		respuesta = new RespuestaDAO();
+		institucion = new InstitucionDAO();
 	}
 	
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Pregunta> get()
+	public List<Respuesta> get()
 	{
-		return pregunta.get();
+		return respuesta.get();
 	}
 	
 	@GET
@@ -49,16 +59,12 @@ public class PreguntaResource {
 	}
 	
 	@PUT
-	@Produces(MediaType.TEXT_PLAIN)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public String update(JAXBElement<Pregunta> pPregunta)
+	public Response update(JAXBElement<Pregunta> pPregunta)
 	{
-		String resp = "false";
 		
-		if (pregunta.update(pPregunta.getValue())){
-			resp = "true";
-		}
-		
-		return resp;
+		pregunta.update(pPregunta.getValue());
+	
+		return Response.status(Response.Status.OK).build();
 	}
 }

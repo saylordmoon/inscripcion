@@ -20,6 +20,7 @@ public class IntervencionResource {
 	IIntervencionService intervencion;
 	
 	public IntervencionResource() {
+		
 		intervencion = new IntervencionDAO();
 	}
 	
