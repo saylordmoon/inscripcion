@@ -67,6 +67,7 @@ angular.module("main").controller("ExperienciaController" , function(Utils, APP)
 			this.inscripcionexperiencia.inscripcionId = this.usuario.UsuarioId;
 			Utils.Rest.save(APP.URL_API + "experiencia",this.inscripcionexperiencia);
 			this.inscripcionexperiencia = {};
+			refresh();
 			$(".modal-datos-experiencia").modal("hide");
 			refresh();
 		}
