@@ -24,7 +24,8 @@ angular.module("main").controller("ConsultaController" , function(Utils, APP,$fi
 	
 	this.archivosExperiencia=[];
 	
-	
+	this.tematicas = [];
+	Utils.Rest.getList(this,APP.URL_API + "tematica" , "tematicas" );
 	
 	//agregado
 	this.mostrarExperiencia = function(pExperiencia){

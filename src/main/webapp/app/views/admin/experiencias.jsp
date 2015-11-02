@@ -14,6 +14,7 @@
 								<th class="col-md-1">Nº</th>
 								<th class="col-md-4">Experiencia</th>
 								<th class="col-md-4">Institución</th>
+								<th class="col-md-4">Temática</th>
 								<th class="col-md-2">Registrada</th>
 							</tr>
 						</thead>
@@ -21,8 +22,8 @@
 							<tr data-ng-repeat="experiencia in consultaCtrl.experiencias">
 								<td>{{$index+1}}</td>
 								<td>{{experiencia.titulo}}</td>
-								<!-- <td>{{consultaCtrl.instituciones.nombre}}</td> -->
 								<td>{{experiencia.inscripcionId | tipo : consultaCtrl.instituciones : "inscripcionId" : "nombreInstitucion"}}</td>
+								<td>{{experiencia.tematicaId | tipo: consultaCtrl.tematicas : "inscripcionTematicaId" : "descripcion" }}</td>
 								<td>
 									<button data-ng-show="experiencia.registrada" data-ng-click="consultaCtrl.mostrarExperiencia(experiencia)" class="btn btn-info bmd-ripple">
 										<i class="fa fa-eye"></i>

@@ -108,8 +108,6 @@ angular.module("main").controller("InscripcionController",function(Utils,APP,$lo
 	
 	this.rucInvalido = true;
 	
-	
-	
 	this.registrarse = function(){
 				
 		Utils.Validation.init();
