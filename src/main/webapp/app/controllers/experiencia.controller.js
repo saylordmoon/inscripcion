@@ -199,6 +199,27 @@ angular.module("main").controller("ExperienciaController" , function(Utils, APP)
 			
 			});
 		}
+
+		this.changeName = function(pExperiencia){
+
+			console.log("cambiar nombre",pExperiencia);
+			this.experiencia = pExperiencia;
+			$(".modal-cambiar-nombre").modal("show")
+		}
+
+		this.cambiarNombre = function(){
+
+			Utils.Validation.init();
+			Utils.Validation.required("#txt-nombre-experiencia","Nombre de la Experiencia");
+
+			if (Utils.Validation.run()) {
+			
+				Utils.Rest.update(APP.URL_API + "experiencia", this.experiencia).success(function(){
+					refresh();
+					$(".modal-cambiar-nombre").modal("hide");
+				});
+			}
+		}
 		
 		Utils.Mask.init();
 });

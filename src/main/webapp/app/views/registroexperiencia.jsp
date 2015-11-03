@@ -18,7 +18,8 @@
 								<th class="col-md-1">Nº</th>
 								<th class="col-md-9">Experiencia</th>
 								<th class="col-md-9">Tematica</th>
-								<th class="col-md-2"></th>
+								<th class="col-md-1"></th>
+								<th class="col-md-1"></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -34,6 +35,11 @@
 									<button data-ng-click="expCtrl.registrarExperiencia(experiencia)" data-ng-hide="experiencia.registrada" class="btn btn-info bmd-ripple">
 										<i class="fa fa-folder-open"></i>
 										Presentar experiencia
+									</button>
+								</td>
+								<td>
+									<button data-ng-show="!experiencia.registrada" class="btn btn-default" data-ng-click="expCtrl.changeName(experiencia)">
+										<i class="fa fa-edit"></i>
 									</button>
 								</td>
 							</tr>
@@ -90,7 +96,6 @@
 														
 					<div class="row">
 						<div class="col-md-12">
-
 							<div class="panel panel-default">
 								<div class="panel-heading">
 									<h5>Ubicacion de la experiencia</h5>
@@ -129,7 +134,6 @@
 											</button>
 										</div>
 									</div>
-
 								</div>
 								<div class="row">
 									<div class="col-md-11" style="margin-left: 15px;">
@@ -357,6 +361,31 @@
 			</div>
 		</div>
 	</div><!--/ Modal datos de la experiencia que se postula  -->
+
+	<!-- Modal cambiar nombre -->
+	<div class="modal fade modal-cambiar-nombre" role="dialog" >
+		<div class="modal-dialog modal-md">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">Nombre de la experiencia:</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<input id="txt-nombre-experiencia" class="form-control" data-ng-model="expCtrl.experiencia.titulo" />
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-info" data-ng-click="expCtrl.cambiarNombre()">
+						<i class="fa fa-save"></i>
+						Guardar
+					</button>
+				</div>
+			</div>
+		</div>
+	</div><!--/ Modal cambiar nombre -->
 
 </div>
 
