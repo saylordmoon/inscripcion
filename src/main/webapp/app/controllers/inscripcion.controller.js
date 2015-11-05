@@ -77,20 +77,34 @@ angular.module("main").controller("InscripcionController",function(Utils,APP,$lo
 	this.guardarExperiencia = function() {
 		
 		console.log("Guardar");
-		
 		Utils.Validation.init();
 		Utils.Validation.required("#txt-titulo-experiencia","Titulo de la Experiencia");
 		Utils.Validation.required("#sel-tematica-experiencia","Tematica");
 		Utils.Validation.required("#txt-intervencion","Intervención");
+	
+		
+		var validacion=false;
+						
+		for (var i=0; i<this.experiencias.length; i++)
+		{
+				if (this.nueva)
+				{
+					if (this.experiencias[i].titulo.toLowerCase() == this.experiencia.titulo.toLowerCase())
+						validacion=true;
+				}
+		}
+		
+		Utils.Validation.equalsVar(validacion,false,"Titulo de la Experiencia","El titulo de la experiencia ya existe","#txt-titulo-experiencia");
 		
 		if (Utils.Validation.run()){
 			
 			this.experiencia.tematica = Utils.UI.Select.getSelectedText("sel-tematica-experiencia");
 			if (this.nueva) this.experiencias.push(this.experiencia);
-			console.log("Experiencias" , this.experiencias);
+				console.log("Experiencias" , this.experiencias);
 			this.experiencia = {};
 			$(".modal-datosexperiencia").modal("hide");
 		}
+	
 	}
 	
 	this.borrarExperiencia = function(pExperiencia) {
@@ -98,6 +112,7 @@ angular.module("main").controller("InscripcionController",function(Utils,APP,$lo
 		console.log("borrar",pExperiencia);
 		Utils.List.delete(pExperiencia,this.experiencias);
 	}
+
 	
 	this.editarExperiencia = function(pExperiencia){
 		

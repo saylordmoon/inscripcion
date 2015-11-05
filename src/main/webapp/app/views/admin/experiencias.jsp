@@ -82,6 +82,21 @@
 								<table class="table table-striped table-condensed table-bordered">
 									<thead>
 										<tr>
+											<th>Sumilla</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="col-md-3">{{consultaCtrl.experiencia.sumilla}}</td>
+										</tr>
+									</tbody>	
+								</table>
+							</div>
+							
+							<div class="table-reponsive">
+								<table class="table table-striped table-condensed table-bordered">
+									<thead>
+										<tr>
 											<th>Ámbito</th>
 										</tr>
 									</thead>
@@ -164,9 +179,10 @@
 				            	<div class="panel-body">
 									<h4>Galería de Fotos</h4>
 									<hr />
-									<div class="gal" data-ng-init="imagenarchivo.tipoArchivo = 'I'" >
+									<div class="gal" data-ng-init="imagenarchivo.tipoArchivo = 'I'" > 
 										<a data-ng-repeat="imagen in consultaCtrl.archivosExperiencia | filter : imagenarchivo" class="fancybox" rel="group" href="../api/v1/file/download/{{consultaCtrl.experiencia.inscripcionId | tipo : consultaCtrl.instituciones : 'inscripcionId' : 'RUC'}}/{{consultaCtrl.experiencia.inscripcionExperienciaId}}/{{imagen.archivo}}">
 											<img data-ng-src="../api/v1/file/download/{{consultaCtrl.experiencia.inscripcionId | tipo : consultaCtrl.instituciones : 'inscripcionId' : 'RUC'}}/{{consultaCtrl.experiencia.inscripcionExperienciaId}}/{{imagen.archivo}}" alt="" height="130px" width="200px">
+									
 										</a>
 						            </div>
 				            	</div>
