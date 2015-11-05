@@ -46,7 +46,7 @@ public class LoginServlet extends HttpServlet {
 		String username = request.getParameter("usuario").trim();
 		String password = request.getParameter("password").trim();
 		
-		if (username.equals("20126841699"))
+		if (username.equals("20305606988"))
 		{
 			data.add(username + " |" + password +"|" );
 			HttpSession session = request.getSession();
