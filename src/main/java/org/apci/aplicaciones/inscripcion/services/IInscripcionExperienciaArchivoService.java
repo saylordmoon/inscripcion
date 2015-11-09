@@ -9,6 +9,8 @@ public interface IInscripcionExperienciaArchivoService {
 	InscripcionExperienciaArchivo add(InscripcionExperienciaArchivo pArchivo);
 	
 	List<InscripcionExperienciaArchivo> getAll(int pExperienciaId);
+	
+	InscripcionExperienciaArchivo remove(int pInscripcionExperienciaArchivoId);
 
 }
 

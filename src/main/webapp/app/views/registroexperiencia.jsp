@@ -191,16 +191,28 @@
 								<label>1. Descargar y completar el formato: </label>
 								<br />
 								<a href="../archivos/Formato2.docx" download>
-									<i class="fa  fa-file-pdf-o"></i>
+									<i class="fa fa-file-word-o"></i>
 									Formato
 								</a>
 							</div>
 						</div>
 						<div class="col-md-6" >
-							<div class="form-group">
+							<div data-ng-hide="expCtrl.formato.existe" class="form-group">
 								<a id="formato-ok" href="#" class="btn btn-info btn-xs pull-right bmd-floating bmd-ripple" style="display:none;"> <i class="fa fa-check"></i> </a>
 								<label class="control-label">2. Subir formato</label>
 								<input id="formato" name="uploadFile" type="file" class="file" data-tipo="F" />
+      						</div>
+      						<div data-ng-show="expCtrl.formato.existe" class="row">
+      							<div class="col-md-12">
+      								<a href="{{ expCtrl.APP.URL_API + 'archivo/download/' + expCtrl.usuario.Usuario + '/' + expCtrl.formato.inscripcionExperienciaId + '/' + expCtrl.formato.archivo }}" class="btn btn-info" download>
+      									<i class="fa fa-eye"></i>
+      									Ver Formato 
+      								</a>
+      								<a href="" class="btn btn-default" data-ng-click="expCtrl.borrarArchivo(expCtrl.formato.inscripcionExperienciaArchivoId)">
+      									<i class="fa fa-trash"></i>
+      									Borrar y subir formato
+      								</a>
+      							</div>
       						</div>
 						</div>
 					</div>
@@ -208,12 +220,24 @@
 					<hr style="margin-top: 0px" />
 
 					<div class="row">
-						<div class="col-md-12">
+						<div class="col-md-12" >
 							<div class="form-group">
 								<a id="documento-adicional-ok" href="#" class="btn btn-info btn-xs pull-right bmd-floating bmd-ripple" style="display:none;"> <i class="fa fa-check"></i> </a>
 								<label class="control-label">Documento con información adicional (No mayor a 5 paginas)</label>
-								<input id="documento-adicional" name="uploadFile" type="file" class="file" data-tipo="D" />
+								<input id="documento-adicional" name="uploadFile" type="file" class="file" data-tipo="D" data-ng-hide="expCtrl.adicional.existe" />
 							</div>
+							<div data-ng-show="expCtrl.adicional.existe" class="row">
+      							<div class="col-md-12">
+      								<a href="{{ expCtrl.APP.URL_API + 'archivo/download/' + expCtrl.usuario.Usuario + '/' + expCtrl.adicional.inscripcionExperienciaId + '/' + expCtrl.adicional.archivo }}" class="btn btn-info" download>
+      									<i class="fa fa-eye"></i>
+      									Ver documento 
+      								</a>
+      								<a href="" class="btn btn-default" data-ng-click="expCtrl.borrarArchivo(expCtrl.adicional.inscripcionExperienciaArchivoId)">
+      									<i class="fa fa-trash"></i>
+      									Borrar y subir documento
+      								</a>
+      							</div>
+      						</div>
 						</div>
 					</div>
 
@@ -227,18 +251,42 @@
 									Audiovisual (Máximo 90 segundos)
 								</label>
 								<a id="audio-visual-ok" href="#" class="btn btn-info btn-xs pull-right bmd-floating bmd-ripple" style="display:none;"> <i class="fa fa-check"></i> </a>
-								<input id="audio-visual" name="uploadFile" type="file" class="file" data-tipo="A" />
+								<input id="audio-visual" name="uploadFile" type="file" class="file" data-tipo="A"  data-ng-hide="expCtrl.audiovisual.existe" />
 							</div>
+							<div data-ng-show="expCtrl.audiovisual.existe" class="row">
+      							<div class="col-md-12">
+      								<a href="{{ expCtrl.APP.URL_API + 'archivo/download/' + expCtrl.usuario.Usuario + '/' + expCtrl.audiovisual.inscripcionExperienciaId + '/' + expCtrl.audiovisual.archivo }}" class="btn btn-info" download>
+      									<i class="fa fa-eye"></i>
+      									Ver audiovisual 
+      								</a>
+      								<a href="" class="btn btn-default" data-ng-click="expCtrl.borrarArchivo(expCtrl.audiovisual.inscripcionExperienciaArchivoId)">
+      									<i class="fa fa-trash"></i>
+      									Borrar y subir audiovisual
+      								</a>
+      							</div>
+      						</div>
 						</div>
 						<div class="col-md-6">
-							<div class="form-group">
+							<div class="form-group" >
 								<a id="video-ok" href="#" class="btn btn-info btn-xs pull-right bmd-floating bmd-ripple" style="display:none;"> <i class="fa fa-check"></i> </a>
 								<label class="control-label">
 									<i class="fa fa-video-camera"></i>
 									Video (Máximo 3 minutos)
 								</label>
-								<input id="video" name="uploadFile" type="file" class="file" data-tipo="V" />
+								<input id="video" name="uploadFile" type="file" class="file" data-tipo="V" data-ng-hide="expCtrl.video.existe" />
 							</div>
+							<div data-ng-show="expCtrl.video.existe" class="row">
+      							<div class="col-md-12">
+      								<a href="{{ expCtrl.APP.URL_API + 'archivo/download/' + expCtrl.usuario.Usuario + '/' + expCtrl.video.inscripcionExperienciaId + '/' + expCtrl.video.archivo }}" class="btn btn-info" download>
+      									<i class="fa fa-eye"></i>
+      									Ver video 
+      								</a>
+      								<a href="" class="btn btn-default" data-ng-click="expCtrl.borrarArchivo(expCtrl.video.inscripcionExperienciaArchivoId)">
+      									<i class="fa fa-trash"></i>
+      									Borrar y subir video
+      								</a>
+      							</div>
+      						</div>
 						</div>
 					</div>
 

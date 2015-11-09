@@ -2,6 +2,8 @@ angular.module("main").controller("ExperienciaController" , function(Utils, APP)
 	
 	var self = this;
 
+	this.APP = APP;
+
 	this.usuario = {};
 
 	this.experiencias = [];
@@ -13,6 +15,8 @@ angular.module("main").controller("ExperienciaController" , function(Utils, APP)
 	
 	this.ambitos = [];
 	this.ambito = {};
+
+	this.archivos = [];
 	
 	refresh();
 	Utils.Rest.getList(this, APP.URL_API + "departamento","departamentos");
@@ -79,17 +83,73 @@ angular.module("main").controller("ExperienciaController" , function(Utils, APP)
 	}
 
 	/////////////////////////////////////////////////////////////////
+	this.formato = {};
+	this.adicional = {};
+	this.audiovisual = {};
+	this.video = {};
 
 	this.registrarExperiencia = function(pExperiencia){
 
 		this.experiencia = pExperiencia;
+		this.ambitos= [];
+
+
 		if (pExperiencia.fechaInicio)
-			this.experiencia.fechaInicio = moment(pExperiencia.fechaInicio,"DD/MM/YYYY").toString();
+			this.experiencia.fechaInicio = Utils.Date.format(pExperiencia.fechaInicio);
 		if (pExperiencia.fechaFin)
-			this.experiencia.fechaFin = moment(pExperiencia.fechaFin,"DD/MM/YYYY").toString();
+			this.experiencia.fechaFin =  Utils.Date.format(pExperiencia.fechaFin);
+
+		if (pExperiencia.ubigeo)
+			this.ambitos = JSON.parse(pExperiencia.ubigeo);
+
+		refrescarArchivos();
+
+
 		console.log("Registrar experiencia");
 		$(".modal-registrar-experiencia").modal("show");
 	}
+
+	function existeArchivo(tipo, data) {
+
+		for (var i = data.length - 1; i >= 0; i--) {
+			if (S(data[i].tipoArchivo).trim().s == tipo)
+				return data[i];
+		};
+	}
+
+	
+	function refrescarArchivos() {
+		
+		self.formato = {};
+		self.adicional = {};
+		self.audiovisual = {};
+		self.video = {};
+
+		Utils.Rest.getList(self, APP.URL_API + "archivoexperiencia/" + self.experiencia.inscripcionExperienciaId , "archivos").success(function(data){
+			console.log("archivos" , data)
+			self.formato = existeArchivo("F",data);
+			self.adicional = existeArchivo("D",data);
+			self.video = existeArchivo("V",data);
+			self.audiovisual = existeArchivo("A",data);
+			
+			if (self.formato) self.formato.existe = true;
+			if (self.adicional) self.adicional.existe = true;
+			if (self.video) self.video.existe = true;
+			if (self.audiovisual) self.audiovisual.existe = true;
+
+			console.log("formato", self.formato);
+
+		});
+	}
+
+	this.borrarArchivo = function (pId) {
+
+		Utils.Rest.update(APP.URL_API + "archivoexperiencia/" + pId ).success(function(){
+			refrescarArchivos();
+		});
+	}
+
+	//////////////////////////////////////////////////////////////////////////////////////////////
 	
 	this.departamentoSelected = function(){
 		
@@ -204,7 +264,7 @@ angular.module("main").controller("ExperienciaController" , function(Utils, APP)
 
 			console.log("cambiar nombre",pExperiencia);
 			this.experiencia = pExperiencia;
-			$(".modal-cambiar-nombre").modal("show")
+			$(".modal-cambiar-nombre").modal("show");
 		}
 
 		this.cambiarNombre = function(){

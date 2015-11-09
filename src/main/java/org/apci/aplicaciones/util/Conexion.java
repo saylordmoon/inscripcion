@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Conexion {
-	private final String connectionUrl = "jdbc:sqlserver://192.168.1.8;databaseName=DB_APCIMRE;user=sa;password=apci2005";
+	private final String connectionUrl = "jdbc:sqlserver://192.168.1.10;databaseName=DB_APCIMRE;user=sa;password=apci2005";
 	private final String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 	private Connection con;
 	

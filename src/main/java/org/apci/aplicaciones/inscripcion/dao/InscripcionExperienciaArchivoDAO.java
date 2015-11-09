@@ -26,5 +26,17 @@ public class InscripcionExperienciaArchivoDAO extends BaseDAO implements IInscri
 		return super.query("SELECT * FROM InscripcionExperienciaArchivo WHERE InscripcionExperienciaId = ?", InscripcionExperienciaArchivo.class, pExperienciaId);
 	}
 
-	
+
+	@Override
+	public InscripcionExperienciaArchivo remove(int pInscripcionExperienciaArchivoId) {
+		
+		InscripcionExperienciaArchivo archivo = selectById(InscripcionExperienciaArchivo.class,pInscripcionExperienciaArchivoId).get(0);
+		
+		archivo.setTipoArchivo("X");
+		
+		super.update(archivo);
+		
+		return archivo;
+	}
+
 }

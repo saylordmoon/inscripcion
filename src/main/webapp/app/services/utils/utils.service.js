@@ -72,7 +72,10 @@ angular.module("main").service("Utils", function($filter,TabService, Notificatio
 										},
 						toDate: 		function(stringDate) {
 											return moment($filter('date')(stringDate, "dd/MM/yyyy"),'DD/MM/YYYY').toDate();
-										}
+										},
+						format: 		function(stringDate){
+											return $filter('date')(stringDate, "dd/MM/yyyy");
+										}, 
 	};
 
 	this.Rest = 	{	
